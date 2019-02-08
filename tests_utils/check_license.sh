@@ -23,6 +23,7 @@ files_list=$(echo "${files_list}" | grep -v \
     -e 'iotlabclient/client/*' \
     -e 'examples/' \
     -e '.travis.yml' \
+    -e 'swagger.yaml' \
     -e 'codecov.yml' \
     -e 'utils/iotlabcli-bash-completion.sh' \
 )
