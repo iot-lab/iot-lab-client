@@ -10,4 +10,5 @@ iotlabclient/client: Makefile swagger.yaml
 	-DgenerateSourceCodeOnly -DpackageName=iotlabclient.client
 	# workaround before this merge https://github.com/OpenAPITools/openapi-generator/pull/2016
 	cp -R iotlabclient.client/* iotlabclient/client/
+	mv iotlabclient.client_README.md iotlabclient/client/README.md
 	rm -r iotlabclient.client
