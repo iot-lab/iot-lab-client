@@ -1,0 +1,2610 @@
+openapi: 3.0.0
+info:
+  title: IoT-LAB REST API
+  description: 'REST API documentation of [IoT-LAB](http://www.iot-lab.info) testbed.'
+  version: 0.1.0
+servers:
+  - url: 'https://www.iot-lab.info/api'
+tags:
+  - name: experiments
+    description: Operations relative to experiments
+  - name: experiment
+    description: Operations relative to an experiment
+  - name: nodes
+    description: Operations relative to testbed nodes
+  - name: monitoring
+    description: Operations relative to monitoring profiles
+  - name: robots
+    description: Operations relative to robots
+  - name: mobilities
+    description: Operations relative to mobilities
+  - name: users
+    description: Operations relative to users
+  - name: sites
+    description: Operations relative to testbed sites
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    Firmware:
+      type:
+        object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        fileName:
+          type: string
+        archi:
+          type: string
+    Deployment:
+      type: object
+      properties:
+        0:
+          type: array
+          items:
+            type: string
+            format: hostname
+        1:
+          type: array
+          items:
+            type: string
+            format: hostname
+    SitesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              site:
+                type: string
+    CircuitsListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Circuit'
+    SitesDetailsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Site'
+    Site:
+      type: object
+      properties:
+        site:
+          type: string
+        archis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Archi'
+    Archi:
+      type: object
+      properties:
+        archi:
+          type: string
+          enum:
+            - a8:at86rf231
+            - arduino-zero:xbee
+            - firefly
+            - frdm-kw41z
+            - m3:at86rf231
+            - microbit:ble
+            - nrf51dk:ble
+            - nrf52dk:ble
+            - nrf52840dk
+            - nrf52840mdk
+            - phynode:kw2xrf
+            - rtl-sdr
+            - st-lrwan1:sx1276
+            - st-iotnode
+            - samr21:at86rf233
+            - samr30:at86rf212b
+            - wsn430:cc1101
+            - wsn430:cc2420
+        mobile:
+          type: integer
+        total:
+          type: integer
+    NodesIdsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              site:
+                type: string
+              archis:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    archi:
+                      type: string
+                    states:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                              - Absent
+                              - Alive
+                              - Busy
+                              - Suspected
+                              - Dead
+                          ids:
+                            type: string
+    # TODO JSON format is incorrect
+    StatusResponse:
+      type: object
+      properties:
+        site:
+          type: string
+          enum:
+            - Idle
+            - Running
+    RobotResponse:
+      type: object
+      properties:
+        bookable:
+          type: boolean
+        position:
+          $ref: '#/components/schemas/Point'
+        power:
+          type: object
+          properties:
+            battery_level:
+              type: string
+            kobuki_battery_source:
+              type: string
+            kobuki_percentage:
+              type: string
+            laptop_battery_status:
+              type: string
+            laptop_percentage:
+              type: integer
+            robot_battery_status:
+              type: string
+              enum:
+                - Healthy
+                - Low
+                - Dangerous
+                - Maximum
+        robot_state:
+          type: string
+    # TODO JSON format is incorrect
+    RobotsStatusResponse:
+      type: object
+      properties:
+        0:
+          $ref: '#/components/schemas/RobotResponse'
+        1:
+          type: array
+          items:
+            type: string
+            format: hostname
+    StopResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+    TotalResponse:
+      type: object
+      properties:
+        running:
+          type: integer
+        terminated:
+          type: integer
+        upcoming:
+          type: integer
+    ExperimentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: string
+          pattern: '^[a-z][0-9a-z]{3,19}$'
+          minLength: 4
+          maxLength: 20
+        nb_nodes:
+          type: integer
+        state:
+          type: string
+          enum:
+            - Running
+            - Launching
+            - Waiting
+            - Stopped
+            - Finishing
+            - Terminated
+        submitted_duration:
+          type: integer
+        effective_duration:
+          type: integer
+        scheduled_date:
+          type: string
+          format: dateTime
+        start_date:
+          type: string
+          format: dateTime
+        stop_date:
+          type: string
+          format: dateTime
+        submission_date:
+          type: string
+          format: dateTime
+    ExperimentsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentResponse'
+    ScriptAssociations:
+      type: object
+      properties:
+        script:
+          type: array
+          items:
+            type: object
+            properties:
+              scriptname:
+                type: string
+              sites:
+                type: array
+                items:
+                  type: string
+                  format: hostname
+        scriptconfig:
+          type: array
+          items:
+            type: object
+            properties:
+              scriptconfigname:
+                type: string
+              sites:
+                type: array
+                items:
+                  type: string
+                  format: hostname
+    SiteAssociations:
+      type: object
+      properties:
+        siteassociations:
+          $ref: '#/components/schemas/ScriptAssociations'
+    FirmwareAssociations:
+      type: object
+      properties:
+        firmwareassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              firmwarename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  format: hostname
+    ProfileAssociations:
+      type: object
+      properties:
+        profileassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              profilename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  format: hostname
+    MobilityAssociations:
+      type: object
+      properties:
+        mobilityassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              profilename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  format: hostname
+    MobilityAliasAssociations:
+      type: object
+      properties:
+        mobilityassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              profilename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  pattern: '^[0-9]$'
+    ProfileAliasAssociations:
+      type: object
+      properties:
+        profileassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              profilename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  pattern: '^[0-9]$'
+    FirmwareAliasAssociations:
+      type: object
+      properties:
+        firmwareassociations:
+          type: array
+          items:
+            type: object
+            properties:
+              firmwarename:
+                type: string
+              nodes:
+                type: array
+                items:
+                  type: string
+                  pattern: '^[0-9]$'
+    Alias:
+      type: object
+      properties:
+        alias:
+          type: string
+          pattern: '^[0-9]$'
+        nbnodes:
+          type: integer
+        properties:
+          type: object
+          properties:
+            archi:
+              type: string
+              enum:
+                - a8:at86rf231
+                - m3:at86rf231
+                - samr21:at86rf233
+                - wsn430:cc1101
+                - wsn430:cc2420
+                - arduino-zero:xbee
+                - firefly
+                - st-lrwan1:sx1276
+            mobile:
+              type: boolean
+            site:
+              type: string
+              pattern: '^[a-z0-9]$'
+    ExperimentPhysical:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            type: string
+            format: hostname
+          uniqueItems: true
+      allOf:
+      - $ref: '#/components/schemas/ProfileAssociations'
+      - $ref: '#/components/schemas/FirmwareAssociations'
+      - $ref: '#/components/schemas/MobilityAssociations'
+      - $ref: '#/components/schemas/SiteAssociations'
+    ExperimentAlias:
+          type: object
+          properties:
+            nodes:
+              $ref: '#/components/schemas/Alias'
+          allOf:
+          - $ref: '#/components/schemas/ProfileAliasAssociations'
+          - $ref: '#/components/schemas/FirmwareAliasAssociations'
+          - $ref: '#/components/schemas/MobilityAliasAssociations'
+          - $ref: '#/components/schemas/SiteAssociations'
+    ExperimentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        duration:
+          type: integer
+        type:
+          type: string
+          enum:
+            - physical
+            - alias
+        reservation:
+          type: integer
+        # TODO JSON format is incorrect
+        profiles:
+          type: object
+          properties:
+            profilename:
+              $ref: '#/components/schemas/Profile'
+        # TODO JSON format is incorrect
+        mobilities:
+          type: object
+          properties:
+            mobilityname:
+              $ref: '#/components/schemas/Circuit'
+      oneOf:
+      - $ref: '#/components/schemas/ExperimentPhysical'
+      - $ref: '#/components/schemas/ExperimentAlias'
+    ExperimentSubmission:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - physical
+            - alias
+        user:
+          type: string
+          pattern: '^[a-z][0-9a-z]{3,19}$'
+          minLength: 4
+          maxLength: 20
+        nb_nodes:
+          type: integer
+        state:
+          type: string
+          enum:
+            - Running
+            - Launching
+            - Waiting
+            - Stopped
+            - Finishing
+            - Terminated
+        submitted_duration:
+          type: integer
+        effective_duration:
+          type: integer
+        scheduled_date:
+          type: string
+          format: dateTime
+        start_date:
+          type: string
+          format: dateTime
+        stop_date:
+          type: string
+          format: dateTime
+        submission_date:
+          type: string
+          format: dateTime
+       # TODO JSON format is incorrect
+        profiles:
+          type: object
+          properties:
+            profilename:
+              $ref: '#/components/schemas/Profile'
+        # TODO JSON format is incorrect
+        mobilities:
+          type: object
+          properties:
+            mobilityname:
+              $ref: '#/components/schemas/Circuit'
+      oneOf:
+        - $ref: '#/components/schemas/ExperimentPhysical'
+        - $ref: '#/components/schemas/ExperimentAlias'
+    Profile:
+      type: object
+      properties:
+        profilename:
+          type: string
+        nodearch:
+          type: string
+          enum:
+            - m3
+            - a8
+            - custom
+        power:
+          type: string
+          enum:
+            - dc
+        consumption:
+          type: object
+          properties:
+            current:
+              type: boolean
+            power:
+              type: boolean
+            voltage:
+              type: boolean
+            period:
+              type: integer
+              enum:
+                - 140
+                - 204
+                - 332
+                - 588
+                - 1100
+                - 2116
+                - 4156
+                - 8244
+            average:
+              type: integer
+              enum:
+                - 1
+                - 4
+                - 16
+                - 64
+                - 128
+                - 256
+                - 512
+                - 1024
+        radio:
+          type: object
+          properties:
+            mode:
+              type: string
+              enum:
+                - rssi
+                - sniffer
+            num_per_channel:
+              type: integer
+              minimum: 0
+              maximum: 255
+            period:
+              type: integer
+              minimum: 1
+              maximum: 65535
+            channels:
+              type: array
+              items:
+                type: integer
+                minimum: 11
+                maximum: 26
+      required:
+        - profilename
+        - nodearch
+        - power
+    UserSshKeys:
+      type: object
+      properties:
+        sshkeys:
+          type: array
+          items:
+            type: string
+    Reload:
+      type: object
+      properties:
+        duration:
+          type: integer
+        reservation:
+          type: integer
+    Node:
+      type: object
+      properties:
+        archi:
+          type: string
+        mobile:
+          type: integer
+        camera:
+          type: integer
+        mobility_type:
+          type: string
+        network_address:
+          type: string
+        site:
+          type: string
+        state:
+          type: string
+          enum:
+            - Alive
+            - Busy
+            - Suspected
+            - Dead
+        uid:
+          type: string
+        x:
+          type: string
+        y:
+          type: string
+        z:
+          type: string
+    NodesRequest:
+      type: array
+      items:
+        type: string
+        format: hostname
+    NodesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+    UpdatePasswordRequest:
+      type: object
+      properties:
+        old_password:
+          type: string
+        new_password:
+          type: string
+        confirm_new_password:
+          type: string
+    ActivateUserRequest:
+      type: object
+      properties:
+        hash:
+          type: string
+          pattern: '^[A-Fa-f0-9]{64}$'
+    ResetPasswordRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+    UserRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        organization:
+          type: string
+        motivations:
+          type: string
+        city:
+          type: string
+        category:
+          type: string
+          enum:
+            - Student
+            - Academic
+            - Startup
+            - Business
+        sshkeys:
+          type: array
+          items:
+            type: string
+        groups:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{3,}$'
+    UserResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: dateTime
+        firstName:
+          type: string
+        lastName:
+          type: string
+        login:
+          type: string
+          pattern: '^[a-z][0-9a-z]{3,19}$'
+          minLength: 4
+          maxLength: 20
+        email:
+          type: string
+        country:
+          type: string
+        organization:
+          type: string
+        motivations:
+          type: string
+        city:
+          type: string
+        category:
+          type: string
+        sshkeys:
+          type: array
+          items:
+            type: string
+        groups:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-zA-Z0-9_-]{3,}$'
+        status:
+          type: string
+    Point:
+      type: object
+      properties:
+        x:
+          type: integer
+        y:
+          type: integer
+        theta:
+          type: integer
+     # TODO JSON format is incorrect
+    Coordinates:
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/Point"
+    CoordinatesReachable:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              pointName:
+                type: string
+              reachable:
+                type: boolean
+    Circuit:
+      type: object
+      properties:
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        loop:
+          type: boolean
+        name:
+          type: string
+        site:
+          type: string
+        type:
+          type: string
+          enum:
+            - userdefined
+            - predefined
+        points:
+          type: array
+          items:
+            type: string
+    RobotDockConfig:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Point'
+        - type: object
+          properties:
+            frame_id:
+              type: string
+    DockConfig:
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/RobotDockConfig'
+        robot:
+          type: string
+        site:
+          type: string
+    RobotsDockConfig:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DockConfig'
+    RobotsMapConfig:
+      type: object
+      properties:
+        image:
+          type: string
+        resolution:
+          type: number
+          format: float
+        offset:
+          type: array
+          items:
+            type: number
+            format: float
+        origin:
+          type: array
+          items:
+            type: number
+            format: float
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      required:
+        - code
+        - message
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+paths:
+  /mobilities/circuits:
+    get:
+      operationId: getMobilities
+      tags:
+        - mobilities
+      summary: Returns circuits list
+      security:
+        - BasicAuth: []
+      parameters:
+        - in: query
+          name: site
+          schema:
+            type: string
+          required: false
+          description: Filter with site name
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - predefined
+              - userdefined
+          required: false
+          description: Filter with mobility type
+      responses:
+        '200':
+          description: Circuits list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircuitsListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: saveUserMobility
+      tags:
+        - mobilities
+      summary: Create circuit
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Circuit'
+      responses:
+        '200':
+          description: The circuit has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circuit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /mobilities/circuits/{name}:
+    get:
+      operationId: getMobility
+      tags:
+        - mobilities
+      summary: Returns circuit
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Circuit response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circuit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      operationId: modifyUserMobility
+      tags:
+        - mobilities
+      summary: Modify circuit mobility
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Circuit'
+      responses:
+        '204':
+          description: The circuit mobility has been successfully modified.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: deleteUserMobility
+      tags:
+        - mobilities
+      summary: Delete circuit mobility
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The circuit mobility has been successfully deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/map/config:
+    get:
+      operationId: getMapConfig
+      tags:
+        - robots
+      summary: Returns robots site map config
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      responses:
+        '200':
+          description: Robots site map config response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RobotsMapConfig'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/dock/config:
+    get:
+      operationId: getDockConfig
+      tags:
+        - robots
+      summary: Returns robots site dock config
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      responses:
+        '200':
+          description: Robots site dock config response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RobotsDockConfig'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/map/image:
+    get:
+      operationId: getMapImage
+      tags:
+        - robots
+      summary: Returns robots site map image
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      responses:
+        '200':
+          description: Robots site map image.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/coordinates/isreachable:
+    post:
+      operationId: areCoordinatesReachable
+      tags:
+        - robots
+      summary: Returns if robots coordinates (eg. ROS points) are reachable
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coordinates'
+      responses:
+        '200':
+          description: Robots coordinates reachable response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoordinatesReachable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/coordinates/map:
+    post:
+      operationId: getMapCoordinates
+      tags:
+        - robots
+      summary: Returns robots map coordinates from ros coordinates.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Point'
+      responses:
+        '200':
+          description: Robots map coordinates response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Point'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /robots/{site}/coordinates/ros:
+    post:
+      operationId: getRosCoordinates
+      tags:
+        - robots
+      summary: Returns robots ros coordinates from map coordinates.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: site
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9]$'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Point'
+      responses:
+        '200':
+          description: Robots ros coordinates response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Point'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users:
+    post:
+      tags:
+        - users
+      summary: Signup user.
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: The user have been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users/reset_password:
+    post:
+      operationId: resetPassword
+      tags:
+        - users
+      summary: Reset user password by email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+      responses:
+        '204':
+          description: The user password has been successfully reseted.
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /users/activate:
+    post:
+      operationId: activateUser
+      tags:
+        - users
+      summary: Activate user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateUserRequest'
+      responses:
+        '204':
+          description: The user has been successfully activated.
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /user:
+    get:
+      operationId: getUser
+      tags:
+        - users
+      summary: Returns user
+      security:
+        - BasicAuth: []
+      responses:
+        '200':
+          description: User response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+        - users
+      summary: Modify user
+      operationId: modifyUser
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '204':
+          description: The user has been successfully modified.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      tags:
+        - users
+      summary: Delete user.
+      operationId: deleteUser
+      security:
+        - BasicAuth: []
+      responses:
+        '204':
+          description: The user has been successfully deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /user/password:
+    put:
+      operationId: updatePassword
+      tags:
+        - users
+      summary: Modify user password.
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePasswordRequest'
+      responses:
+        '204':
+          description: The user password has been successfully modified.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /user/keys:
+    get:
+      operationId: getUserSshKeys
+      tags:
+        - users
+      summary: Returns user ssh keys list.
+      security:
+        - BasicAuth: []
+      responses:
+        '200':
+          description: User ssh keys list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSshKeys'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+        - users
+      summary: Add user ssh keys.
+      operationId: setUserSshKeys
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSshKeys'
+      responses:
+        '204':
+          description: The user ssh keys has been successfully created.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /user/keys/{id}:
+    delete:
+      tags:
+        - users
+      summary: Delete user ssh key.
+      operationId: deleteUserSshKeys
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: The user ssh key has been deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/total:
+    get:
+      operationId: getExperimentsTotal
+      tags:
+        - experiments
+      summary: Returns total number of experiments
+      security:
+        - BasicAuth: []
+      responses:
+        '200':
+          description: Experiments total number response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TotalResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/running:
+    get:
+      operationId: getRunningExperiments
+      tags:
+        - experiments
+      summary: Returns running testbed experiments list
+      security:
+        - BasicAuth: []
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 500
+          required: false
+          description: Filter with number
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+          required: false
+          description: Filter with index
+      responses:
+        '200':
+          description: Experiments running list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments:
+    get:
+      operationId: getExperiments
+      tags:
+        - experiments
+      summary: Returns experiments list
+      security:
+        - BasicAuth: []
+      parameters:
+        - in: query
+          name: state
+          schema:
+            type: string
+            default: "Running,Terminated,Stopped,Waiting"
+          required: false
+          description: Filter with state
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 500
+          required: false
+          description: Filter with number
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+          required: false
+          description: Filter with index
+      responses:
+        '200':
+          description: Experiments list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: submitExperiment
+      tags:
+        - experiments
+      summary: Submit an experiment
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # The property name 'file' will be used for all files.
+                firmware:
+                  type: string
+                  format: binary
+                  description: firmware binary file
+                script:
+                  type: string
+                  format: binary
+                  description: script binary file
+                scriptconfig:
+                  type: string
+                  format: binary
+                  description: script config file
+                experiment:
+                  $ref: '#/components/schemas/ExperimentRequest'
+                  description: experiment description
+      responses:
+        '200':
+          description: Submit experiment response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}:
+    get:
+      tags:
+        - experiment
+      summary: Returns experiment.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentSubmission'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: stopExperiment
+      tags:
+        - experiment
+      summary: Stop experiment
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Stop Experiment response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/token:
+    get:
+      tags:
+        - experiment
+      summary: Returns experiment websocket token.
+      security:
+        - basicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment description
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    pattern: '^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes:
+    get:
+      operationId: getExperimentNodes
+      tags:
+        - experiment
+      summary: Returns experiment nodes list.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment nodes list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes_ids:
+    get:
+      operationId: getExperimentNodesId
+      tags:
+        - experiment
+      summary: Returns experiment nodes id list (eg. 1-5+8).
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment nodes id list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesIdsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/reload:
+    post:
+      operationId: reloadExperiment
+      tags:
+        - experiment
+      summary: Reload experiment.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reload'
+      responses:
+        '200':
+          description: Experiment reload response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/data:
+    get:
+      operationId: getExperimentArchive
+      tags:
+        - experiment
+      summary: Returns experiment archive.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment archive response.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/deployment:
+    get:
+      operationId: getExperimentDeployment
+      tags:
+        - experiment
+      summary: Returns experiment deployment result.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Experiment deployment result response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes/{cmd}:
+    post:
+      operationId: sendCmdNodes
+      tags:
+        - experiment
+      summary: Send experiment nodes command.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: cmd
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+            - start
+            - stop
+            - reset
+            - update-idle
+            - debug-start
+            - debug-stop
+            - profile-reset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Experiment nodes command response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes/flash:
+    post:
+      operationId: sendCmdUpdateNodes
+      tags:
+        - experiment
+      summary: Send experiment nodes flash firmware command.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # The property name 'file' will be used for all files.
+                firmware:
+                  type: string
+                  format: binary
+                  description: firmware binary file
+                nodes:
+                  type: array
+                  items:
+                    type: string
+                    format: hostname
+                  description: nodes list
+      responses:
+        '200':
+          description: Experiment nodes flash firmware response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes/flash/{name}:
+    post:
+      tags:
+        - experiment
+      summary: Send experiment nodes flash firmware store command.
+      security:
+        - basicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Experiment nodes flash firmware response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes/monitoring/{name}:
+    post:
+      operationId: sendCmdProfileNodes
+      tags:
+        - experiment
+      summary: Send experiment nodes update monitoring profile store command.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Experiment nodes update monitoring profile response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/nodes/monitoring:
+    post:
+      operationId: sendLoadProfileNodes
+      tags:
+        - experiment
+      summary: Send experiment nodes load monitoring profile command.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # The property name 'file' will be used for all files.
+                profile:
+                  type: string
+                  format: binary
+                  description: monitoring profile file
+                nodes:
+                  type: array
+                  items:
+                    type: string
+                    format: hostname
+                  description: nodes list
+      responses:
+        '200':
+          description: Experiment nodes load monitoring profile response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/scripts/run:
+    post:
+      operationId: runExperimentScripts
+      tags:
+        - experiment
+      summary: Send frontend SSH run script command
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # The property name 'file' will be used for all files.
+                script:
+                  type: string
+                  format: binary
+                  description: script binary file
+                scriptconfig:
+                  type: string
+                  format: binary
+                  description: script config file
+                scriptassociation:
+                  $ref: '#/components/schemas/ScriptAssociations'
+      responses:
+        '200':
+          description: Frontend SSH run script response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/scripts/kill:
+    post:
+      operationId: killExperimentScripts
+      tags:
+        - experiment
+      summary: Send frontend SSH kill script command.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Frontend SSH kill script response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/scripts/status:
+    post:
+      operationId: statusExperimentScripts
+      tags:
+        - experiment
+      summary: Returns frontend SSH status script.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Frontend SSH status script response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/robots/{cmd}:
+    post:
+      operationId: sendCmdRobots
+      tags:
+        - experiment
+      summary: Returns robots status.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: cmd
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Robots status response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RobotsStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /experiments/{id}/robots/mobility/{name}:
+    post:
+      operationId: sendCmdMobilityRobots
+      tags:
+        - experiment
+      summary: Send update robots mobility.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodesRequest'
+      responses:
+        '200':
+          description: Robots update mobility response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /monitoring:
+    get:
+      operationId: getProfiles
+      tags:
+        - monitoring
+      summary: Returns monitoring profiles list.
+      security:
+        - BasicAuth: []
+      parameters:
+        - in: query
+          name: archi
+          schema:
+            type: string
+          required: false
+          description: Filter by archi
+      responses:
+        '200':
+          description: Monitoring profiles list response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      operationId: saveProfile
+      tags:
+        - monitoring
+      summary: Create monitoring profile.
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        '200':
+          description: The monitoring profile has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /monitoring/{name}:
+    get:
+      operationId: getProfile
+      tags:
+        - monitoring
+      summary: Returns monitoring profile.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Monitoring profile response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      operationId: modifyProfile
+      tags:
+        - monitoring
+      summary: Modify monitoring profile.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        '204':
+          description: The monitoring profile has been successfully modified.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    delete:
+      operationId: deleteProfile
+      tags:
+        - monitoring
+      summary: Delete monitoring profile.
+      security:
+        - BasicAuth: []
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The monitoring profile has been successfully deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /firmwares/checker:
+    post:
+      operationId: getFirmwareFormat
+      summary: Returns firwmare format.
+      security:
+        - BasicAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                # The property name 'file' will be used for all files.
+                firmware:
+                  type: string
+                  format: binary
+                  description: firmware binary file
+      responses:
+        '200':
+          description: Firmware format response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  format:
+                    type: string
+                    enum:
+                      - elf
+                      - hex
+                      - unknown
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /firmwares/{name}:
+    delete:
+      tags:
+        - firmwares
+      summary: Delete a user firmware
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
+      responses:
+        '200':
+          description: the user firmware was correctly deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    get:
+      tags:
+        - firmwares
+      summary: get a stored user firmware metadata
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
+      responses:
+        '200':
+          description: returns the stored user firmware metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Firmware'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    put:
+      tags:
+      - firmwares
+      summary: modify a stored user firmware
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                firmware:
+                  type: string
+                  format: binary
+                  description: firmware binary file
+                metadata:
+                  $ref: '#/components/schemas/Firmware'
+      responses:
+        '200':
+          description: The user firmware was correctly modified
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /firmwares:
+    get:
+      tags:
+        - firmwares
+      summary: get a list of stored user firmware metadatas
+      parameters:
+      - in: query
+        name: type
+        schema:
+          type: string
+          enum:
+            - all
+            - userdefined
+            - predefined
+          default: all
+        required: false
+        description: Filter by type (userde
+      - in: query
+        name: archi
+        schema:
+          type: string
+        required: false
+        description: Filter by archi
+      - in: query
+        name: state
+        schema:
+          type: string
+          enum:
+          - Alive
+          - Busy
+          - Suspected
+          - Dead
+        required: false
+        description: Filter by state
+      responses:
+        '200':
+          description: returns a list of firmware metadatas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Firmware'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      tags:
+      - firmwares
+      summary: save a user firmware
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                firmware:
+                  type: string
+                  format: binary
+                  description: firmware binary file
+                metadata:
+                  $ref: '#/components/schemas/Firmware'
+      responses:
+        '200':
+          description: The user firmware was correctly modified
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /firmwares/{name}/file:
+    get:
+      tags:
+        - firmwares
+      summary: get a stored user firmaware file
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
+      responses:
+        '200':
+          description: returns the stored user firmware metadata
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /sites:
+    get:
+      operationId: getSites
+      tags:
+        - sites
+      summary: Returns testbed sites list.
+      responses:
+        '200':
+          description: Testbed sites list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SitesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /sites/details:
+    get:
+      operationId: getSitesDetails
+      tags:
+        - sites
+      summary: Returns tesbed sites details list.
+      responses:
+        '200':
+          description: Testbed sites details list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SitesDetailsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /nodes:
+    get:
+      operationId: getNodes
+      tags:
+        - nodes
+      summary: Returns testbed nodes list.
+      parameters:
+        - in: query
+          name: site
+          schema:
+            type: string
+            default: all
+          required: false
+          description: Filter by site
+        - in: query
+          name: archi
+          schema:
+            type: string
+          required: false
+          description: Filter by archi
+        - in: query
+          name: state
+          schema:
+            type: string
+            enum:
+              - Alive
+              - Busy
+              - Suspected
+              - Dead
+          required: false
+          description: Filter by state
+      responses:
+        '200':
+          description: Testbed nodes list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesResponse'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /nodes/ids:
+    get:
+      operationId: getNodesId
+      tags:
+        - nodes
+      summary: Returns testbed nodes ids list (eg. 1-5+8).
+      responses:
+        '200':
+          description: Testbed nodes ids list response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodesIdsResponse'
+        '500':
+          $ref: '#/components/responses/ServerError'

@@ -1,0 +1,27 @@
+language: python
+dist: xenial
+sudo: required
+services:
+  - docker
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV="py27-tests,py27-lint,coverage"
+    - python: 3.4
+      env: TOXENV="py34-tests"
+    - python: 3.5
+      env: TOXENV="copying,py35-tests,py35-lint,coverage"
+    - python: 3.6
+      env: TOXENV="py36-tests"
+    - python: 3.7
+      env: TOXENV="py37-tests"
+
+before_install:
+  - make iotlabclient/client
+  - pip install tox
+
+install:
+  - pip install .
+
+script:
+  - tox

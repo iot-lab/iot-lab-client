@@ -1,0 +1,7 @@
+.tox
+.idea/
+*.egg-info
+__pycache__
+htmlcov
+iotlabclient/client/
+*.pyc
