@@ -5,3 +5,10 @@ __pycache__
 htmlcov
 iotlabclient/client/
 *.pyc
+coverage.xml
+.coverage
+test-report\.xml
+.openapi-generator/
+.openapi-generator-ignore
+build/
+dist/
