@@ -95,18 +95,18 @@ components:
           enum:
             - a8:at86rf231
             - arduino-zero:xbee
-            - firefly
-            - frdm-kw41z
+            - firefly:multi
+            - frdm-kw41z:multi
             - m3:at86rf231
             - microbit:ble
             - nrf51dk:ble
             - nrf52dk:ble
-            - nrf52840dk
-            - nrf52840mdk
+            - nrf52840dk:multi
+            - nrf52840mdk:multi
             - phynode:kw2xrf
-            - rtl-sdr
+            - rtl-sdr:none
             - st-lrwan1:sx1276
-            - st-iotnode
+            - st-iotnode:multi
             - samr21:at86rf233
             - samr30:at86rf212b
             - wsn430:cc1101
@@ -2340,6 +2340,8 @@ paths:
       tags:
         - firmwares
       summary: Delete a user firmware
+      security:
+        - BasicAuth: []
       parameters:
       - name: name
         in: path
@@ -2359,7 +2361,9 @@ paths:
     get:
       tags:
         - firmwares
-      summary: get a stored user firmware metadata
+      summary: get a stored firmware metadata
+      security:
+        - BasicAuth: []
       parameters:
       - name: name
         in: path
@@ -2384,6 +2388,8 @@ paths:
       tags:
       - firmwares
       summary: modify a stored user firmware
+      security:
+        - BasicAuth: []
       parameters:
       - name: name
         in: path
@@ -2416,7 +2422,9 @@ paths:
     get:
       tags:
         - firmwares
-      summary: get a list of stored user firmware metadatas
+      summary: get a list of stored firmware metadatas
+      security:
+        - BasicAuth: []
       parameters:
       - in: query
         name: type
@@ -2468,6 +2476,8 @@ paths:
       tags:
       - firmwares
       summary: save a user firmware
+      security:
+        - BasicAuth: []
       requestBody:
         content:
           multipart/form-data:
@@ -2493,7 +2503,9 @@ paths:
     get:
       tags:
         - firmwares
-      summary: get a stored user firmaware file
+      summary: get a stored firmaware file
+      security:
+        - BasicAuth: []
       parameters:
       - name: name
         in: path

@@ -1,7 +1,7 @@
 SWAGGER ?= ${PWD}/swagger.yaml
 GENERATOR ?= openapitools/openapi-generator-cli:v3.3.4
 
-iotlabclient/client: Makefile
+iotlabclient/client: Makefile swagger.yaml
 	docker run --rm --user $$(id -u):$$(id -g) \
 	-v ${PWD}:/output -v ${SWAGGER}:/input/swagger.yaml \
 	${GENERATOR} \

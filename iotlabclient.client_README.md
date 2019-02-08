@@ -81,10 +81,10 @@ Class | Method | HTTP request | Description
 *ExperimentsApi* | [**get_experiments_total**](iotlabclient.client/docs/ExperimentsApi.md#get_experiments_total) | **GET** /experiments/total | Returns total number of experiments
 *ExperimentsApi* | [**get_running_experiments**](iotlabclient.client/docs/ExperimentsApi.md#get_running_experiments) | **GET** /experiments/running | Returns running testbed experiments list
 *ExperimentsApi* | [**submit_experiment**](iotlabclient.client/docs/ExperimentsApi.md#submit_experiment) | **POST** /experiments | Submit an experiment
-*FirmwaresApi* | [**firmwares_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_get) | **GET** /firmwares | get a list of stored user firmware metadatas
+*FirmwaresApi* | [**firmwares_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_get) | **GET** /firmwares | get a list of stored firmware metadatas
 *FirmwaresApi* | [**firmwares_name_delete**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_delete) | **DELETE** /firmwares/{name} | Delete a user firmware
-*FirmwaresApi* | [**firmwares_name_file_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_file_get) | **GET** /firmwares/{name}/file | get a stored user firmaware file
-*FirmwaresApi* | [**firmwares_name_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored user firmware metadata
+*FirmwaresApi* | [**firmwares_name_file_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_file_get) | **GET** /firmwares/{name}/file | get a stored firmaware file
+*FirmwaresApi* | [**firmwares_name_get**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored firmware metadata
 *FirmwaresApi* | [**firmwares_name_put**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_name_put) | **PUT** /firmwares/{name} | modify a stored user firmware
 *FirmwaresApi* | [**firmwares_post**](iotlabclient.client/docs/FirmwaresApi.md#firmwares_post) | **POST** /firmwares | save a user firmware
 *MobilitiesApi* | [**delete_user_mobility**](iotlabclient.client/docs/MobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
