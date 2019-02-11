@@ -17,7 +17,6 @@ matrix:
       env: TOXENV="py37-tests"
 
 before_install:
-  - make iotlabclient/client
   - pip install tox
 
 install:
