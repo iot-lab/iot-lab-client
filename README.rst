@@ -5,6 +5,9 @@ IoT-Lab client
 
 IoT-LAB client is a basic Python library to access the FIT IoT-LAB API
 
+It is mostly automatically generated from the OpenAPI spec (available `here <http://api.iot-lab.info/swagger.yaml>`_
+) using OpenAPI-generator_
+
 License
 -------
 
@@ -23,3 +26,5 @@ documentation is covered by the CeCILL v2.1 free software licence.
 .. |Codecov| image:: https://codecov.io/gh/iot-lab/iot-lab-client/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/iot-lab/iot-lab-client/branch/master
    :alt: Codecov coverage status
+
+.. _OpenAPI-generator: https://github.com/OpenAPITools/openapi-generator
