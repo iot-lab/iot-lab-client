@@ -395,43 +395,58 @@ components:
               type: string
               enum:
                 - a8:at86rf231
+                - arduino-zero:xbee
+                - firefly:multi
+                - frdm-kw41z:multi
                 - m3:at86rf231
+                - microbit:ble
+                - nrf51dk:ble
+                - nrf52dk:ble
+                - nrf52840dk:multi
+                - nrf52840mdk:multi
+                - phynode:kw2xrf
+                - rtl-sdr:none
+                - st-lrwan1:sx1276
+                - st-iotnode:multi
                 - samr21:at86rf233
+                - samr30:at86rf212b
                 - wsn430:cc1101
                 - wsn430:cc2420
-                - arduino-zero:xbee
-                - firefly
-                - st-lrwan1:sx1276
             mobile:
               type: boolean
             site:
               type: string
-              pattern: '^[a-z0-9]$'
+              pattern: '^[a-z0-9]*$'
     ExperimentPhysical:
-      type: object
-      properties:
-        nodes:
-          type: array
-          items:
-            type: string
-            format: hostname
-          uniqueItems: true
       allOf:
+      - type: object
+        properties:
+          nodes:
+            type: array
+            items:
+              type: string
+              format: hostname
+            uniqueItems: true
+      - $ref: '#/components/schemas/CommonExperimentRequest'
       - $ref: '#/components/schemas/ProfileAssociations'
       - $ref: '#/components/schemas/FirmwareAssociations'
       - $ref: '#/components/schemas/MobilityAssociations'
       - $ref: '#/components/schemas/SiteAssociations'
     ExperimentAlias:
-          type: object
-          properties:
-            nodes:
+      allOf:
+      - type: object
+        properties:
+          nodes:
+            type: array
+            items:
               $ref: '#/components/schemas/Alias'
-          allOf:
-          - $ref: '#/components/schemas/ProfileAliasAssociations'
-          - $ref: '#/components/schemas/FirmwareAliasAssociations'
-          - $ref: '#/components/schemas/MobilityAliasAssociations'
-          - $ref: '#/components/schemas/SiteAssociations'
-    ExperimentRequest:
+            uniqueItems: true
+      - $ref: '#/components/schemas/CommonExperimentRequest'
+      - $ref: '#/components/schemas/ProfileAliasAssociations'
+      - $ref: '#/components/schemas/FirmwareAliasAssociations'
+      - $ref: '#/components/schemas/MobilityAliasAssociations'
+      - $ref: '#/components/schemas/SiteAssociations'
+    CommonExperimentRequest:
       type: object
       properties:
         name:
@@ -457,11 +472,16 @@ components:
           properties:
             mobilityname:
               $ref: '#/components/schemas/Circuit'
+      required:
+        - type
+    ExperimentRequest:
       oneOf:
       - $ref: '#/components/schemas/ExperimentPhysical'
       - $ref: '#/components/schemas/ExperimentAlias'
     ExperimentSubmission:
       type: object
+      required:
+        - type
       properties:
         id:
           type: integer
@@ -1501,21 +1521,16 @@ paths:
               type: object
               properties:
                 # The property name 'file' will be used for all files.
-                firmware:
-                  type: string
-                  format: binary
-                  description: firmware binary file
-                script:
-                  type: string
-                  format: binary
-                  description: script binary file
-                scriptconfig:
-                  type: string
-                  format: binary
-                  description: script config file
                 experiment:
-                  $ref: '#/components/schemas/ExperimentRequest'
                   description: experiment description
+                  $ref: '#/components/schemas/ExperimentRequest'
+                files:
+                  type: array
+                  description: firmware/script/scriptconfig files
+                  items:
+                    type: string
+                    format: binary
+                    description: firmware/script/scriptconfig file
       responses:
         '200':
           description: Submit experiment response.
