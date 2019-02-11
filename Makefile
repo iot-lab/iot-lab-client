@@ -6,6 +6,7 @@ GENERATOR ?= openapitools/openapi-generator-cli:v3.3.4
 # it necessitates some merged PR before it works, might be
 # working with openapi-generator 4.0.0 once it releases
 # in the meantime, generated code is commited
+# PR code on openapitools/openapi-generator used: #2122 #2121 #2112 #2016
 
 iotlabclient/client: Makefile ${SWAGGER}
 	docker run --rm --user $$(id -u):$$(id -g) \
