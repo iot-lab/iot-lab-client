@@ -31,9 +31,9 @@ class RobotDockConfig(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'x': 'int',
-        'y': 'int',
-        'theta': 'int',
+        'x': 'float',
+        'y': 'float',
+        'theta': 'float',
         'frame_id': 'str'
     }
 
@@ -74,7 +74,7 @@ class RobotDockConfig(object):
 
 
         :return: The x of this RobotDockConfig.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._x
 
@@ -84,7 +84,7 @@ class RobotDockConfig(object):
 
 
         :param x: The x of this RobotDockConfig.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._x = x
@@ -95,7 +95,7 @@ class RobotDockConfig(object):
 
 
         :return: The y of this RobotDockConfig.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._y
 
@@ -105,7 +105,7 @@ class RobotDockConfig(object):
 
 
         :param y: The y of this RobotDockConfig.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._y = y
@@ -116,7 +116,7 @@ class RobotDockConfig(object):
 
 
         :return: The theta of this RobotDockConfig.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._theta
 
@@ -126,7 +126,7 @@ class RobotDockConfig(object):
 
 
         :param theta: The theta of this RobotDockConfig.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._theta = theta

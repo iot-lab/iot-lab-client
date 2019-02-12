@@ -33,23 +33,20 @@ class RobotsMapConfig(object):
     openapi_types = {
         'image': 'str',
         'resolution': 'float',
-        'offset': 'list[float]',
         'origin': 'list[float]'
     }
 
     attribute_map = {
         'image': 'image',
         'resolution': 'resolution',
-        'offset': 'offset',
         'origin': 'origin'
     }
 
-    def __init__(self, image=None, resolution=None, offset=None, origin=None):  # noqa: E501
+    def __init__(self, image=None, resolution=None, origin=None):  # noqa: E501
         """RobotsMapConfig - a model defined in OpenAPI"""  # noqa: E501
 
         self._image = None
         self._resolution = None
-        self._offset = None
         self._origin = None
         self.discriminator = None
 
@@ -57,8 +54,6 @@ class RobotsMapConfig(object):
             self.image = image
         if resolution is not None:
             self.resolution = resolution
-        if offset is not None:
-            self.offset = offset
         if origin is not None:
             self.origin = origin
 
@@ -103,27 +98,6 @@ class RobotsMapConfig(object):
         """
 
         self._resolution = resolution
-
-    @property
-    def offset(self):
-        """Gets the offset of this RobotsMapConfig.  # noqa: E501
-
-
-        :return: The offset of this RobotsMapConfig.  # noqa: E501
-        :rtype: list[float]
-        """
-        return self._offset
-
-    @offset.setter
-    def offset(self, offset):
-        """Sets the offset of this RobotsMapConfig.
-
-
-        :param offset: The offset of this RobotsMapConfig.  # noqa: E501
-        :type: list[float]
-        """
-
-        self._offset = offset
 
     @property
     def origin(self):

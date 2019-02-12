@@ -31,9 +31,9 @@ class Point(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'x': 'int',
-        'y': 'int',
-        'theta': 'int'
+        'x': 'float',
+        'y': 'float',
+        'theta': 'float'
     }
 
     attribute_map = {
@@ -63,7 +63,7 @@ class Point(object):
 
 
         :return: The x of this Point.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._x
 
@@ -73,7 +73,7 @@ class Point(object):
 
 
         :param x: The x of this Point.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._x = x
@@ -84,7 +84,7 @@ class Point(object):
 
 
         :return: The y of this Point.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._y
 
@@ -94,7 +94,7 @@ class Point(object):
 
 
         :param y: The y of this Point.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._y = y
@@ -105,7 +105,7 @@ class Point(object):
 
 
         :return: The theta of this Point.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._theta
 
@@ -115,7 +115,7 @@ class Point(object):
 
 
         :param theta: The theta of this Point.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._theta = theta
