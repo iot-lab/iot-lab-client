@@ -24,6 +24,7 @@ from iotlabclient.client import ExperimentApi, ExperimentsApi, ApiClient, \
                                 Configuration, FirmwaresApi, MobilitiesApi, \
                                 MonitoringApi, NodesApi, RobotsApi, \
                                 SitesApi, UsersApi
+from iotlabclient.utils import read_custom_api_url
 
 
 class Api(object):
@@ -31,8 +32,11 @@ class Api(object):
     def __init__(self):
         configuration = Configuration()
         username, password = get_user_credentials()
+        url = read_custom_api_url() or 'https://www.iot-lab.info/api/'
         configuration.username = username
         configuration.password = password
+        configuration.host = url
+
         self.client = ApiClient(configuration)
 
         self.experiment = ExperimentApi(self.client)
