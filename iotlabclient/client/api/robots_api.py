@@ -91,8 +91,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `are_coordinates_reachable`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `are_coordinates_reachable`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `are_coordinates_reachable`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -193,8 +193,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `get_dock_config`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `get_dock_config`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_dock_config`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -387,8 +387,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `get_map_coordinates`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `get_map_coordinates`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_map_coordinates`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -489,8 +489,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `get_map_image`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `get_map_image`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_map_image`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -587,8 +587,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `get_ros_coordinates`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `get_ros_coordinates`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_ros_coordinates`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

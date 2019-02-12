@@ -89,6 +89,8 @@ class NodesApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
 
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_nodes`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

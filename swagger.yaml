@@ -902,6 +902,7 @@ paths:
           name: site
           schema:
             type: string
+            pattern: '^[a-z0-9]*$'
           required: false
           description: Filter with site name
         - in: query
@@ -1069,7 +1070,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^[a-z0-9]$'
+            pattern: '^[a-z0-9]*$'
       responses:
         '200':
           description: Robots site dock config response.
@@ -1097,7 +1098,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^[a-z0-9]$'
+            pattern: '^[a-z0-9]*$'
       responses:
         '200':
           description: Robots site map image.
@@ -1126,7 +1127,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^[a-z0-9]$'
+            pattern: '^[a-z0-9]*$'
       requestBody:
         content:
           application/json:
@@ -1159,7 +1160,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^[a-z0-9]$'
+            pattern: '^[a-z0-9]*$'
       requestBody:
         content:
           application/json:
@@ -1192,7 +1193,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^[a-z0-9]$'
+            pattern: '^[a-z0-9]*$'
       requestBody:
         content:
           application/json:
@@ -2598,6 +2599,7 @@ paths:
           schema:
             type: string
             default: all
+            pattern: '^[a-z0-9]*$'
           required: false
           description: Filter by site
         - in: query
