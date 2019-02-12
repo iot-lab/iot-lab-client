@@ -65,6 +65,8 @@ class SitesResponseItems(object):
         :param site: The site of this SitesResponseItems.  # noqa: E501
         :type: str
         """
+        if site is not None and not re.search(r'^[a-z0-9]*$', site):  # noqa: E501
+            raise ValueError(r"Invalid value for `site`, must be a follow pattern or equal to `/^[a-z0-9]*$/`")  # noqa: E501
 
         self._site = site
 

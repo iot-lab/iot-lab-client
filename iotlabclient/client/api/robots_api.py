@@ -289,8 +289,8 @@ class RobotsApi(object):
                 local_var_params['site'] is None):
             raise ValueError("Missing the required parameter `site` when calling `get_map_config`")  # noqa: E501
 
-        if 'site' in local_var_params and not re.search(r'^[a-z0-9]$', local_var_params['site']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `site` when calling `get_map_config`, must conform to the pattern `/^[a-z0-9]$/`")  # noqa: E501
+        if 'site' in local_var_params and not re.search(r'^[a-z0-9]*$', local_var_params['site']):  # noqa: E501
+            raise ValueError("Invalid value for parameter `site` when calling `get_map_config`, must conform to the pattern `/^[a-z0-9]*$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
