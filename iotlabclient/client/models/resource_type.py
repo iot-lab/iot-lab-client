@@ -26,9 +26,9 @@ class ResourceType(object):
     """
     allowed enum values
     """
-    USERDEFINED = "userdefined"
-    PREDEFINED = "predefined"
-    ALL = "all"
+    USERDEFINED = "USERDEFINED"
+    PREDEFINED = "PREDEFINED"
+    ALL = "ALL"
 
     """
     Attributes:
