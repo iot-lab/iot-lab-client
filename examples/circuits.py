@@ -1,4 +1,8 @@
+import json
 import pprint
+import re
+
+from iotlabclient.client.rest import ApiException
 
 from iotlabclient.api import Api
 from iotlabclient.client import Circuit, Point
@@ -7,11 +11,16 @@ api = Api().mobilities
 
 site = 'lille'
 
+
 def delete_if_exists(circuit_name):
     try:
-        pprint.pprint(api.mobilities.delete_user_mobility(circuit_name))
-    except:
+        pprint.pprint(api.delete_user_mobility(circuit_name))
+    except ApiException as e:
         print('OK, circuit already deleted')
+        msg = json.loads(e.body)['message']
+        if not re.match(r"The circuit .* doesn\'t exist", msg):
+            raise
+
 
 # get all circuits
 
@@ -36,6 +45,7 @@ pprint.pprint(api.get_mobility('square1'))
 print('add my_circuit user defined circuit:')
 delete_if_exists('my_circuit')
 delete_if_exists('modified_my_circuit')
+
 circuit = Circuit(
     name="my_circuit",
     coordinates={
@@ -60,8 +70,8 @@ circuit = Circuit(
             "y": 4
         }
     },
-    points=[ "A", "B", "C", "D" ],
-    loop= True,
+    points=["A", "B", "C", "D"],
+    loop=True,
     site=site
 )
 
@@ -70,21 +80,20 @@ pprint.pprint(api.save_user_mobility(circuit=circuit))
 # POST with the same circuit should fail
 try:
     result = api.save_user_mobility(circuit=circuit)
-except Exception as e:
+except ApiException as e:
     assert e.status == 500
+
+print('userdefined circuit my_circuit on devlille:')
+pprint.pprint(api.modify_user_mobility('my_circuit', circuit=circuit))
+
 
 print('remove point B in my_circuit')
 
 del circuit.coordinates['B']
 circuit.points.remove('B')
 
-print('userdefined circuit my_circuit on devlille:')
-pprint.pprint(api.modify_user_mobility('mobilities/circuits/my_circuit', method='get'))
-
-try:
-    api.method('mobilities/circuits/my_circuit', method='put', json=circuit)
-except Exception as e:
-    print(e)
+# modify my_circuit
+api.modify_user_mobility('my_circuit', circuit=circuit)
 
 print('userdefined circuit my_circuit on devlille:')
 pprint.pprint(api.get_mobility('my_circuit'))
@@ -93,16 +102,15 @@ pprint.pprint(api.get_mobility('my_circuit'))
 circuit.name = 'modified_my_circuit'
 
 try:
-    api.modify_user_mobility(circuit=circuit)
-except Exception as e:
+    api.modify_user_mobility(name='my_circuit', circuit=circuit)
+except ApiException as e:
     print(e)
 
 print('userdefined circuit modified_my_circuit:')
 pprint.pprint(api.get_mobility('modified_my_circuit'))
 
 print('userdefined circuits (only modified_my_circuit):')
-pprint.pprint(api.get_mobilities(type='USERDEFINED'))
-
+pprint.pprint(api.get_mobilities(type='userdefined'))
 
 api = Api().robots
 
@@ -113,8 +121,7 @@ print('get dock config:')
 pprint.pprint(api.get_dock_config(site))
 
 print('reachable:')
-pprint.pprint(api.are_coordinates_reachable(site, request_body={'A': Point(x= 20, y=4)}))
-
+pprint.pprint(api.are_coordinates_reachable(site, request_body={'A': Point(x=20, y=4)}))
 
 print('original_coordinates:')
 point = Point(x=20, y=4)
@@ -125,4 +132,4 @@ to_map_coordinates = api.get_map_coordinates(site, point=point)
 pprint.pprint(to_map_coordinates)
 
 print('back to_ros_coordinates:')
-pprint.pprint(api.get_ros_coordinates(site, to_map_coordinates))
+pprint.pprint(api.get_ros_coordinates(site, point=to_map_coordinates))
