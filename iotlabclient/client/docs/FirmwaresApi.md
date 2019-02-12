@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **firmwares_get**
-> InlineResponse2003 firmwares_get(type=type, archi=archi, state=state)
+> list[Firmware] firmwares_get(type=type, archi=archi)
 
 get a list of stored firmware metadatas
 
@@ -34,13 +34,12 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
-type = 'all' # str | Filter by type (userde (optional) (default to 'all')
-archi = 'archi_example' # str | Filter by archi (optional)
-state = 'state_example' # str | Filter by state (optional)
+type = iotlabclient.client.ResourceType() # ResourceType | Filter by type (userde (optional)
+archi = iotlabclient.client.ArchiString() # ArchiString | Filter by archi (optional)
 
 try:
     # get a list of stored firmware metadatas
-    api_response = api_instance.firmwares_get(type=type, archi=archi, state=state)
+    api_response = api_instance.firmwares_get(type=type, archi=archi)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FirmwaresApi->firmwares_get: %s\n" % e)
@@ -50,13 +49,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **str**| Filter by type (userde | [optional] [default to &#39;all&#39;]
- **archi** | **str**| Filter by archi | [optional] 
- **state** | **str**| Filter by state | [optional] 
+ **type** | [**ResourceType**](.md)| Filter by type (userde | [optional] 
+ **archi** | [**ArchiString**](.md)| Filter by archi | [optional] 
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**list[Firmware]**](Firmware.md)
 
 ### Authorization
 

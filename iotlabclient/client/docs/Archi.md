@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**archi** | **str** |  | [optional] 
+**archi** | [**ArchiRadioString**](ArchiRadioString.md) |  | [optional] 
 **mobile** | **int** |  | [optional] 
 **total** | **int** |  | [optional] 
 

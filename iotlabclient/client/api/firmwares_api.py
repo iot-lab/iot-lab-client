@@ -41,10 +41,9 @@ class FirmwaresApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str type: Filter by type (userde
-        :param str archi: Filter by archi
-        :param str state: Filter by state
-        :return: InlineResponse2003
+        :param ResourceType type: Filter by type (userde
+        :param ArchiString archi: Filter by archi
+        :return: list[Firmware]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -64,17 +63,16 @@ class FirmwaresApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str type: Filter by type (userde
-        :param str archi: Filter by archi
-        :param str state: Filter by state
-        :return: InlineResponse2003
+        :param ResourceType type: Filter by type (userde
+        :param ArchiString archi: Filter by archi
+        :return: list[Firmware]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['type', 'archi', 'state']  # noqa: E501
+        all_params = ['type', 'archi']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -98,8 +96,6 @@ class FirmwaresApi(object):
             query_params.append(('type', local_var_params['type']))  # noqa: E501
         if 'archi' in local_var_params:
             query_params.append(('archi', local_var_params['archi']))  # noqa: E501
-        if 'state' in local_var_params:
-            query_params.append(('state', local_var_params['state']))  # noqa: E501
 
         header_params = {}
 
@@ -122,7 +118,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='list[Firmware]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

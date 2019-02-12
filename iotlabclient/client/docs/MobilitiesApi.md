@@ -84,7 +84,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.MobilitiesApi(iotlabclient.client.ApiClient(configuration))
 site = 'site_example' # str | Filter with site name (optional)
-type = 'type_example' # str | Filter with mobility type (optional)
+type = iotlabclient.client.ResourceType() # ResourceType | Filter with resource type (optional)
 
 try:
     # Returns circuits list
@@ -99,7 +99,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **site** | **str**| Filter with site name | [optional] 
- **type** | **str**| Filter with mobility type | [optional] 
+ **type** | [**ResourceType**](.md)| Filter with resource type | [optional] 
 
 ### Return type
 

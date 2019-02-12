@@ -33,23 +33,23 @@ class Firmware(object):
     openapi_types = {
         'name': 'str',
         'description': 'str',
-        'file_name': 'str',
+        'filename': 'str',
         'archi': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'description': 'description',
-        'file_name': 'fileName',
+        'filename': 'filename',
         'archi': 'archi'
     }
 
-    def __init__(self, name=None, description=None, file_name=None, archi=None):  # noqa: E501
+    def __init__(self, name=None, description=None, filename=None, archi=None):  # noqa: E501
         """Firmware - a model defined in OpenAPI"""  # noqa: E501
 
         self._name = None
         self._description = None
-        self._file_name = None
+        self._filename = None
         self._archi = None
         self.discriminator = None
 
@@ -57,8 +57,8 @@ class Firmware(object):
             self.name = name
         if description is not None:
             self.description = description
-        if file_name is not None:
-            self.file_name = file_name
+        if filename is not None:
+            self.filename = filename
         if archi is not None:
             self.archi = archi
 
@@ -105,25 +105,25 @@ class Firmware(object):
         self._description = description
 
     @property
-    def file_name(self):
-        """Gets the file_name of this Firmware.  # noqa: E501
+    def filename(self):
+        """Gets the filename of this Firmware.  # noqa: E501
 
 
-        :return: The file_name of this Firmware.  # noqa: E501
+        :return: The filename of this Firmware.  # noqa: E501
         :rtype: str
         """
-        return self._file_name
+        return self._filename
 
-    @file_name.setter
-    def file_name(self, file_name):
-        """Sets the file_name of this Firmware.
+    @filename.setter
+    def filename(self, filename):
+        """Sets the filename of this Firmware.
 
 
-        :param file_name: The file_name of this Firmware.  # noqa: E501
+        :param filename: The filename of this Firmware.  # noqa: E501
         :type: str
         """
 
-        self._file_name = file_name
+        self._filename = filename
 
     @property
     def archi(self):

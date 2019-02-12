@@ -31,7 +31,7 @@ class AliasProperties(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'archi': 'str',
+        'archi': 'ArchiRadioString',
         'mobile': 'bool',
         'site': 'str'
     }
@@ -63,7 +63,7 @@ class AliasProperties(object):
 
 
         :return: The archi of this AliasProperties.  # noqa: E501
-        :rtype: str
+        :rtype: ArchiRadioString
         """
         return self._archi
 
@@ -73,14 +73,8 @@ class AliasProperties(object):
 
 
         :param archi: The archi of this AliasProperties.  # noqa: E501
-        :type: str
+        :type: ArchiRadioString
         """
-        allowed_values = ["a8:at86rf231", "arduino-zero:xbee", "firefly:multi", "frdm-kw41z:multi", "m3:at86rf231", "microbit:ble", "nrf51dk:ble", "nrf52dk:ble", "nrf52840dk:multi", "nrf52840mdk:multi", "phynode:kw2xrf", "rtl-sdr:none", "st-lrwan1:sx1276", "st-iotnode:multi", "samr21:at86rf233", "samr30:at86rf212b", "wsn430:cc1101", "wsn430:cc2420"]  # noqa: E501
-        if archi not in allowed_values:
-            raise ValueError(
-                "Invalid value for `archi` ({0}), must be one of {1}"  # noqa: E501
-                .format(archi, allowed_values)
-            )
 
         self._archi = archi
 

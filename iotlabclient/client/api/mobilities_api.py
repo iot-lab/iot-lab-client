@@ -136,7 +136,7 @@ class MobilitiesApi(object):
 
         :param async_req bool
         :param str site: Filter with site name
-        :param str type: Filter with mobility type
+        :param ResourceType type: Filter with resource type
         :return: CircuitsListResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -158,7 +158,7 @@ class MobilitiesApi(object):
 
         :param async_req bool
         :param str site: Filter with site name
-        :param str type: Filter with mobility type
+        :param ResourceType type: Filter with resource type
         :return: CircuitsListResponse
                  If the method is called asynchronously,
                  returns the request thread.
