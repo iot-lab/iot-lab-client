@@ -2322,6 +2322,8 @@ paths:
           $ref: '#/components/responses/ServerError'
   /firmwares/checker:
     post:
+      tags:
+        - firmwares
       operationId: getFirmwareFormat
       summary: Returns firwmare format.
       security:

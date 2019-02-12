@@ -40,15 +40,15 @@ configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = iotlabclient.client.DefaultApi(iotlabclient.client.ApiClient(configuration))
-firmware = '/path/to/file' # file | firmware binary file (optional)
+api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
+id = 56 # int | 
 
 try:
-    # Returns firwmare format.
-    api_response = api_instance.get_firmware_format(firmware=firmware)
+    # Returns experiment.
+    api_response = api_instance.experiments_id_get(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->get_firmware_format: %s\n" % e)
+    print("Exception when calling ExperimentApi->experiments_id_get: %s\n" % e)
 
 ```
 
@@ -58,7 +58,6 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**get_firmware_format**](iotlabclient/client/docs/DefaultApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
 *ExperimentApi* | [**experiments_id_get**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_get) | **GET** /experiments/{id} | Returns experiment.
 *ExperimentApi* | [**experiments_id_nodes_flash_name_post**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_nodes_flash_name_post) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
 *ExperimentApi* | [**experiments_id_token_get**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_token_get) | **GET** /experiments/{id}/token | Returns experiment websocket token.
@@ -87,6 +86,7 @@ Class | Method | HTTP request | Description
 *FirmwaresApi* | [**firmwares_name_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored firmware metadata
 *FirmwaresApi* | [**firmwares_name_put**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_put) | **PUT** /firmwares/{name} | modify a stored user firmware
 *FirmwaresApi* | [**firmwares_post**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_post) | **POST** /firmwares | save a user firmware
+*FirmwaresApi* | [**get_firmware_format**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
 *MobilitiesApi* | [**delete_user_mobility**](iotlabclient/client/docs/MobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
 *MobilitiesApi* | [**get_mobilities**](iotlabclient/client/docs/MobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
 *MobilitiesApi* | [**get_mobility**](iotlabclient/client/docs/MobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit

@@ -17,7 +17,6 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from iotlabclient.client.api.default_api import DefaultApi
 from iotlabclient.client.api.experiment_api import ExperimentApi
 from iotlabclient.client.api.experiments_api import ExperimentsApi
 from iotlabclient.client.api.firmwares_api import FirmwaresApi
