@@ -29,13 +29,14 @@ from iotlabclient.utils import read_custom_api_url
 
 class Api(object):
 
-    def __init__(self):
-        configuration = Configuration()
-        username, password = get_user_credentials()
-        url = read_custom_api_url() or 'https://www.iot-lab.info/api/'
-        configuration.username = username
-        configuration.password = password
-        configuration.host = url
+    def __init__(self, host=None, configuration=None):
+        if configuration is None:
+            configuration = Configuration()
+            username, password = get_user_credentials()
+            url = host or read_custom_api_url() or 'https://www.iot-lab.info/api/'
+            configuration.username = username
+            configuration.password = password
+            configuration.host = url
 
         self.client = ApiClient(configuration, pool_threads=None)
 
