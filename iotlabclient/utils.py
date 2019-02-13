@@ -1,6 +1,6 @@
 import sys
 
-from coverage.annotate import os
+import os
 
 
 def read_file(file_path, opt=''):
