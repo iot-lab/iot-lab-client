@@ -37,7 +37,7 @@ class Api(object):
         configuration.password = password
         configuration.host = url
 
-        self.client = ApiClient(configuration)
+        self.client = ApiClient(configuration, pool_threads=None)
 
         self.experiment = ExperimentApi(self.client)
         self.experiments = ExperimentsApi(self.client)
