@@ -31,7 +31,7 @@ class FirmwareAssociations(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'firmwareassociations': 'list[FirmwareAssociationsFirmwareassociations]'
+        'firmwareassociations': 'list[FirmwareAssociation]'
     }
 
     attribute_map = {
@@ -53,7 +53,7 @@ class FirmwareAssociations(object):
 
 
         :return: The firmwareassociations of this FirmwareAssociations.  # noqa: E501
-        :rtype: list[FirmwareAssociationsFirmwareassociations]
+        :rtype: list[FirmwareAssociation]
         """
         return self._firmwareassociations
 
@@ -63,7 +63,7 @@ class FirmwareAssociations(object):
 
 
         :param firmwareassociations: The firmwareassociations of this FirmwareAssociations.  # noqa: E501
-        :type: list[FirmwareAssociationsFirmwareassociations]
+        :type: list[FirmwareAssociation]
         """
 
         self._firmwareassociations = firmwareassociations

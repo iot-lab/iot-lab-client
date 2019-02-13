@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import iotlabclient.client
-from iotlabclient.client.models.inline_response2003 import InlineResponse2003  # noqa: E501
+from iotlabclient.client.models.alias_firmware_association import AliasFirmwareAssociation  # noqa: E501
 from iotlabclient.client.rest import ApiException
 
 
-class TestInlineResponse2003(unittest.TestCase):
-    """InlineResponse2003 unit test stubs"""
+class TestAliasFirmwareAssociation(unittest.TestCase):
+    """AliasFirmwareAssociation unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestInlineResponse2003(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testInlineResponse2003(self):
-        """Test InlineResponse2003"""
+    def testAliasFirmwareAssociation(self):
+        """Test AliasFirmwareAssociation"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = iotlabclient.client.models.inline_response2003.InlineResponse2003()  # noqa: E501
+        # model = iotlabclient.client.models.alias_firmware_association.AliasFirmwareAssociation()  # noqa: E501
         pass
 
 

@@ -31,7 +31,7 @@ class ProfileAssociations(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'profileassociations': 'list[ProfileAssociationsProfileassociations]'
+        'profileassociations': 'list[ProfileAssociation]'
     }
 
     attribute_map = {
@@ -53,7 +53,7 @@ class ProfileAssociations(object):
 
 
         :return: The profileassociations of this ProfileAssociations.  # noqa: E501
-        :rtype: list[ProfileAssociationsProfileassociations]
+        :rtype: list[ProfileAssociation]
         """
         return self._profileassociations
 
@@ -63,7 +63,7 @@ class ProfileAssociations(object):
 
 
         :param profileassociations: The profileassociations of this ProfileAssociations.  # noqa: E501
-        :type: list[ProfileAssociationsProfileassociations]
+        :type: list[ProfileAssociation]
         """
 
         self._profileassociations = profileassociations

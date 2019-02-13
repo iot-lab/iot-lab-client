@@ -110,7 +110,7 @@ class RobotsApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -120,6 +120,14 @@ class RobotsApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'CoordinatesReachable',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/robots/{site}/coordinates/isreachable', 'POST',
             path_params,
@@ -128,6 +136,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='CoordinatesReachable',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -210,11 +219,19 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'RobotsDockConfig',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/robots/{site}/dock/config', 'GET',
@@ -224,6 +241,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='RobotsDockConfig',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -306,11 +324,19 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'RobotsMapConfig',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/robots/{site}/map/config', 'GET',
@@ -320,6 +346,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='RobotsMapConfig',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -406,7 +433,7 @@ class RobotsApi(object):
         if 'point' in local_var_params:
             body_params = local_var_params['point']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -416,6 +443,14 @@ class RobotsApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'Point',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/robots/{site}/coordinates/map', 'POST',
             path_params,
@@ -424,6 +459,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='Point',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -506,11 +542,19 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'file',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/robots/{site}/map/image', 'GET',
@@ -520,6 +564,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -606,7 +651,7 @@ class RobotsApi(object):
         if 'point' in local_var_params:
             body_params = local_var_params['point']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -616,6 +661,14 @@ class RobotsApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'Point',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/robots/{site}/coordinates/ros', 'POST',
             path_params,
@@ -624,6 +677,7 @@ class RobotsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='Point',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

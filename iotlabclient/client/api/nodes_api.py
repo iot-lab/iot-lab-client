@@ -110,11 +110,17 @@ class NodesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'NodesResponse',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/nodes', 'GET',
@@ -124,6 +130,7 @@ class NodesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='NodesResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -196,11 +203,17 @@ class NodesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'NodesIdsResponse',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/nodes/ids', 'GET',
@@ -210,6 +223,7 @@ class NodesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='NodesIdsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

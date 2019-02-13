@@ -70,6 +70,13 @@ class TestFirmwaresApi(unittest.TestCase):
         """
         pass
 
+    def test_get_firmware_format(self):
+        """Test case for get_firmware_format
+
+        Returns firwmare format.  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

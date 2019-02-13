@@ -38,9 +38,9 @@ class ExperimentPhysical(object):
         'reservation': 'int',
         'profiles': 'CommonExperimentRequestProfiles',
         'mobilities': 'CommonExperimentRequestMobilities',
-        'profileassociations': 'list[ProfileAssociationsProfileassociations]',
-        'firmwareassociations': 'list[FirmwareAssociationsFirmwareassociations]',
-        'mobilityassociations': 'list[ProfileAssociationsProfileassociations]',
+        'profileassociations': 'list[ProfileAssociation]',
+        'firmwareassociations': 'list[FirmwareAssociation]',
+        'mobilityassociations': 'list[ProfileAssociation]',
         'siteassociations': 'ScriptAssociations'
     }
 
@@ -263,7 +263,7 @@ class ExperimentPhysical(object):
 
 
         :return: The profileassociations of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[ProfileAssociationsProfileassociations]
+        :rtype: list[ProfileAssociation]
         """
         return self._profileassociations
 
@@ -273,7 +273,7 @@ class ExperimentPhysical(object):
 
 
         :param profileassociations: The profileassociations of this ExperimentPhysical.  # noqa: E501
-        :type: list[ProfileAssociationsProfileassociations]
+        :type: list[ProfileAssociation]
         """
 
         self._profileassociations = profileassociations
@@ -284,7 +284,7 @@ class ExperimentPhysical(object):
 
 
         :return: The firmwareassociations of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[FirmwareAssociationsFirmwareassociations]
+        :rtype: list[FirmwareAssociation]
         """
         return self._firmwareassociations
 
@@ -294,7 +294,7 @@ class ExperimentPhysical(object):
 
 
         :param firmwareassociations: The firmwareassociations of this ExperimentPhysical.  # noqa: E501
-        :type: list[FirmwareAssociationsFirmwareassociations]
+        :type: list[FirmwareAssociation]
         """
 
         self._firmwareassociations = firmwareassociations
@@ -305,7 +305,7 @@ class ExperimentPhysical(object):
 
 
         :return: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[ProfileAssociationsProfileassociations]
+        :rtype: list[ProfileAssociation]
         """
         return self._mobilityassociations
 
@@ -315,7 +315,7 @@ class ExperimentPhysical(object):
 
 
         :param mobilityassociations: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :type: list[ProfileAssociationsProfileassociations]
+        :type: list[ProfileAssociation]
         """
 
         self._mobilityassociations = mobilityassociations

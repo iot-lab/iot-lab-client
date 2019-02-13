@@ -100,7 +100,7 @@ class UsersApi(object):
         if 'activate_user_request' in local_var_params:
             body_params = local_var_params['activate_user_request']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -110,6 +110,12 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = []  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/users/activate', 'POST',
             path_params,
@@ -118,6 +124,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -190,11 +197,19 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/user', 'DELETE',
@@ -204,6 +219,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -284,11 +300,19 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/user/keys/{id}', 'DELETE',
@@ -298,6 +322,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -370,11 +395,19 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'UserResponse',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/user', 'GET',
@@ -384,6 +417,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='UserResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -456,11 +490,19 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'UserSshKeys',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/user/keys', 'GET',
@@ -470,6 +512,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='UserSshKeys',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -546,7 +589,7 @@ class UsersApi(object):
         if 'user_request' in local_var_params:
             body_params = local_var_params['user_request']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -556,6 +599,14 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/user', 'PUT',
             path_params,
@@ -564,6 +615,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -640,7 +692,7 @@ class UsersApi(object):
         if 'reset_password_request' in local_var_params:
             body_params = local_var_params['reset_password_request']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -650,6 +702,12 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = []  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/users/reset_password', 'POST',
             path_params,
@@ -658,6 +716,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -734,7 +793,7 @@ class UsersApi(object):
         if 'user_ssh_keys' in local_var_params:
             body_params = local_var_params['user_ssh_keys']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -744,6 +803,14 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/user/keys', 'POST',
             path_params,
@@ -752,6 +819,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -828,7 +896,7 @@ class UsersApi(object):
         if 'update_password_request' in local_var_params:
             body_params = local_var_params['update_password_request']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -838,6 +906,14 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/user/password', 'PUT',
             path_params,
@@ -846,6 +922,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -922,7 +999,7 @@ class UsersApi(object):
         if 'user_request' in local_var_params:
             body_params = local_var_params['user_request']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -932,6 +1009,14 @@ class UsersApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'UserResponse',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/users', 'POST',
             path_params,
@@ -940,6 +1025,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='UserResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

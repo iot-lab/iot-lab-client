@@ -1,9 +1,10 @@
-# MobilityAssociations
+# FirmwareAssociation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mobilityassociations** | [**list[ProfileAssociation]**](ProfileAssociation.md) |  | [optional] 
+**firmwarename** | **str** |  | [optional] 
+**nodes** | **list[str]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

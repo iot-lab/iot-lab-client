@@ -33,6 +33,8 @@ from iotlabclient.client.configuration import Configuration
 # import models into sdk package
 from iotlabclient.client.models.activate_user_request import ActivateUserRequest
 from iotlabclient.client.models.alias import Alias
+from iotlabclient.client.models.alias_firmware_association import AliasFirmwareAssociation
+from iotlabclient.client.models.alias_mobility_association import AliasMobilityAssociation
 from iotlabclient.client.models.alias_properties import AliasProperties
 from iotlabclient.client.models.archi import Archi
 from iotlabclient.client.models.archi_radio_string import ArchiRadioString
@@ -57,9 +59,8 @@ from iotlabclient.client.models.experiment_submission import ExperimentSubmissio
 from iotlabclient.client.models.experiments_response import ExperimentsResponse
 from iotlabclient.client.models.firmware import Firmware
 from iotlabclient.client.models.firmware_alias_associations import FirmwareAliasAssociations
-from iotlabclient.client.models.firmware_alias_associations_firmwareassociations import FirmwareAliasAssociationsFirmwareassociations
+from iotlabclient.client.models.firmware_association import FirmwareAssociation
 from iotlabclient.client.models.firmware_associations import FirmwareAssociations
-from iotlabclient.client.models.firmware_associations_firmwareassociations import FirmwareAssociationsFirmwareassociations
 from iotlabclient.client.models.inline_object import InlineObject
 from iotlabclient.client.models.inline_object1 import InlineObject1
 from iotlabclient.client.models.inline_object2 import InlineObject2
@@ -71,7 +72,6 @@ from iotlabclient.client.models.inline_response200 import InlineResponse200
 from iotlabclient.client.models.inline_response2001 import InlineResponse2001
 from iotlabclient.client.models.inline_response2002 import InlineResponse2002
 from iotlabclient.client.models.mobility_alias_associations import MobilityAliasAssociations
-from iotlabclient.client.models.mobility_alias_associations_mobilityassociations import MobilityAliasAssociationsMobilityassociations
 from iotlabclient.client.models.mobility_associations import MobilityAssociations
 from iotlabclient.client.models.node import Node
 from iotlabclient.client.models.nodes_ids_response import NodesIdsResponse
@@ -82,8 +82,8 @@ from iotlabclient.client.models.nodes_response import NodesResponse
 from iotlabclient.client.models.point import Point
 from iotlabclient.client.models.profile import Profile
 from iotlabclient.client.models.profile_alias_associations import ProfileAliasAssociations
+from iotlabclient.client.models.profile_association import ProfileAssociation
 from iotlabclient.client.models.profile_associations import ProfileAssociations
-from iotlabclient.client.models.profile_associations_profileassociations import ProfileAssociationsProfileassociations
 from iotlabclient.client.models.profile_consumption import ProfileConsumption
 from iotlabclient.client.models.profile_radio import ProfileRadio
 from iotlabclient.client.models.reload import Reload

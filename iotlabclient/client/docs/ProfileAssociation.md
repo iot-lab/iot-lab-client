@@ -1,9 +1,10 @@
-# MobilityAssociations
+# ProfileAssociation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**mobilityassociations** | [**list[ProfileAssociation]**](ProfileAssociation.md) |  | [optional] 
+**profilename** | **str** |  | [optional] 
+**nodes** | **list[str]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

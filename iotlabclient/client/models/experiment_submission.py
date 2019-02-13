@@ -38,9 +38,9 @@ class ExperimentSubmission(object):
         'reservation': 'int',
         'profiles': 'CommonExperimentRequestProfiles',
         'mobilities': 'CommonExperimentRequestMobilities',
-        'profileassociations': 'list[MobilityAliasAssociationsMobilityassociations]',
-        'firmwareassociations': 'list[FirmwareAliasAssociationsFirmwareassociations]',
-        'mobilityassociations': 'list[MobilityAliasAssociationsMobilityassociations]',
+        'profileassociations': 'list[AliasMobilityAssociation]',
+        'firmwareassociations': 'list[AliasFirmwareAssociation]',
+        'mobilityassociations': 'list[AliasMobilityAssociation]',
         'siteassociations': 'ScriptAssociations'
     }
 
@@ -263,7 +263,7 @@ class ExperimentSubmission(object):
 
 
         :return: The profileassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[MobilityAliasAssociationsMobilityassociations]
+        :rtype: list[AliasMobilityAssociation]
         """
         return self._profileassociations
 
@@ -273,7 +273,7 @@ class ExperimentSubmission(object):
 
 
         :param profileassociations: The profileassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[MobilityAliasAssociationsMobilityassociations]
+        :type: list[AliasMobilityAssociation]
         """
 
         self._profileassociations = profileassociations
@@ -284,7 +284,7 @@ class ExperimentSubmission(object):
 
 
         :return: The firmwareassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[FirmwareAliasAssociationsFirmwareassociations]
+        :rtype: list[AliasFirmwareAssociation]
         """
         return self._firmwareassociations
 
@@ -294,7 +294,7 @@ class ExperimentSubmission(object):
 
 
         :param firmwareassociations: The firmwareassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[FirmwareAliasAssociationsFirmwareassociations]
+        :type: list[AliasFirmwareAssociation]
         """
 
         self._firmwareassociations = firmwareassociations
@@ -305,7 +305,7 @@ class ExperimentSubmission(object):
 
 
         :return: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[MobilityAliasAssociationsMobilityassociations]
+        :rtype: list[AliasMobilityAssociation]
         """
         return self._mobilityassociations
 
@@ -315,7 +315,7 @@ class ExperimentSubmission(object):
 
 
         :param mobilityassociations: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[MobilityAliasAssociationsMobilityassociations]
+        :type: list[AliasMobilityAssociation]
         """
 
         self._mobilityassociations = mobilityassociations

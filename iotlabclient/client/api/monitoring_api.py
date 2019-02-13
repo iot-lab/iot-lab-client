@@ -104,11 +104,19 @@ class MonitoringApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/monitoring/{name}', 'DELETE',
@@ -118,6 +126,7 @@ class MonitoringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -198,11 +207,19 @@ class MonitoringApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'Profile',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/monitoring/{name}', 'GET',
@@ -212,6 +229,7 @@ class MonitoringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='Profile',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -288,11 +306,19 @@ class MonitoringApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'list[Profile]',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/monitoring', 'GET',
@@ -302,6 +328,7 @@ class MonitoringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='list[Profile]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -386,7 +413,7 @@ class MonitoringApi(object):
         if 'profile' in local_var_params:
             body_params = local_var_params['profile']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -396,6 +423,14 @@ class MonitoringApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            204: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/monitoring/{name}', 'PUT',
             path_params,
@@ -404,6 +439,7 @@ class MonitoringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -480,7 +516,7 @@ class MonitoringApi(object):
         if 'profile' in local_var_params:
             body_params = local_var_params['profile']
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -490,6 +526,14 @@ class MonitoringApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'Profile',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/monitoring', 'POST',
             path_params,
@@ -498,6 +542,7 @@ class MonitoringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='Profile',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

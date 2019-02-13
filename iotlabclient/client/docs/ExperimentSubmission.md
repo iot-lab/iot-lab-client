@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **reservation** | **int** |  | [optional] 
 **profiles** | [**CommonExperimentRequestProfiles**](CommonExperimentRequestProfiles.md) |  | [optional] 
 **mobilities** | [**CommonExperimentRequestMobilities**](CommonExperimentRequestMobilities.md) |  | [optional] 
-**profileassociations** | [**list[MobilityAliasAssociationsMobilityassociations]**](MobilityAliasAssociationsMobilityassociations.md) |  | [optional] 
-**firmwareassociations** | [**list[FirmwareAliasAssociationsFirmwareassociations]**](FirmwareAliasAssociationsFirmwareassociations.md) |  | [optional] 
-**mobilityassociations** | [**list[MobilityAliasAssociationsMobilityassociations]**](MobilityAliasAssociationsMobilityassociations.md) |  | [optional] 
+**profileassociations** | [**list[AliasMobilityAssociation]**](AliasMobilityAssociation.md) |  | [optional] 
+**firmwareassociations** | [**list[AliasFirmwareAssociation]**](AliasFirmwareAssociation.md) |  | [optional] 
+**mobilityassociations** | [**list[AliasMobilityAssociation]**](AliasMobilityAssociation.md) |  | [optional] 
 **siteassociations** | [**ScriptAssociations**](ScriptAssociations.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

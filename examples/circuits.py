@@ -1,11 +1,30 @@
+# This file is a part of IoT-LAB client
+# Copyright (C) 2019 INRIA (Contact: admin@iot-lab.info)
+# Contributor(s) : see AUTHORS file
+#
+# This software is governed by the CeCILL license under French law
+# and abiding by the rules of distribution of free software.  You can  use,
+# modify and/ or redistribute the software under the terms of the CeCILL
+# license as circulated by CEA, CNRS and INRIA at the following URL
+# http://www.cecill.info.
+#
+# As a counterpart to the access to the source code and  rights to copy,
+# modify and redistribute granted by the license, users are provided only
+# with a limited warranty  and the software's author,  the holder of the
+# economic rights,  and the successive licensors  have only  limited
+# liability.
+#
+# The fact that you are presently reading this means that you have had
+# knowledge of the CeCILL license and that you accept its terms.
+
 import json
-import pprint
+from pprint import pprint
 import re
 
 from iotlabclient.client.rest import ApiException
 
 from iotlabclient.api import Api
-from iotlabclient.client import Circuit, Point
+from iotlabclient.client import Circuit, Point, ResourceType
 
 api = Api().mobilities
 
@@ -14,7 +33,7 @@ site = 'devlille'
 
 def delete_if_exists(circuit_name):
     try:
-        pprint.pprint(api.delete_user_mobility(circuit_name))
+        api.delete_user_mobility(circuit_name)
     except ApiException as e:
         print('OK, circuit already deleted')
         msg = json.loads(e.body)['message']
@@ -25,22 +44,22 @@ def delete_if_exists(circuit_name):
 # get all circuits
 
 print('all circuits (no param):')
-pprint.pprint(api.get_mobilities())
+pprint(api.get_mobilities())
 
 print('all circuits:')
-pprint.pprint(api.get_mobilities(type='all'))
+pprint(api.get_mobilities(type=ResourceType.ALL))
 
 print('userdefined circuits:')
-pprint.pprint(api.get_mobilities(type='userdefined'))
+pprint(api.get_mobilities(type=ResourceType.USERDEFINED))
 
 print('predefined circuits:')
-pprint.pprint(api.get_mobilities(type='predefined'))
+pprint(api.get_mobilities(type=ResourceType.PREDEFINED))
 
 print('predefined circuits:')
-pprint.pprint(api.get_mobilities(type='predefined', site=site))
+pprint(api.get_mobilities(type=ResourceType.PREDEFINED, site=site))
 
 print('predefined circuit square1:')
-pprint.pprint(api.get_mobility('square1'))
+pprint(api.get_mobility('square1'))
 
 print('add my_circuit user defined circuit:')
 delete_if_exists('my_circuit')
@@ -75,7 +94,7 @@ circuit = Circuit(
     site=site
 )
 
-pprint.pprint(api.save_user_mobility(circuit=circuit))
+pprint(api.save_user_mobility(circuit=circuit))
 
 # POST with the same circuit should fail
 try:
@@ -84,7 +103,7 @@ except ApiException as e:
     assert e.status == 500
 
 print('userdefined circuit my_circuit on devlille:')
-pprint.pprint(api.modify_user_mobility('my_circuit', circuit=circuit))
+pprint(api.modify_user_mobility('my_circuit', circuit=circuit))
 
 
 print('remove point B in my_circuit')
@@ -96,7 +115,7 @@ circuit.points.remove('B')
 api.modify_user_mobility('my_circuit', circuit=circuit)
 
 print('userdefined circuit my_circuit on devlille:')
-pprint.pprint(api.get_mobility('my_circuit'))
+pprint(api.get_mobility('my_circuit'))
 
 # rename my_circuit
 circuit.name = 'modified_my_circuit'
@@ -107,7 +126,7 @@ except ApiException as e:
     print(e)
 
 print('userdefined circuit modified_my_circuit:')
-pprint.pprint(api.get_mobility('modified_my_circuit'))
+pprint(api.get_mobility('modified_my_circuit'))
 
 print('userdefined circuits (only modified_my_circuit):')
-pprint.pprint(api.get_mobilities(type='userdefined'))
+pprint(api.get_mobilities(type=ResourceType.USERDEFINED))

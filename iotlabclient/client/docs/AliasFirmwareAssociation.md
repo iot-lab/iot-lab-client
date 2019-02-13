@@ -1,9 +1,10 @@
-# InlineResponse2003
+# AliasFirmwareAssociation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**list[Firmware]**](Firmware.md) |  | [optional] 
+**firmwarename** | **str** |  | [optional] 
+**nodes** | **list[str]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

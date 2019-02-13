@@ -34,23 +34,26 @@ class Firmware(object):
         'name': 'str',
         'description': 'str',
         'filename': 'str',
-        'archi': 'str'
+        'archi': 'str',
+        'type': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'description': 'description',
         'filename': 'filename',
-        'archi': 'archi'
+        'archi': 'archi',
+        'type': 'type'
     }
 
-    def __init__(self, name=None, description=None, filename=None, archi=None):  # noqa: E501
+    def __init__(self, name=None, description=None, filename=None, archi=None, type=None):  # noqa: E501
         """Firmware - a model defined in OpenAPI"""  # noqa: E501
 
         self._name = None
         self._description = None
         self._filename = None
         self._archi = None
+        self._type = None
         self.discriminator = None
 
         if name is not None:
@@ -61,6 +64,8 @@ class Firmware(object):
             self.filename = filename
         if archi is not None:
             self.archi = archi
+        if type is not None:
+            self.type = type
 
     @property
     def name(self):
@@ -145,6 +150,33 @@ class Firmware(object):
         """
 
         self._archi = archi
+
+    @property
+    def type(self):
+        """Gets the type of this Firmware.  # noqa: E501
+
+
+        :return: The type of this Firmware.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this Firmware.
+
+
+        :param type: The type of this Firmware.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["userdefined", "predefined"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

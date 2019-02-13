@@ -1,6 +1,6 @@
 import json
 
-from iotlabclient.client import ExperimentAlias, Alias, AliasProperties, FirmwareAliasAssociationsFirmwareassociations
+from iotlabclient.client import ExperimentAlias, Alias, AliasProperties, AliasFirmwareAssociation
 
 from iotlabclient.api import Api
 
@@ -18,7 +18,7 @@ experiment = ExperimentAlias(
         )
     ],
     firmwareassociations=[
-        FirmwareAliasAssociationsFirmwareassociations(
+        AliasFirmwareAssociation(
             firmwarename='iotlab_m3_tutorial',
             nodes=['1']
         ),

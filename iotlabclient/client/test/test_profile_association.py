@@ -15,24 +15,23 @@ from __future__ import absolute_import
 import unittest
 
 import iotlabclient.client
-from iotlabclient.client.api.default_api import DefaultApi  # noqa: E501
+from iotlabclient.client.models.profile_association import ProfileAssociation  # noqa: E501
 from iotlabclient.client.rest import ApiException
 
 
-class TestDefaultApi(unittest.TestCase):
-    """DefaultApi unit test stubs"""
+class TestProfileAssociation(unittest.TestCase):
+    """ProfileAssociation unit test stubs"""
 
     def setUp(self):
-        self.api = iotlabclient.client.api.default_api.DefaultApi()  # noqa: E501
+        pass
 
     def tearDown(self):
         pass
 
-    def test_get_firmware_format(self):
-        """Test case for get_firmware_format
-
-        Returns firwmare format.  # noqa: E501
-        """
+    def testProfileAssociation(self):
+        """Test ProfileAssociation"""
+        # FIXME: construct object with mandatory attributes with example values
+        # model = iotlabclient.client.models.profile_association.ProfileAssociation()  # noqa: E501
         pass
 
 

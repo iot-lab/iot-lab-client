@@ -37,10 +37,15 @@ components:
           type: string
         description:
           type: string
-        fileName:
+        filename:
           type: string
         archi:
           type: string
+        type:
+          type: string
+          enum:
+            - userdefined
+            - predefined
     Deployment:
       type: object
       properties:
@@ -54,6 +59,54 @@ components:
           items:
             type: string
             format: hostname
+    ArchiRadioString:
+      type: string
+      enum:
+        - a8:at86rf231
+        - arduino-zero:xbee
+        - firefly:multi
+        - frdm-kw41z:multi
+        - m3:at86rf231
+        - microbit:ble
+        - nrf51dk:ble
+        - nrf52dk:ble
+        - nrf52840dk:multi
+        - nrf52840mdk:multi
+        - phynode:kw2xrf
+        - rtl-sdr:none
+        - st-lrwan1:sx1276
+        - st-iotnode:multi
+        - samr21:at86rf233
+        - samr30:at86rf212b
+        - wsn430:cc1101
+        - wsn430:cc2420
+    ArchiString:
+      type: string
+      enum:
+        - a8
+        - arduino-zero
+        - firefly
+        - frdm-kw41z
+        - m3
+        - microbit
+        - nrf51dk
+        - nrf52dk
+        - nrf52840dk
+        - nrf52840mdk
+        - phynode
+        - rtl-sdr
+        - st-lrwan1
+        - st-iotnode
+        - samr21
+        - samr30
+        - wsn430
+        - wsn430
+    ResourceType:
+      type: string
+      enum:
+        - USERDEFINED
+        - PREDEFINED
+        - ALL
     SitesResponse:
       type: object
       properties:
@@ -93,26 +146,7 @@ components:
       type: object
       properties:
         archi:
-          type: string
-          enum:
-            - a8:at86rf231
-            - arduino-zero:xbee
-            - firefly:multi
-            - frdm-kw41z:multi
-            - m3:at86rf231
-            - microbit:ble
-            - nrf51dk:ble
-            - nrf52dk:ble
-            - nrf52840dk:multi
-            - nrf52840mdk:multi
-            - phynode:kw2xrf
-            - rtl-sdr:none
-            - st-lrwan1:sx1276
-            - st-iotnode:multi
-            - samr21:at86rf233
-            - samr30:at86rf212b
-            - wsn430:cc1101
-            - wsn430:cc2420
+          $ref: '#/components/schemas/ArchiRadioString'
         mobile:
           type: integer
         total:
@@ -300,6 +334,7 @@ components:
           type: array
           items:
             type: object
+            title: FirmwareAssociation
             properties:
               firmwarename:
                 type: string
@@ -315,6 +350,7 @@ components:
           type: array
           items:
             type: object
+            title: ProfileAssociation
             properties:
               profilename:
                 type: string
@@ -330,6 +366,7 @@ components:
           type: array
           items:
             type: object
+            title: MobilityAssociation
             properties:
               profilename:
                 type: string
@@ -345,6 +382,7 @@ components:
           type: array
           items:
             type: object
+            title: AliasMobilityAssociation
             properties:
               profilename:
                 type: string
@@ -360,6 +398,7 @@ components:
           type: array
           items:
             type: object
+            title: AliasProfileAssociation
             properties:
               profilename:
                 type: string
@@ -375,6 +414,7 @@ components:
           type: array
           items:
             type: object
+            title: AliasFirmwareAssociation
             properties:
               firmwarename:
                 type: string
@@ -395,26 +435,7 @@ components:
           type: object
           properties:
             archi:
-              type: string
-              enum:
-                - a8:at86rf231
-                - arduino-zero:xbee
-                - firefly:multi
-                - frdm-kw41z:multi
-                - m3:at86rf231
-                - microbit:ble
-                - nrf51dk:ble
-                - nrf52dk:ble
-                - nrf52840dk:multi
-                - nrf52840mdk:multi
-                - phynode:kw2xrf
-                - rtl-sdr:none
-                - st-lrwan1:sx1276
-                - st-iotnode:multi
-                - samr21:at86rf233
-                - samr30:at86rf212b
-                - wsn430:cc1101
-                - wsn430:cc2420
+              $ref: '#/components/schemas/ArchiRadioString'
             mobile:
               type: boolean
             site:
@@ -767,11 +788,14 @@ components:
       type: object
       properties:
         x:
-          type: integer
+          type: number
+          format: float
         y:
-          type: integer
+          type: number
+          format: float
         theta:
-          type: integer
+          type: number
+          format: float
      # TODO JSON format is incorrect
     Coordinates:
       type: object
@@ -843,11 +867,6 @@ components:
         resolution:
           type: number
           format: float
-        offset:
-          type: array
-          items:
-            type: number
-            format: float
         origin:
           type: array
           items:
@@ -908,12 +927,10 @@ paths:
         - in: query
           name: type
           schema:
-            type: string
-            enum:
-              - predefined
-              - userdefined
+            $ref: '#/components/schemas/ResourceType'
+            default: all
           required: false
-          description: Filter with mobility type
+          description: Filter with resource type
       responses:
         '200':
           description: Circuits list response.
@@ -2453,43 +2470,25 @@ paths:
       - in: query
         name: type
         schema:
-          type: string
-          enum:
-            - all
-            - userdefined
-            - predefined
+          $ref: '#/components/schemas/ResourceType'
           default: all
         required: false
         description: Filter by type (userde
       - in: query
         name: archi
         schema:
-          type: string
+          $ref: '#/components/schemas/ArchiString'
         required: false
         description: Filter by archi
-      - in: query
-        name: state
-        schema:
-          type: string
-          enum:
-          - Alive
-          - Busy
-          - Suspected
-          - Dead
-        required: false
-        description: Filter by state
       responses:
         '200':
           description: returns a list of firmware metadatas
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  items:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Firmware'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Firmware'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -2539,7 +2538,7 @@ paths:
           pattern: '^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$'
       responses:
         '200':
-          description: returns the stored user firmware metadata
+          description: returns the stored user firmware file
           content:
             application/octet-stream:
               schema:

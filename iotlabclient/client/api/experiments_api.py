@@ -108,11 +108,19 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'ExperimentsResponse',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/experiments', 'GET',
@@ -122,6 +130,7 @@ class ExperimentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='ExperimentsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -194,11 +203,19 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'TotalResponse',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/experiments/total', 'GET',
@@ -208,6 +225,7 @@ class ExperimentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='TotalResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -288,11 +306,19 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'ExperimentsResponse',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/experiments/running', 'GET',
@@ -302,6 +328,7 @@ class ExperimentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='ExperimentsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -383,7 +410,7 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -393,6 +420,14 @@ class ExperimentsApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'InlineResponse200',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/experiments', 'POST',
             path_params,
@@ -401,6 +436,7 @@ class ExperimentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='InlineResponse200',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

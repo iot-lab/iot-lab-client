@@ -104,11 +104,19 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'list[Firmware]',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/firmwares', 'GET',
@@ -118,6 +126,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='list[Firmware]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -200,11 +209,19 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/firmwares/{name}', 'DELETE',
@@ -214,6 +231,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -296,11 +314,19 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'file',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/firmwares/{name}/file', 'GET',
@@ -310,6 +336,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -392,11 +419,19 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'Firmware',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
 
         return self.api_client.call_api(
             '/firmwares/{name}', 'GET',
@@ -406,6 +441,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='Firmware',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -496,7 +532,7 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -506,6 +542,14 @@ class FirmwaresApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/firmwares/{name}', 'PUT',
             path_params,
@@ -514,6 +558,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -594,7 +639,7 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -604,6 +649,14 @@ class FirmwaresApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: '',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/firmwares', 'POST',
             path_params,
@@ -612,6 +665,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -688,7 +742,7 @@ class FirmwaresApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
+        header_params['Accept'] = ', '.join(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -698,6 +752,14 @@ class FirmwaresApi(object):
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
 
+        # multiple potential response types
+        response_types = {
+            200: 'InlineResponse2002',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
         return self.api_client.call_api(
             '/firmwares/checker', 'POST',
             path_params,
@@ -706,6 +768,7 @@ class FirmwaresApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
+            response_types=response_types,
             response_type='InlineResponse2002',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

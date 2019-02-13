@@ -21,16 +21,10 @@
 
 from iotlabclient.api import Api
 
-api = Api()
+api = Api().sites
 
 # list of sites
-print(api.sites.get_sites().items)
+print(api.get_sites().items)
 
 # sites details (
-print(api.sites.get_sites_details().items)
-
-# print the metadata about the logged in user
-print(api.users.get_user())
-
-# list the firmwares in the store
-print(api.firmwares.firmwares_get())
+print(api.get_sites_details().items)
