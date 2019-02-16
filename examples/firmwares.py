@@ -63,7 +63,7 @@ delete_if_exists('my_firmware')
 firmware = Firmware(name='my_firmware', description='test firmware', archi=ArchiString.M3, filename='tutorial_m3.elf')
 
 print('create my_firmware firmware')
-api.firmwares_post(firmware='tutorial_m3.elf', metadata=json.dumps(firmware.to_dict()))
+api.firmwares_post(firmware='tutorial_m3.elf', metadata=firmware)
 
 print('get my_firmware firmware')
 pprint(api.firmwares_name_get(name='my_firmware'))

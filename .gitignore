@@ -11,3 +11,5 @@ test-report\.xml
 .openapi-generator-ignore
 build/
 dist/
+coverage.xml
+swagger-admin.yaml
