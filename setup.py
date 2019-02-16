@@ -62,7 +62,7 @@ setup(
     download_url='http://github.com/iot-lab/iot-lab-client/',
     packages=find_packages(),
     include_package_data=True,
-    classifiers=['Development Status :: 5 - Production/Stable',
+    classifiers=['Development Status :: 3 - Alpha',
                  'Programming Language :: Python',
                  'Programming Language :: Python :: 2',
                  'Programming Language :: Python :: 2.7',
