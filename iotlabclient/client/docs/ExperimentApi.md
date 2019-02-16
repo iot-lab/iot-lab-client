@@ -83,15 +83,20 @@ Send experiment nodes flash firmware store command.
 
 ### Example
 
+* Basic Authentication (BasicAuth):
 ```python
 from __future__ import print_function
 import time
 import iotlabclient.client
 from iotlabclient.client.rest import ApiException
 from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = iotlabclient.client.ExperimentApi()
+api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
 request_body = NULL # list[str] |  (optional)
@@ -118,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -134,15 +139,20 @@ Returns experiment websocket token.
 
 ### Example
 
+* Basic Authentication (BasicAuth):
 ```python
 from __future__ import print_function
 import time
 import iotlabclient.client
 from iotlabclient.client.rest import ApiException
 from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = iotlabclient.client.ExperimentApi()
+api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 
 try:
@@ -165,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

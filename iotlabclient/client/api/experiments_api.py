@@ -108,7 +108,7 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -203,7 +203,7 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -306,7 +306,7 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -410,7 +410,7 @@ class ExperimentsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`

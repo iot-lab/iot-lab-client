@@ -32,23 +32,23 @@ class ExperimentSubmission(object):
     """
     openapi_types = {
         'nodes': 'list[Alias]',
+        'type': 'str',
         'name': 'str',
         'duration': 'int',
-        'type': 'str',
         'reservation': 'int',
         'profiles': 'CommonExperimentRequestProfiles',
         'mobilities': 'CommonExperimentRequestMobilities',
-        'profileassociations': 'list[AliasMobilityAssociation]',
-        'firmwareassociations': 'list[AliasFirmwareAssociation]',
-        'mobilityassociations': 'list[AliasMobilityAssociation]',
+        'profileassociations': 'list[ProfileAliasAssociation]',
+        'firmwareassociations': 'list[FirmwareAliasAssociation]',
+        'mobilityassociations': 'list[MobilityAliasAssociation]',
         'siteassociations': 'ScriptAssociations'
     }
 
     attribute_map = {
         'nodes': 'nodes',
+        'type': 'type',
         'name': 'name',
         'duration': 'duration',
-        'type': 'type',
         'reservation': 'reservation',
         'profiles': 'profiles',
         'mobilities': 'mobilities',
@@ -58,19 +58,17 @@ class ExperimentSubmission(object):
         'siteassociations': 'siteassociations'
     }
 
-    composed_hierarchy = {
-        'anyOf': [],
-        'allOf': [],
-        'oneOf': ["ExperimentAlias", "ExperimentPhysical"],
+    discriminator_value_class_map = {
+        
     }
 
-    def __init__(self, nodes=None, name=None, duration=None, type=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
+    def __init__(self, nodes=None, type=None, name=None, duration=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
         """ExperimentSubmission - a model defined in OpenAPI"""  # noqa: E501
 
         self._nodes = None
+        self._type = None
         self._name = None
         self._duration = None
-        self._type = None
         self._reservation = None
         self._profiles = None
         self._mobilities = None
@@ -78,15 +76,15 @@ class ExperimentSubmission(object):
         self._firmwareassociations = None
         self._mobilityassociations = None
         self._siteassociations = None
-        self.discriminator = None
+        self.discriminator = 'type'
 
         if nodes is not None:
             self.nodes = nodes
+        self.type = type
         if name is not None:
             self.name = name
         if duration is not None:
             self.duration = duration
-        self.type = type
         if reservation is not None:
             self.reservation = reservation
         if profiles is not None:
@@ -122,6 +120,35 @@ class ExperimentSubmission(object):
         """
 
         self._nodes = nodes
+
+    @property
+    def type(self):
+        """Gets the type of this ExperimentSubmission.  # noqa: E501
+
+
+        :return: The type of this ExperimentSubmission.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ExperimentSubmission.
+
+
+        :param type: The type of this ExperimentSubmission.  # noqa: E501
+        :type: str
+        """
+        if type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["physical", "alias"]  # noqa: E501
+        if type not in allowed_values:
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
+
+        self._type = type
 
     @property
     def name(self):
@@ -164,35 +191,6 @@ class ExperimentSubmission(object):
         """
 
         self._duration = duration
-
-    @property
-    def type(self):
-        """Gets the type of this ExperimentSubmission.  # noqa: E501
-
-
-        :return: The type of this ExperimentSubmission.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ExperimentSubmission.
-
-
-        :param type: The type of this ExperimentSubmission.  # noqa: E501
-        :type: str
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["physical", "alias"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
-
-        self._type = type
 
     @property
     def reservation(self):
@@ -263,7 +261,7 @@ class ExperimentSubmission(object):
 
 
         :return: The profileassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[AliasMobilityAssociation]
+        :rtype: list[ProfileAliasAssociation]
         """
         return self._profileassociations
 
@@ -273,7 +271,7 @@ class ExperimentSubmission(object):
 
 
         :param profileassociations: The profileassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[AliasMobilityAssociation]
+        :type: list[ProfileAliasAssociation]
         """
 
         self._profileassociations = profileassociations
@@ -284,7 +282,7 @@ class ExperimentSubmission(object):
 
 
         :return: The firmwareassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[AliasFirmwareAssociation]
+        :rtype: list[FirmwareAliasAssociation]
         """
         return self._firmwareassociations
 
@@ -294,7 +292,7 @@ class ExperimentSubmission(object):
 
 
         :param firmwareassociations: The firmwareassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[AliasFirmwareAssociation]
+        :type: list[FirmwareAliasAssociation]
         """
 
         self._firmwareassociations = firmwareassociations
@@ -305,7 +303,7 @@ class ExperimentSubmission(object):
 
 
         :return: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[AliasMobilityAssociation]
+        :rtype: list[MobilityAliasAssociation]
         """
         return self._mobilityassociations
 
@@ -315,7 +313,7 @@ class ExperimentSubmission(object):
 
 
         :param mobilityassociations: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[AliasMobilityAssociation]
+        :type: list[MobilityAliasAssociation]
         """
 
         self._mobilityassociations = mobilityassociations
@@ -340,6 +338,12 @@ class ExperimentSubmission(object):
         """
 
         self._siteassociations = siteassociations
+
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self):
         """Returns the model properties as a dict"""

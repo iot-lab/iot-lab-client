@@ -31,21 +31,20 @@ class ExperimentAlias(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'nodes': 'list[Alias]',
         'name': 'str',
         'duration': 'int',
         'type': 'str',
         'reservation': 'int',
         'profiles': 'CommonExperimentRequestProfiles',
         'mobilities': 'CommonExperimentRequestMobilities',
-        'profileassociations': 'list[AliasMobilityAssociation]',
-        'firmwareassociations': 'list[AliasFirmwareAssociation]',
-        'mobilityassociations': 'list[AliasMobilityAssociation]',
-        'siteassociations': 'ScriptAssociations'
+        'profileassociations': 'list[ProfileAliasAssociation]',
+        'firmwareassociations': 'list[FirmwareAliasAssociation]',
+        'mobilityassociations': 'list[MobilityAliasAssociation]',
+        'siteassociations': 'ScriptAssociations',
+        'nodes': 'list[Alias]'
     }
 
     attribute_map = {
-        'nodes': 'nodes',
         'name': 'name',
         'duration': 'duration',
         'type': 'type',
@@ -55,19 +54,19 @@ class ExperimentAlias(object):
         'profileassociations': 'profileassociations',
         'firmwareassociations': 'firmwareassociations',
         'mobilityassociations': 'mobilityassociations',
-        'siteassociations': 'siteassociations'
+        'siteassociations': 'siteassociations',
+        'nodes': 'nodes'
     }
 
     composed_hierarchy = {
         'anyOf': [],
-        'allOf': ["CommonExperimentRequest", "ExperimentAliasAllOf", "FirmwareAliasAssociations", "MobilityAliasAssociations", "ProfileAliasAssociations", "SiteAssociations"],
+        'allOf': ["CommonExperimentRequest", "FirmwareAliasAssociations", "MobilityAliasAssociations", "ProfileAliasAssociations", "SiteAssociations"],
         'oneOf': [],
     }
 
-    def __init__(self, nodes=None, name=None, duration=None, type=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
+    def __init__(self, name=None, duration=None, type='alias', reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None, nodes=None):  # noqa: E501
         """ExperimentAlias - a model defined in OpenAPI"""  # noqa: E501
 
-        self._nodes = None
         self._name = None
         self._duration = None
         self._type = None
@@ -78,10 +77,9 @@ class ExperimentAlias(object):
         self._firmwareassociations = None
         self._mobilityassociations = None
         self._siteassociations = None
+        self._nodes = None
         self.discriminator = None
 
-        if nodes is not None:
-            self.nodes = nodes
         if name is not None:
             self.name = name
         if duration is not None:
@@ -101,27 +99,8 @@ class ExperimentAlias(object):
             self.mobilityassociations = mobilityassociations
         if siteassociations is not None:
             self.siteassociations = siteassociations
-
-    @property
-    def nodes(self):
-        """Gets the nodes of this ExperimentAlias.  # noqa: E501
-
-
-        :return: The nodes of this ExperimentAlias.  # noqa: E501
-        :rtype: list[Alias]
-        """
-        return self._nodes
-
-    @nodes.setter
-    def nodes(self, nodes):
-        """Sets the nodes of this ExperimentAlias.
-
-
-        :param nodes: The nodes of this ExperimentAlias.  # noqa: E501
-        :type: list[Alias]
-        """
-
-        self._nodes = nodes
+        if nodes is not None:
+            self.nodes = nodes
 
     @property
     def name(self):
@@ -185,12 +164,6 @@ class ExperimentAlias(object):
         """
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["physical", "alias"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
 
         self._type = type
 
@@ -263,7 +236,7 @@ class ExperimentAlias(object):
 
 
         :return: The profileassociations of this ExperimentAlias.  # noqa: E501
-        :rtype: list[AliasMobilityAssociation]
+        :rtype: list[ProfileAliasAssociation]
         """
         return self._profileassociations
 
@@ -273,7 +246,7 @@ class ExperimentAlias(object):
 
 
         :param profileassociations: The profileassociations of this ExperimentAlias.  # noqa: E501
-        :type: list[AliasMobilityAssociation]
+        :type: list[ProfileAliasAssociation]
         """
 
         self._profileassociations = profileassociations
@@ -284,7 +257,7 @@ class ExperimentAlias(object):
 
 
         :return: The firmwareassociations of this ExperimentAlias.  # noqa: E501
-        :rtype: list[AliasFirmwareAssociation]
+        :rtype: list[FirmwareAliasAssociation]
         """
         return self._firmwareassociations
 
@@ -294,7 +267,7 @@ class ExperimentAlias(object):
 
 
         :param firmwareassociations: The firmwareassociations of this ExperimentAlias.  # noqa: E501
-        :type: list[AliasFirmwareAssociation]
+        :type: list[FirmwareAliasAssociation]
         """
 
         self._firmwareassociations = firmwareassociations
@@ -305,7 +278,7 @@ class ExperimentAlias(object):
 
 
         :return: The mobilityassociations of this ExperimentAlias.  # noqa: E501
-        :rtype: list[AliasMobilityAssociation]
+        :rtype: list[MobilityAliasAssociation]
         """
         return self._mobilityassociations
 
@@ -315,7 +288,7 @@ class ExperimentAlias(object):
 
 
         :param mobilityassociations: The mobilityassociations of this ExperimentAlias.  # noqa: E501
-        :type: list[AliasMobilityAssociation]
+        :type: list[MobilityAliasAssociation]
         """
 
         self._mobilityassociations = mobilityassociations
@@ -340,6 +313,27 @@ class ExperimentAlias(object):
         """
 
         self._siteassociations = siteassociations
+
+    @property
+    def nodes(self):
+        """Gets the nodes of this ExperimentAlias.  # noqa: E501
+
+
+        :return: The nodes of this ExperimentAlias.  # noqa: E501
+        :rtype: list[Alias]
+        """
+        return self._nodes
+
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this ExperimentAlias.
+
+
+        :param nodes: The nodes of this ExperimentAlias.  # noqa: E501
+        :type: list[Alias]
+        """
+
+        self._nodes = nodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

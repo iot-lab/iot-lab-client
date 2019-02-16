@@ -31,7 +31,6 @@ class ExperimentPhysical(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'nodes': 'list[str]',
         'name': 'str',
         'duration': 'int',
         'type': 'str',
@@ -40,12 +39,12 @@ class ExperimentPhysical(object):
         'mobilities': 'CommonExperimentRequestMobilities',
         'profileassociations': 'list[ProfileAssociation]',
         'firmwareassociations': 'list[FirmwareAssociation]',
-        'mobilityassociations': 'list[ProfileAssociation]',
-        'siteassociations': 'ScriptAssociations'
+        'mobilityassociations': 'list[MobilityAssociation]',
+        'siteassociations': 'ScriptAssociations',
+        'nodes': 'list[str]'
     }
 
     attribute_map = {
-        'nodes': 'nodes',
         'name': 'name',
         'duration': 'duration',
         'type': 'type',
@@ -55,19 +54,19 @@ class ExperimentPhysical(object):
         'profileassociations': 'profileassociations',
         'firmwareassociations': 'firmwareassociations',
         'mobilityassociations': 'mobilityassociations',
-        'siteassociations': 'siteassociations'
+        'siteassociations': 'siteassociations',
+        'nodes': 'nodes'
     }
 
     composed_hierarchy = {
         'anyOf': [],
-        'allOf': ["CommonExperimentRequest", "ExperimentPhysicalAllOf", "FirmwareAssociations", "MobilityAssociations", "ProfileAssociations", "SiteAssociations"],
+        'allOf': ["CommonExperimentRequest", "FirmwareAssociations", "MobilityAssociations", "ProfileAssociations", "SiteAssociations"],
         'oneOf': [],
     }
 
-    def __init__(self, nodes=None, name=None, duration=None, type=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
+    def __init__(self, name=None, duration=None, type='physical', reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None, nodes=None):  # noqa: E501
         """ExperimentPhysical - a model defined in OpenAPI"""  # noqa: E501
 
-        self._nodes = None
         self._name = None
         self._duration = None
         self._type = None
@@ -78,10 +77,9 @@ class ExperimentPhysical(object):
         self._firmwareassociations = None
         self._mobilityassociations = None
         self._siteassociations = None
+        self._nodes = None
         self.discriminator = None
 
-        if nodes is not None:
-            self.nodes = nodes
         if name is not None:
             self.name = name
         if duration is not None:
@@ -101,27 +99,8 @@ class ExperimentPhysical(object):
             self.mobilityassociations = mobilityassociations
         if siteassociations is not None:
             self.siteassociations = siteassociations
-
-    @property
-    def nodes(self):
-        """Gets the nodes of this ExperimentPhysical.  # noqa: E501
-
-
-        :return: The nodes of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._nodes
-
-    @nodes.setter
-    def nodes(self, nodes):
-        """Sets the nodes of this ExperimentPhysical.
-
-
-        :param nodes: The nodes of this ExperimentPhysical.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._nodes = nodes
+        if nodes is not None:
+            self.nodes = nodes
 
     @property
     def name(self):
@@ -185,12 +164,6 @@ class ExperimentPhysical(object):
         """
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["physical", "alias"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
 
         self._type = type
 
@@ -305,7 +278,7 @@ class ExperimentPhysical(object):
 
 
         :return: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[ProfileAssociation]
+        :rtype: list[MobilityAssociation]
         """
         return self._mobilityassociations
 
@@ -315,7 +288,7 @@ class ExperimentPhysical(object):
 
 
         :param mobilityassociations: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :type: list[ProfileAssociation]
+        :type: list[MobilityAssociation]
         """
 
         self._mobilityassociations = mobilityassociations
@@ -340,6 +313,27 @@ class ExperimentPhysical(object):
         """
 
         self._siteassociations = siteassociations
+
+    @property
+    def nodes(self):
+        """Gets the nodes of this ExperimentPhysical.  # noqa: E501
+
+
+        :return: The nodes of this ExperimentPhysical.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._nodes
+
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this ExperimentPhysical.
+
+
+        :param nodes: The nodes of this ExperimentPhysical.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._nodes = nodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

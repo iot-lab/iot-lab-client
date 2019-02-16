@@ -104,7 +104,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -221,7 +221,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -229,7 +229,7 @@ class ExperimentApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['BasicAuth']  # noqa: E501
 
         # multiple potential response types
         response_types = {
@@ -328,11 +328,11 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['BasicAuth']  # noqa: E501
 
         # multiple potential response types
         response_types = {
@@ -431,7 +431,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
@@ -534,7 +534,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -637,7 +637,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -740,7 +740,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -847,7 +847,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -958,7 +958,7 @@ class ExperimentApi(object):
         if 'reload' in local_var_params:
             body_params = local_var_params['reload']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1077,7 +1077,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1196,7 +1196,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1315,7 +1315,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1434,7 +1434,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1553,7 +1553,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1669,7 +1669,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1785,7 +1785,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -1896,7 +1896,7 @@ class ExperimentApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -2003,7 +2003,7 @@ class ExperimentApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting

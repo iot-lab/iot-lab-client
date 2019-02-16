@@ -4,71 +4,17 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**firmwares_get**](FirmwaresApi.md#firmwares_get) | **GET** /firmwares | get a list of stored firmware metadatas
-[**firmwares_name_delete**](FirmwaresApi.md#firmwares_name_delete) | **DELETE** /firmwares/{name} | Delete a user firmware
-[**firmwares_name_file_get**](FirmwaresApi.md#firmwares_name_file_get) | **GET** /firmwares/{name}/file | get a stored firmaware file
-[**firmwares_name_get**](FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored firmware metadata
-[**firmwares_name_put**](FirmwaresApi.md#firmwares_name_put) | **PUT** /firmwares/{name} | modify a stored user firmware
-[**firmwares_post**](FirmwaresApi.md#firmwares_post) | **POST** /firmwares | save a user firmware
+[**delete_firmware**](FirmwaresApi.md#delete_firmware) | **DELETE** /firmwares/{name} | Delete a user firmware
+[**get_firmware**](FirmwaresApi.md#get_firmware) | **GET** /firmwares/{name} | get a stored firmware metadata
+[**get_firmware_file**](FirmwaresApi.md#get_firmware_file) | **GET** /firmwares/{name}/file | get a stored firmware file
 [**get_firmware_format**](FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
+[**get_firmwares**](FirmwaresApi.md#get_firmwares) | **GET** /firmwares | get a list of stored firmware metadatas
+[**modify_firmware**](FirmwaresApi.md#modify_firmware) | **PUT** /firmwares/{name} | modify a stored user firmware
+[**save_firmware**](FirmwaresApi.md#save_firmware) | **POST** /firmwares | save a user firmware
 
 
-# **firmwares_get**
-> list[Firmware] firmwares_get(type=type, archi=archi)
-
-get a list of stored firmware metadatas
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
-type = iotlabclient.client.ResourceType() # ResourceType | Filter by type (userde (optional)
-archi = iotlabclient.client.ArchiString() # ArchiString | Filter by archi (optional)
-
-try:
-    # get a list of stored firmware metadatas
-    api_response = api_instance.firmwares_get(type=type, archi=archi)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **type** | [**ResourceType**](.md)| Filter by type (userde | [optional] 
- **archi** | [**ArchiString**](.md)| Filter by archi | [optional] 
-
-### Return type
-
-[**list[Firmware]**](Firmware.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **firmwares_name_delete**
-> firmwares_name_delete(name)
+# **delete_firmware**
+> delete_firmware(name)
 
 Delete a user firmware
 
@@ -92,9 +38,9 @@ name = 'name_example' # str |
 
 try:
     # Delete a user firmware
-    api_instance.firmwares_name_delete(name)
+    api_instance.delete_firmware(name)
 except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_name_delete: %s\n" % e)
+    print("Exception when calling FirmwaresApi->delete_firmware: %s\n" % e)
 ```
 
 ### Parameters
@@ -118,60 +64,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **firmwares_name_file_get**
-> file firmwares_name_file_get(name)
-
-get a stored firmaware file
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
-name = 'name_example' # str | 
-
-try:
-    # get a stored firmaware file
-    api_response = api_instance.firmwares_name_file_get(name)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_name_file_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
-
-### Return type
-
-**file**
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **firmwares_name_get**
-> Firmware firmwares_name_get(name)
+# **get_firmware**
+> Firmware get_firmware(name)
 
 get a stored firmware metadata
 
@@ -195,10 +89,10 @@ name = 'name_example' # str |
 
 try:
     # get a stored firmware metadata
-    api_response = api_instance.firmwares_name_get(name)
+    api_response = api_instance.get_firmware(name)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_name_get: %s\n" % e)
+    print("Exception when calling FirmwaresApi->get_firmware: %s\n" % e)
 ```
 
 ### Parameters
@@ -222,10 +116,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **firmwares_name_put**
-> firmwares_name_put(name, firmware=firmware, metadata=metadata)
+# **get_firmware_file**
+> file get_firmware_file(name)
 
-modify a stored user firmware
+get a stored firmware file
 
 ### Example
 
@@ -244,14 +138,13 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
 name = 'name_example' # str | 
-firmware = '/path/to/file' # file | firmware binary file (optional)
-metadata = iotlabclient.client.Firmware() # Firmware |  (optional)
 
 try:
-    # modify a stored user firmware
-    api_instance.firmwares_name_put(name, firmware=firmware, metadata=metadata)
+    # get a stored firmware file
+    api_response = api_instance.get_firmware_file(name)
+    pprint(api_response)
 except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_name_put: %s\n" % e)
+    print("Exception when calling FirmwaresApi->get_firmware_file: %s\n" % e)
 ```
 
 ### Parameters
@@ -259,12 +152,10 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
- **firmware** | **file**| firmware binary file | [optional] 
- **metadata** | [**Firmware**](Firmware.md)|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+**file**
 
 ### Authorization
 
@@ -272,61 +163,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **firmwares_post**
-> firmwares_post(firmware=firmware, metadata=metadata)
-
-save a user firmware
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
-firmware = '/path/to/file' # file | firmware binary file (optional)
-metadata = iotlabclient.client.Firmware() # Firmware |  (optional)
-
-try:
-    # save a user firmware
-    api_instance.firmwares_post(firmware=firmware, metadata=metadata)
-except ApiException as e:
-    print("Exception when calling FirmwaresApi->firmwares_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **firmware** | **file**| firmware binary file | [optional] 
- **metadata** | [**Firmware**](Firmware.md)|  | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -370,6 +208,168 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse2002**](InlineResponse2002.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_firmwares**
+> list[Firmware] get_firmwares(type=type, archi=archi)
+
+get a list of stored firmware metadatas
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
+type = iotlabclient.client.ResourceType() # ResourceType | Filter by type (userde (optional)
+archi = iotlabclient.client.ArchiString() # ArchiString | Filter by archi (optional)
+
+try:
+    # get a list of stored firmware metadatas
+    api_response = api_instance.get_firmwares(type=type, archi=archi)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FirmwaresApi->get_firmwares: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | [**ResourceType**](.md)| Filter by type (userde | [optional] 
+ **archi** | [**ArchiString**](.md)| Filter by archi | [optional] 
+
+### Return type
+
+[**list[Firmware]**](Firmware.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **modify_firmware**
+> modify_firmware(name, firmware=firmware, metadata=metadata)
+
+modify a stored user firmware
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
+name = 'name_example' # str | 
+firmware = '/path/to/file' # file | firmware binary file (optional)
+metadata = iotlabclient.client.Firmware() # Firmware |  (optional)
+
+try:
+    # modify a stored user firmware
+    api_instance.modify_firmware(name, firmware=firmware, metadata=metadata)
+except ApiException as e:
+    print("Exception when calling FirmwaresApi->modify_firmware: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**|  | 
+ **firmware** | **file**| firmware binary file | [optional] 
+ **metadata** | [**Firmware**](Firmware.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save_firmware**
+> save_firmware(firmware=firmware, metadata=metadata)
+
+save a user firmware
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.FirmwaresApi(iotlabclient.client.ApiClient(configuration))
+firmware = '/path/to/file' # file | firmware binary file (optional)
+metadata = iotlabclient.client.Firmware() # Firmware |  (optional)
+
+try:
+    # save a user firmware
+    api_instance.save_firmware(firmware=firmware, metadata=metadata)
+except ApiException as e:
+    print("Exception when calling FirmwaresApi->save_firmware: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **firmware** | **file**| firmware binary file | [optional] 
+ **metadata** | [**Firmware**](Firmware.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

@@ -1,9 +1,10 @@
-# FirmwareAliasAssociations
+# ProfileAliasAssociation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**firmwareassociations** | [**list[FirmwareAliasAssociation]**](FirmwareAliasAssociation.md) |  | [optional] 
+**profilename** | **str** |  | [optional] 
+**nodes** | **list[str]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

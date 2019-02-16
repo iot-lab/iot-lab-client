@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import iotlabclient.client
-from iotlabclient.client.models.firmware_associations_firmwareassociations import FirmwareAssociationsFirmwareassociations  # noqa: E501
+from iotlabclient.client.models.profile_alias_association import ProfileAliasAssociation  # noqa: E501
 from iotlabclient.client.rest import ApiException
 
 
-class TestFirmwareAssociationsFirmwareassociations(unittest.TestCase):
-    """FirmwareAssociationsFirmwareassociations unit test stubs"""
+class TestProfileAliasAssociation(unittest.TestCase):
+    """ProfileAliasAssociation unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestFirmwareAssociationsFirmwareassociations(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testFirmwareAssociationsFirmwareassociations(self):
-        """Test FirmwareAssociationsFirmwareassociations"""
+    def testProfileAliasAssociation(self):
+        """Test ProfileAliasAssociation"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = iotlabclient.client.models.firmware_associations_firmwareassociations.FirmwareAssociationsFirmwareassociations()  # noqa: E501
+        # model = iotlabclient.client.models.profile_alias_association.ProfileAliasAssociation()  # noqa: E501
         pass
 
 

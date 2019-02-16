@@ -113,6 +113,8 @@ class ApiClient(object):
             response_types=None):
 
         config = self.configuration
+        if response_types is None:
+            response_types = {}
 
         # header parameters
         header_params = header_params or {}
@@ -148,7 +150,13 @@ class ApiClient(object):
             post_params = self.sanitize_for_serialization(post_params)
             post_params = self.parameters_to_tuples(post_params,
                                                     collection_formats)
+            # serialize parameters that need serializing
+            if header_params['Content-Type'] == 'multipart/form-data':
+                post_params = [(p[0], json.dumps(p[1]))
+                                   if len(p)==2 else p
+                                   for p in post_params]
             post_params.extend(self.files_parameters(files))
+
 
         # auth setting
         self.update_params_for_auth(header_params, query_params, auth_settings)
@@ -649,6 +657,12 @@ class ApiClient(object):
                 # ignore implicit AllOf
                 return instance
 
+            def error_msg(composed):
+                return "Failed to parse `{0}` as {1} ({2} {3})" \
+                    .format(data, klass,
+                            composed,
+                            ' '.join(hierarchy[composed]))
+
             if hierarchy['allOf']:
                 matches = []
                 for sub_klass in hierarchy['allOf']:
@@ -660,13 +674,8 @@ class ApiClient(object):
                     return instance
 
                 # not all matched -> error
-                raise rest.ApiException(
-                                status=0,
-                                reason=(
-                                    "Failed to parse `{0}` as {1} (allOf {2})"
-                                    .format(data, klass, ' '.join(hierarchy['allOf']))
-                                )
-                            )
+                raise rest.ApiException(status=0, reason=error_msg('allOf'))
+
             if hierarchy['anyOf']:
                 for sub_klass in hierarchy['anyOf']:
                     try:
@@ -676,13 +685,7 @@ class ApiClient(object):
                     except:  # noqa: E722
                         pass
                 # none matched -> error
-                raise rest.ApiException(
-                                status=0,
-                                reason=(
-                                    "Failed to parse `{0}` as {1} (anyOf {2})"
-                                    .format(data, klass, ' '.join(hierarchy['anyOf']))
-                                )
-                            )
+                raise rest.ApiException(status=0, reason=error_msg('anyOf'))
 
             if hierarchy['oneOf']:
                 matches = []
@@ -695,13 +698,7 @@ class ApiClient(object):
                     return matches[0]
 
                 # none matched, or more than one matched -> error
-                raise rest.ApiException(
-                                status=0,
-                                reason=(
-                                    "Failed to parse `{0}` as {1} (oneOf {2})"
-                                    .format(data, klass, ' '.join(hierarchy['oneOf']))
-                                )
-                            )
+                raise rest.ApiException(status=0, reason=error_msg('oneOf'))
 
         if hasattr(instance, 'get_real_child_model'):
             klass_name = instance.get_real_child_model(data)

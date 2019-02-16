@@ -110,7 +110,7 @@ class RobotsApi(object):
         if 'request_body' in local_var_params:
             body_params = local_var_params['request_body']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -219,7 +219,7 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -324,7 +324,7 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # Authentication setting
@@ -433,7 +433,7 @@ class RobotsApi(object):
         if 'point' in local_var_params:
             body_params = local_var_params['point']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
@@ -542,7 +542,7 @@ class RobotsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/octet-stream', 'application/json'])  # noqa: E501
 
         # Authentication setting
@@ -651,7 +651,7 @@ class RobotsApi(object):
         if 'point' in local_var_params:
             body_params = local_var_params['point']
         # HTTP header `Accept`
-        header_params['Accept'] = ', '.join(
+        header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`

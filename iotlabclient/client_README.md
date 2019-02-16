@@ -80,13 +80,13 @@ Class | Method | HTTP request | Description
 *ExperimentsApi* | [**get_experiments_total**](iotlabclient/client/docs/ExperimentsApi.md#get_experiments_total) | **GET** /experiments/total | Returns total number of experiments
 *ExperimentsApi* | [**get_running_experiments**](iotlabclient/client/docs/ExperimentsApi.md#get_running_experiments) | **GET** /experiments/running | Returns running testbed experiments list
 *ExperimentsApi* | [**submit_experiment**](iotlabclient/client/docs/ExperimentsApi.md#submit_experiment) | **POST** /experiments | Submit an experiment
-*FirmwaresApi* | [**firmwares_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_get) | **GET** /firmwares | get a list of stored firmware metadatas
-*FirmwaresApi* | [**firmwares_name_delete**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_delete) | **DELETE** /firmwares/{name} | Delete a user firmware
-*FirmwaresApi* | [**firmwares_name_file_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_file_get) | **GET** /firmwares/{name}/file | get a stored firmaware file
-*FirmwaresApi* | [**firmwares_name_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored firmware metadata
-*FirmwaresApi* | [**firmwares_name_put**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_put) | **PUT** /firmwares/{name} | modify a stored user firmware
-*FirmwaresApi* | [**firmwares_post**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_post) | **POST** /firmwares | save a user firmware
+*FirmwaresApi* | [**delete_firmware**](iotlabclient/client/docs/FirmwaresApi.md#delete_firmware) | **DELETE** /firmwares/{name} | Delete a user firmware
+*FirmwaresApi* | [**get_firmware**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware) | **GET** /firmwares/{name} | get a stored firmware metadata
+*FirmwaresApi* | [**get_firmware_file**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_file) | **GET** /firmwares/{name}/file | get a stored firmware file
 *FirmwaresApi* | [**get_firmware_format**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
+*FirmwaresApi* | [**get_firmwares**](iotlabclient/client/docs/FirmwaresApi.md#get_firmwares) | **GET** /firmwares | get a list of stored firmware metadatas
+*FirmwaresApi* | [**modify_firmware**](iotlabclient/client/docs/FirmwaresApi.md#modify_firmware) | **PUT** /firmwares/{name} | modify a stored user firmware
+*FirmwaresApi* | [**save_firmware**](iotlabclient/client/docs/FirmwaresApi.md#save_firmware) | **POST** /firmwares | save a user firmware
 *MobilitiesApi* | [**delete_user_mobility**](iotlabclient/client/docs/MobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
 *MobilitiesApi* | [**get_mobilities**](iotlabclient/client/docs/MobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
 *MobilitiesApi* | [**get_mobility**](iotlabclient/client/docs/MobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit
@@ -123,8 +123,6 @@ Class | Method | HTTP request | Description
 
  - [ActivateUserRequest](iotlabclient/client/docs/ActivateUserRequest.md)
  - [Alias](iotlabclient/client/docs/Alias.md)
- - [AliasFirmwareAssociation](iotlabclient/client/docs/AliasFirmwareAssociation.md)
- - [AliasMobilityAssociation](iotlabclient/client/docs/AliasMobilityAssociation.md)
  - [AliasProperties](iotlabclient/client/docs/AliasProperties.md)
  - [Archi](iotlabclient/client/docs/Archi.md)
  - [ArchiRadioString](iotlabclient/client/docs/ArchiRadioString.md)
@@ -140,14 +138,13 @@ Class | Method | HTTP request | Description
  - [DockConfig](iotlabclient/client/docs/DockConfig.md)
  - [Error](iotlabclient/client/docs/Error.md)
  - [ExperimentAlias](iotlabclient/client/docs/ExperimentAlias.md)
- - [ExperimentAliasAllOf](iotlabclient/client/docs/ExperimentAliasAllOf.md)
  - [ExperimentPhysical](iotlabclient/client/docs/ExperimentPhysical.md)
- - [ExperimentPhysicalAllOf](iotlabclient/client/docs/ExperimentPhysicalAllOf.md)
  - [ExperimentRequest](iotlabclient/client/docs/ExperimentRequest.md)
  - [ExperimentResponse](iotlabclient/client/docs/ExperimentResponse.md)
  - [ExperimentSubmission](iotlabclient/client/docs/ExperimentSubmission.md)
  - [ExperimentsResponse](iotlabclient/client/docs/ExperimentsResponse.md)
  - [Firmware](iotlabclient/client/docs/Firmware.md)
+ - [FirmwareAliasAssociation](iotlabclient/client/docs/FirmwareAliasAssociation.md)
  - [FirmwareAliasAssociations](iotlabclient/client/docs/FirmwareAliasAssociations.md)
  - [FirmwareAssociation](iotlabclient/client/docs/FirmwareAssociation.md)
  - [FirmwareAssociations](iotlabclient/client/docs/FirmwareAssociations.md)
@@ -161,7 +158,9 @@ Class | Method | HTTP request | Description
  - [InlineResponse200](iotlabclient/client/docs/InlineResponse200.md)
  - [InlineResponse2001](iotlabclient/client/docs/InlineResponse2001.md)
  - [InlineResponse2002](iotlabclient/client/docs/InlineResponse2002.md)
+ - [MobilityAliasAssociation](iotlabclient/client/docs/MobilityAliasAssociation.md)
  - [MobilityAliasAssociations](iotlabclient/client/docs/MobilityAliasAssociations.md)
+ - [MobilityAssociation](iotlabclient/client/docs/MobilityAssociation.md)
  - [MobilityAssociations](iotlabclient/client/docs/MobilityAssociations.md)
  - [Node](iotlabclient/client/docs/Node.md)
  - [NodesIdsResponse](iotlabclient/client/docs/NodesIdsResponse.md)
@@ -171,6 +170,7 @@ Class | Method | HTTP request | Description
  - [NodesResponse](iotlabclient/client/docs/NodesResponse.md)
  - [Point](iotlabclient/client/docs/Point.md)
  - [Profile](iotlabclient/client/docs/Profile.md)
+ - [ProfileAliasAssociation](iotlabclient/client/docs/ProfileAliasAssociation.md)
  - [ProfileAliasAssociations](iotlabclient/client/docs/ProfileAliasAssociations.md)
  - [ProfileAssociation](iotlabclient/client/docs/ProfileAssociation.md)
  - [ProfileAssociations](iotlabclient/client/docs/ProfileAssociations.md)
@@ -180,7 +180,6 @@ Class | Method | HTTP request | Description
  - [ResetPasswordRequest](iotlabclient/client/docs/ResetPasswordRequest.md)
  - [ResourceType](iotlabclient/client/docs/ResourceType.md)
  - [RobotDockConfig](iotlabclient/client/docs/RobotDockConfig.md)
- - [RobotDockConfigAllOf](iotlabclient/client/docs/RobotDockConfigAllOf.md)
  - [RobotResponse](iotlabclient/client/docs/RobotResponse.md)
  - [RobotResponsePower](iotlabclient/client/docs/RobotResponsePower.md)
  - [RobotsDockConfig](iotlabclient/client/docs/RobotsDockConfig.md)

@@ -33,8 +33,6 @@ from iotlabclient.client.configuration import Configuration
 # import models into sdk package
 from iotlabclient.client.models.activate_user_request import ActivateUserRequest
 from iotlabclient.client.models.alias import Alias
-from iotlabclient.client.models.alias_firmware_association import AliasFirmwareAssociation
-from iotlabclient.client.models.alias_mobility_association import AliasMobilityAssociation
 from iotlabclient.client.models.alias_properties import AliasProperties
 from iotlabclient.client.models.archi import Archi
 from iotlabclient.client.models.archi_radio_string import ArchiRadioString
@@ -50,14 +48,13 @@ from iotlabclient.client.models.deployment import Deployment
 from iotlabclient.client.models.dock_config import DockConfig
 from iotlabclient.client.models.error import Error
 from iotlabclient.client.models.experiment_alias import ExperimentAlias
-from iotlabclient.client.models.experiment_alias_all_of import ExperimentAliasAllOf
 from iotlabclient.client.models.experiment_physical import ExperimentPhysical
-from iotlabclient.client.models.experiment_physical_all_of import ExperimentPhysicalAllOf
 from iotlabclient.client.models.experiment_request import ExperimentRequest
 from iotlabclient.client.models.experiment_response import ExperimentResponse
 from iotlabclient.client.models.experiment_submission import ExperimentSubmission
 from iotlabclient.client.models.experiments_response import ExperimentsResponse
 from iotlabclient.client.models.firmware import Firmware
+from iotlabclient.client.models.firmware_alias_association import FirmwareAliasAssociation
 from iotlabclient.client.models.firmware_alias_associations import FirmwareAliasAssociations
 from iotlabclient.client.models.firmware_association import FirmwareAssociation
 from iotlabclient.client.models.firmware_associations import FirmwareAssociations
@@ -71,7 +68,9 @@ from iotlabclient.client.models.inline_object6 import InlineObject6
 from iotlabclient.client.models.inline_response200 import InlineResponse200
 from iotlabclient.client.models.inline_response2001 import InlineResponse2001
 from iotlabclient.client.models.inline_response2002 import InlineResponse2002
+from iotlabclient.client.models.mobility_alias_association import MobilityAliasAssociation
 from iotlabclient.client.models.mobility_alias_associations import MobilityAliasAssociations
+from iotlabclient.client.models.mobility_association import MobilityAssociation
 from iotlabclient.client.models.mobility_associations import MobilityAssociations
 from iotlabclient.client.models.node import Node
 from iotlabclient.client.models.nodes_ids_response import NodesIdsResponse
@@ -81,6 +80,7 @@ from iotlabclient.client.models.nodes_ids_response_states import NodesIdsRespons
 from iotlabclient.client.models.nodes_response import NodesResponse
 from iotlabclient.client.models.point import Point
 from iotlabclient.client.models.profile import Profile
+from iotlabclient.client.models.profile_alias_association import ProfileAliasAssociation
 from iotlabclient.client.models.profile_alias_associations import ProfileAliasAssociations
 from iotlabclient.client.models.profile_association import ProfileAssociation
 from iotlabclient.client.models.profile_associations import ProfileAssociations
@@ -90,7 +90,6 @@ from iotlabclient.client.models.reload import Reload
 from iotlabclient.client.models.reset_password_request import ResetPasswordRequest
 from iotlabclient.client.models.resource_type import ResourceType
 from iotlabclient.client.models.robot_dock_config import RobotDockConfig
-from iotlabclient.client.models.robot_dock_config_all_of import RobotDockConfigAllOf
 from iotlabclient.client.models.robot_response import RobotResponse
 from iotlabclient.client.models.robot_response_power import RobotResponsePower
 from iotlabclient.client.models.robots_dock_config import RobotsDockConfig

@@ -31,21 +31,26 @@ class ExperimentAliasAllOf(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'nodes': 'list[Alias]'
+        'nodes': 'list[Alias]',
+        'type': 'str'
     }
 
     attribute_map = {
-        'nodes': 'nodes'
+        'nodes': 'nodes',
+        'type': 'type'
     }
 
-    def __init__(self, nodes=None):  # noqa: E501
+    def __init__(self, nodes=None, type='alias'):  # noqa: E501
         """ExperimentAliasAllOf - a model defined in OpenAPI"""  # noqa: E501
 
         self._nodes = None
+        self._type = None
         self.discriminator = None
 
         if nodes is not None:
             self.nodes = nodes
+        if type is not None:
+            self.type = type
 
     @property
     def nodes(self):
@@ -67,6 +72,27 @@ class ExperimentAliasAllOf(object):
         """
 
         self._nodes = nodes
+
+    @property
+    def type(self):
+        """Gets the type of this ExperimentAliasAllOf.  # noqa: E501
+
+
+        :return: The type of this ExperimentAliasAllOf.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ExperimentAliasAllOf.
+
+
+        :param type: The type of this ExperimentAliasAllOf.  # noqa: E501
+        :type: str
+        """
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

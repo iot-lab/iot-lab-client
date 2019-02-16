@@ -46,7 +46,7 @@ class RobotDockConfig(object):
 
     composed_hierarchy = {
         'anyOf': [],
-        'allOf': ["Point", "RobotDockConfigAllOf"],
+        'allOf': ["Point"],
         'oneOf': [],
     }
 

@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import iotlabclient.client
-from iotlabclient.client.models.profile_associations_profileassociations import ProfileAssociationsProfileassociations  # noqa: E501
+from iotlabclient.client.models.mobility_alias_association import MobilityAliasAssociation  # noqa: E501
 from iotlabclient.client.rest import ApiException
 
 
-class TestProfileAssociationsProfileassociations(unittest.TestCase):
-    """ProfileAssociationsProfileassociations unit test stubs"""
+class TestMobilityAliasAssociation(unittest.TestCase):
+    """MobilityAliasAssociation unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestProfileAssociationsProfileassociations(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testProfileAssociationsProfileassociations(self):
-        """Test ProfileAssociationsProfileassociations"""
+    def testMobilityAliasAssociation(self):
+        """Test MobilityAliasAssociation"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = iotlabclient.client.models.profile_associations_profileassociations.ProfileAssociationsProfileassociations()  # noqa: E501
+        # model = iotlabclient.client.models.mobility_alias_association.MobilityAliasAssociation()  # noqa: E501
         pass
 
 
