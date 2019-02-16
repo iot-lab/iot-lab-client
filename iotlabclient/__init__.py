@@ -21,4 +21,5 @@
 
 """iotlabclient main package"""
 
-__version__ = '1.1.0'
+# once out of alpha & beta, might follow the version of the REST API
+__version__ = '0.1.0'
