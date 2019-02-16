@@ -18,9 +18,9 @@
 #
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
-
+from iotlabadminclient.client import OarApi
 from iotlabclient.auth import get_user_credentials
-from iotlabclient.client import ExperimentApi, ExperimentsApi, ApiClient, \
+from iotlabclient.client import ExperimentApi as clientExperimentApi, ExperimentsApi, ApiClient, \
                                 Configuration, FirmwaresApi, MobilitiesApi, \
                                 MonitoringApi, NodesApi, RobotsApi, \
                                 SitesApi, UsersApi
@@ -40,7 +40,7 @@ class Api(object):
 
         self.client = ApiClient(configuration, pool_threads=None)
 
-        self.experiment = ExperimentApi(self.client)
+        self.experiment = clientExperimentApi(self.client)
         self.experiments = ExperimentsApi(self.client)
         self.firmwares = FirmwaresApi(self.client)
         self.mobilities = MobilitiesApi(self.client)
@@ -49,3 +49,18 @@ class Api(object):
         self.robots = RobotsApi(self.client)
         self.sites = SitesApi(self.client)
         self.users = UsersApi(self.client)
+        self.oar = OarApi(self.client)
+
+
+class ExperimentApi(object):
+    """api methods for a given experiment_id"""
+
+    def __init__(self, experiment_id, host=None, configuration=None):
+        self.api = Api(host, configuration)
+        self.experiment_id = experiment_id
+
+    def __getattr__(self, item):
+        if hasattr(self.api.experiment, item):
+            method = getattr(self.api.experiment, item)
+            return lambda *a, **kw: method(self.experiment_id, *a, **kw)
+        raise AttributeError
