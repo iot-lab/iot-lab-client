@@ -38,45 +38,45 @@ api = Api().firmwares
 
 def delete_if_exists(firmware_name):
     try:
-        api.firmwares_name_delete(firmware_name)
+        api.delete_firmware(firmware_name)
         print('OK, firmware %s deleted' % firmware_name)
     except ApiException:
         print('OK, firmware %s already inexistent' % firmware_name)
 
 
 print('all firmwares')
-pprint(api.firmwares_get())
+pprint(api.get_firmwares())
 
 print('all M3 firmwares')
-pprint(api.firmwares_get(archi=ArchiString.M3))
+pprint(api.get_firmwares(archi=ArchiString.M3))
 
 print('explicit ALL M3 firmwares')
-pprint(api.firmwares_get(archi=ArchiString.M3, type=ResourceType.ALL))
+pprint(api.get_firmwares(archi=ArchiString.M3, type=ResourceType.ALL))
 
 print('PREDEFINED M3 firmwares')
-pprint(api.firmwares_get(archi=ArchiString.M3, type=ResourceType.PREDEFINED))
+pprint(api.get_firmwares(archi=ArchiString.M3, type=ResourceType.PREDEFINED))
 
 print('USERDEFINED firefly firmwares')
-pprint(api.firmwares_get(archi=ArchiString.FIREFLY, type=ResourceType.USERDEFINED))
+pprint(api.get_firmwares(archi=ArchiString.FIREFLY, type=ResourceType.USERDEFINED))
 
 delete_if_exists('my_firmware')
 firmware = Firmware(name='my_firmware', description='test firmware', archi=ArchiString.M3, filename='tutorial_m3.elf')
 
 print('create my_firmware firmware')
-api.firmwares_post(firmware='tutorial_m3.elf', metadata=firmware)
+api.save_firmware(firmware='tutorial_m3.elf', metadata=firmware)
 
 print('get my_firmware firmware')
-pprint(api.firmwares_name_get(name='my_firmware'))
+pprint(api.get_firmware(name='my_firmware'))
 
 print('get my_firmware firmware file')
-api.firmwares_name_file_get(name='my_firmware')
+api.get_firmware_file(name='my_firmware')
 
 print('delete my_firmware firmware')
-pprint(api.firmwares_name_delete('my_firmware'))
+pprint(api.delete_firmware('my_firmware'))
 
 print('get my_firmware firmware should fail')
 try:
-    pprint(api.firmwares_name_get(name='my_firmware'))
+    pprint(api.get_firmware(name='my_firmware'))
 except ApiException as e:
     assert e.status == 500
 

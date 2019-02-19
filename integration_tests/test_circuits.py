@@ -1,4 +1,4 @@
-# This file is a part of IoT-LAB monkey
+# This file is a part of IoT-LAB client
 # Copyright (C) 2019 INRIA (Contact: admin@iot-lab.info)
 # Contributor(s) : see AUTHORS file
 #

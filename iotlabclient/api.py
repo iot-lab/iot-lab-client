@@ -18,7 +18,6 @@
 #
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
-from iotlabadminclient.client import OarApi
 from iotlabclient.auth import get_user_credentials
 from iotlabclient.client import ExperimentApi as clientExperimentApi, ExperimentsApi, ApiClient, \
                                 Configuration, FirmwaresApi, MobilitiesApi, \
@@ -49,7 +48,6 @@ class Api(object):
         self.robots = RobotsApi(self.client)
         self.sites = SitesApi(self.client)
         self.users = UsersApi(self.client)
-        self.oar = OarApi(self.client)
 
 
 class ExperimentApi(object):
