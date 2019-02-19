@@ -42,13 +42,15 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
+name = 'name_example' # str | 
+nodes = NULL # list[str] |  (optional)
 
 try:
-    # Returns experiment.
-    api_response = api_instance.experiments_id_get(id)
+    # Send experiment nodes flash firmware store command.
+    api_response = api_instance.flash_experiment_nodes(id, name, nodes=nodes)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExperimentApi->experiments_id_get: %s\n" % e)
+    print("Exception when calling ExperimentApi->flash_experiment_nodes: %s\n" % e)
 
 ```
 
@@ -58,13 +60,13 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExperimentApi* | [**experiments_id_get**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_get) | **GET** /experiments/{id} | Returns experiment.
-*ExperimentApi* | [**experiments_id_nodes_flash_name_post**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_nodes_flash_name_post) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
-*ExperimentApi* | [**experiments_id_token_get**](iotlabclient/client/docs/ExperimentApi.md#experiments_id_token_get) | **GET** /experiments/{id}/token | Returns experiment websocket token.
+*ExperimentApi* | [**flash_experiment_nodes**](iotlabclient/client/docs/ExperimentApi.md#flash_experiment_nodes) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
+*ExperimentApi* | [**get_experiment**](iotlabclient/client/docs/ExperimentApi.md#get_experiment) | **GET** /experiments/{id} | Returns experiment.
 *ExperimentApi* | [**get_experiment_archive**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_archive) | **GET** /experiments/{id}/data | Returns experiment archive.
 *ExperimentApi* | [**get_experiment_deployment**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_deployment) | **GET** /experiments/{id}/deployment | Returns experiment deployment result.
 *ExperimentApi* | [**get_experiment_nodes**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes) | **GET** /experiments/{id}/nodes | Returns experiment nodes list.
 *ExperimentApi* | [**get_experiment_nodes_id**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes_id) | **GET** /experiments/{id}/nodes_ids | Returns experiment nodes id list (eg. 1-5+8).
+*ExperimentApi* | [**get_experiment_token**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_token) | **GET** /experiments/{id}/token | Returns experiment websocket token.
 *ExperimentApi* | [**kill_experiment_scripts**](iotlabclient/client/docs/ExperimentApi.md#kill_experiment_scripts) | **POST** /experiments/{id}/scripts/kill | Send frontend SSH kill script command.
 *ExperimentApi* | [**reload_experiment**](iotlabclient/client/docs/ExperimentApi.md#reload_experiment) | **POST** /experiments/{id}/reload | Reload experiment.
 *ExperimentApi* | [**run_experiment_scripts**](iotlabclient/client/docs/ExperimentApi.md#run_experiment_scripts) | **POST** /experiments/{id}/scripts/run | Send frontend SSH run script command
@@ -132,6 +134,7 @@ Class | Method | HTTP request | Description
  - [CommonExperimentRequest](iotlabclient/client/docs/CommonExperimentRequest.md)
  - [CommonExperimentRequestMobilities](iotlabclient/client/docs/CommonExperimentRequestMobilities.md)
  - [CommonExperimentRequestProfiles](iotlabclient/client/docs/CommonExperimentRequestProfiles.md)
+ - [CommonExperimentSubmission](iotlabclient/client/docs/CommonExperimentSubmission.md)
  - [CoordinatesReachable](iotlabclient/client/docs/CoordinatesReachable.md)
  - [CoordinatesReachableItems](iotlabclient/client/docs/CoordinatesReachableItems.md)
  - [Deployment](iotlabclient/client/docs/Deployment.md)
@@ -142,6 +145,8 @@ Class | Method | HTTP request | Description
  - [ExperimentRequest](iotlabclient/client/docs/ExperimentRequest.md)
  - [ExperimentResponse](iotlabclient/client/docs/ExperimentResponse.md)
  - [ExperimentSubmission](iotlabclient/client/docs/ExperimentSubmission.md)
+ - [ExperimentSubmissionAlias](iotlabclient/client/docs/ExperimentSubmissionAlias.md)
+ - [ExperimentSubmissionPhysical](iotlabclient/client/docs/ExperimentSubmissionPhysical.md)
  - [ExperimentsResponse](iotlabclient/client/docs/ExperimentsResponse.md)
  - [Firmware](iotlabclient/client/docs/Firmware.md)
  - [FirmwareAliasAssociation](iotlabclient/client/docs/FirmwareAliasAssociation.md)

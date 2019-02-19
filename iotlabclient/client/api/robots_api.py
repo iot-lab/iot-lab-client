@@ -105,6 +105,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'request_body' in local_var_params:
@@ -137,6 +139,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='CoordinatesReachable',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -216,6 +219,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -242,6 +247,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='RobotsDockConfig',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -321,6 +327,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -347,6 +355,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='RobotsMapConfig',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -428,6 +437,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'point' in local_var_params:
@@ -460,6 +471,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Point',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -539,6 +551,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -565,6 +579,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -646,6 +661,8 @@ class RobotsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'point' in local_var_params:
@@ -678,6 +695,7 @@ class RobotsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Point',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

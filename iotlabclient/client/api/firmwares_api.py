@@ -103,6 +103,8 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -129,6 +131,7 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -208,6 +211,8 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -234,6 +239,7 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Firmware',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -313,6 +319,8 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -339,6 +347,7 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -410,10 +419,14 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'firmware' in local_var_params:
-            local_var_files['firmware'] = local_var_params['firmware']  # noqa: E501
+            local_var_files['firmware'] = local_var_params['firmware']
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -442,6 +455,8 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type='InlineResponse2002',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -519,6 +534,8 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -545,6 +562,7 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='list[Firmware]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -628,12 +646,16 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'firmware' in local_var_params:
-            local_var_files['firmware'] = local_var_params['firmware']  # noqa: E501
+            local_var_files['firmware'] = local_var_params['firmware']
         if 'metadata' in local_var_params:
-            form_params.append(('metadata', local_var_params['metadata']))  # noqa: E501
+            form_params.append(('metadata', local_var_params['metadata']))
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -662,6 +684,8 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -735,12 +759,17 @@ class FirmwaresApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'firmware' in local_var_params:
-            local_var_files['firmware'] = local_var_params['firmware']  # noqa: E501
+            local_var_files['firmware'] = local_var_params['firmware']
         if 'metadata' in local_var_params:
-            form_params.append(('metadata', local_var_params['metadata']))  # noqa: E501
+            form_params.append(('metadata', local_var_params['metadata']))
+            post_content_types['metadata'] = 'application/json'
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -769,6 +798,8 @@ class FirmwaresApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

@@ -105,6 +105,8 @@ class ExperimentsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -131,6 +133,7 @@ class ExperimentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='ExperimentsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -200,6 +203,8 @@ class ExperimentsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -226,6 +231,7 @@ class ExperimentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='TotalResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -303,6 +309,8 @@ class ExperimentsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -329,6 +337,7 @@ class ExperimentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='ExperimentsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -402,20 +411,25 @@ class ExperimentsApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'experiment' in local_var_params:
-            form_params.append(('experiment', local_var_params['experiment']))  # noqa: E501
+            form_params.append(('experiment', local_var_params['experiment']))
+            post_content_types['experiment'] = 'application/json'
         if 'files' in local_var_params:
             local_var_files['files'] = local_var_params['files']  # noqa: E501
-            collection_formats['files'] = 'csv'  # noqa: E501
+            collection_formats['files'] = 'csv' # noqa: E501 
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+            ['multipart/mixed'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['BasicAuth']  # noqa: E501
@@ -437,6 +451,8 @@ class ExperimentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type='InlineResponse200',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

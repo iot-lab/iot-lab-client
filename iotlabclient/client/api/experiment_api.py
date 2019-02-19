@@ -32,45 +32,49 @@ class ExperimentApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def experiments_id_get(self, id, **kwargs):  # noqa: E501
-        """Returns experiment.  # noqa: E501
+    def flash_experiment_nodes(self, id, name, **kwargs):  # noqa: E501
+        """Send experiment nodes flash firmware store command.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_get(id, async_req=True)
+        >>> thread = api.flash_experiment_nodes(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: (required)
-        :return: ExperimentSubmission
+        :param str name: (required)
+        :param list[str] nodes:
+        :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.experiments_id_get_with_http_info(id, **kwargs)  # noqa: E501
+            return self.flash_experiment_nodes_with_http_info(id, name, **kwargs)  # noqa: E501
         else:
-            (data) = self.experiments_id_get_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.flash_experiment_nodes_with_http_info(id, name, **kwargs)  # noqa: E501
             return data
 
-    def experiments_id_get_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Returns experiment.  # noqa: E501
+    def flash_experiment_nodes_with_http_info(self, id, name, **kwargs):  # noqa: E501
+        """Send experiment nodes flash firmware store command.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_get_with_http_info(id, async_req=True)
+        >>> thread = api.flash_experiment_nodes_with_http_info(id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: (required)
-        :return: ExperimentSubmission
+        :param str name: (required)
+        :param list[str] nodes:
+        :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['id', 'name', 'nodes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -80,128 +84,21 @@ class ExperimentApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method experiments_id_get" % key
+                    " to method flash_experiment_nodes" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in local_var_params or
                 local_var_params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `experiments_id_get`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['BasicAuth']  # noqa: E501
-
-        # multiple potential response types
-        response_types = {
-            200: 'ExperimentSubmission',
-            401: 'Error',
-            403: 'Error',
-            500: 'Error'
-        }
-
-        return self.api_client.call_api(
-            '/experiments/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types=response_types,
-            response_type='ExperimentSubmission',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def experiments_id_nodes_flash_name_post(self, id, name, **kwargs):  # noqa: E501
-        """Send experiment nodes flash firmware store command.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_nodes_flash_name_post(id, name, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: (required)
-        :param str name: (required)
-        :param list[str] request_body:
-        :return: Deployment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.experiments_id_nodes_flash_name_post_with_http_info(id, name, **kwargs)  # noqa: E501
-        else:
-            (data) = self.experiments_id_nodes_flash_name_post_with_http_info(id, name, **kwargs)  # noqa: E501
-            return data
-
-    def experiments_id_nodes_flash_name_post_with_http_info(self, id, name, **kwargs):  # noqa: E501
-        """Send experiment nodes flash firmware store command.  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_nodes_flash_name_post_with_http_info(id, name, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: (required)
-        :param str name: (required)
-        :param list[str] request_body:
-        :return: Deployment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['id', 'name', 'request_body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method experiments_id_nodes_flash_name_post" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in local_var_params or
-                local_var_params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `experiments_id_nodes_flash_name_post`")  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `flash_experiment_nodes`")  # noqa: E501
         # verify the required parameter 'name' is set
         if ('name' not in local_var_params or
                 local_var_params['name'] is None):
-            raise ValueError("Missing the required parameter `name` when calling `experiments_id_nodes_flash_name_post`")  # noqa: E501
+            raise ValueError("Missing the required parameter `name` when calling `flash_experiment_nodes`")  # noqa: E501
 
         if 'name' in local_var_params and not re.search(r'^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$', local_var_params['name']):  # noqa: E501
-            raise ValueError("Invalid value for parameter `name` when calling `experiments_id_nodes_flash_name_post`, must conform to the pattern `/^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$/`")  # noqa: E501
+            raise ValueError("Invalid value for parameter `name` when calling `flash_experiment_nodes`, must conform to the pattern `/^[0-9A-Za-z_-]+(\.[0-9A-Za-z_-]+)?$/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -216,10 +113,12 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'nodes' in local_var_params:
+            body_params = local_var_params['nodes']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -248,6 +147,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -256,38 +156,38 @@ class ExperimentApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def experiments_id_token_get(self, id, **kwargs):  # noqa: E501
-        """Returns experiment websocket token.  # noqa: E501
+    def get_experiment(self, id, **kwargs):  # noqa: E501
+        """Returns experiment.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_token_get(id, async_req=True)
+        >>> thread = api.get_experiment(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: (required)
-        :return: InlineResponse2001
+        :return: ExperimentSubmission
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.experiments_id_token_get_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_experiment_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.experiments_id_token_get_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_experiment_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def experiments_id_token_get_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Returns experiment websocket token.  # noqa: E501
+    def get_experiment_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Returns experiment.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.experiments_id_token_get_with_http_info(id, async_req=True)
+        >>> thread = api.get_experiment_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int id: (required)
-        :return: InlineResponse2001
+        :return: ExperimentSubmission
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -304,14 +204,14 @@ class ExperimentApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method experiments_id_token_get" % key
+                    " to method get_experiment" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
         if ('id' not in local_var_params or
                 local_var_params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `experiments_id_token_get`")  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `get_experiment`")  # noqa: E501
 
         collection_formats = {}
 
@@ -325,6 +225,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -336,14 +238,14 @@ class ExperimentApi(object):
 
         # multiple potential response types
         response_types = {
-            200: 'InlineResponse2001',
+            200: 'ExperimentSubmission',
             401: 'Error',
             403: 'Error',
             500: 'Error'
         }
 
         return self.api_client.call_api(
-            '/experiments/{id}/token', 'GET',
+            '/experiments/{id}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -351,7 +253,8 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
-            response_type='InlineResponse2001',  # noqa: E501
+            post_content_types=post_content_types,
+            response_type='ExperimentSubmission',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -428,6 +331,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -454,6 +359,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -531,6 +437,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -557,6 +465,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -634,6 +543,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -660,6 +571,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='NodesResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -737,6 +649,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -763,7 +677,114 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='NodesIdsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_experiment_token(self, id, **kwargs):  # noqa: E501
+        """Returns experiment websocket token.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_experiment_token(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int id: (required)
+        :return: InlineResponse2001
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_experiment_token_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_experiment_token_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def get_experiment_token_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Returns experiment websocket token.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_experiment_token_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int id: (required)
+        :return: InlineResponse2001
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_experiment_token" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in local_var_params or
+                local_var_params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `get_experiment_token`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['BasicAuth']  # noqa: E501
+
+        # multiple potential response types
+        response_types = {
+            200: 'InlineResponse2001',
+            401: 'Error',
+            403: 'Error',
+            500: 'Error'
+        }
+
+        return self.api_client.call_api(
+            '/experiments/{id}/token', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types=response_types,
+            post_content_types=post_content_types,
+            response_type='InlineResponse2001',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -781,7 +802,7 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param list[str] request_body:
+        :param list[str] sites:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -803,7 +824,7 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param list[str] request_body:
+        :param list[str] sites:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -811,7 +832,7 @@ class ExperimentApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'request_body']  # noqa: E501
+        all_params = ['id', 'sites']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -842,10 +863,12 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'sites' in local_var_params:
+            body_params = local_var_params['sites']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -874,6 +897,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -953,6 +977,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'reload' in local_var_params:
@@ -985,6 +1011,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='InlineResponse200',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1068,14 +1095,19 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'script' in local_var_params:
-            local_var_files['script'] = local_var_params['script']  # noqa: E501
+            local_var_files['script'] = local_var_params['script']
         if 'scriptconfig' in local_var_params:
-            local_var_files['scriptconfig'] = local_var_params['scriptconfig']  # noqa: E501
+            local_var_files['scriptconfig'] = local_var_params['scriptconfig']
         if 'scriptassociation' in local_var_params:
-            form_params.append(('scriptassociation', local_var_params['scriptassociation']))  # noqa: E501
+            form_params.append(('scriptassociation', local_var_params['scriptassociation']))
+            post_content_types['scriptassociation'] = 'application/json'
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1104,6 +1136,8 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1191,6 +1225,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'request_body' in local_var_params:
@@ -1223,6 +1259,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1242,7 +1279,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str cmd: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1265,7 +1302,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str cmd: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1273,7 +1310,7 @@ class ExperimentApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'cmd', 'request_body']  # noqa: E501
+        all_params = ['id', 'cmd', 'nodes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1310,10 +1347,12 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'nodes' in local_var_params:
+            body_params = local_var_params['nodes']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1342,6 +1381,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1361,7 +1401,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str name: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1384,7 +1424,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str name: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1392,7 +1432,7 @@ class ExperimentApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'name', 'request_body']  # noqa: E501
+        all_params = ['id', 'name', 'nodes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1429,10 +1469,12 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'nodes' in local_var_params:
+            body_params = local_var_params['nodes']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1461,6 +1503,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1548,6 +1591,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'request_body' in local_var_params:
@@ -1580,6 +1625,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='RobotsStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1599,7 +1645,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param file firmware: firmware binary file
-        :param list[str] nodes: nodes list
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1622,7 +1668,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param file firmware: firmware binary file
-        :param list[str] nodes: nodes list
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1661,13 +1707,17 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'firmware' in local_var_params:
-            local_var_files['firmware'] = local_var_params['firmware']  # noqa: E501
+            local_var_files['firmware'] = local_var_params['firmware']
         if 'nodes' in local_var_params:
             form_params.append(('nodes', local_var_params['nodes']))  # noqa: E501
-            collection_formats['nodes'] = 'csv'  # noqa: E501
+            post_content_types['nodes'] = 'application/json'
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1696,6 +1746,8 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1714,8 +1766,8 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param file profile: monitoring profile file
-        :param list[str] nodes: nodes list
+        :param Profile profile:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1737,8 +1789,8 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param file profile: monitoring profile file
-        :param list[str] nodes: nodes list
+        :param Profile profile:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1777,13 +1829,18 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
         if 'profile' in local_var_params:
-            local_var_files['profile'] = local_var_params['profile']  # noqa: E501
+            form_params.append(('profile', local_var_params['profile']))
+            post_content_types['profile'] = 'application/json'
         if 'nodes' in local_var_params:
             form_params.append(('nodes', local_var_params['nodes']))  # noqa: E501
-            collection_formats['nodes'] = 'csv'  # noqa: E501
+            post_content_types['nodes'] = 'application/json'
 
         body_params = None
+
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1812,6 +1869,8 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            multipart_header_params=multipart_header_params,
+            post_content_types=post_content_types,
             response_type='Deployment',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -1830,8 +1889,8 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param list[str] request_body:
-        :return: StatusResponse
+        :param list[str] sites:
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1852,15 +1911,15 @@ class ExperimentApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :param list[str] request_body:
-        :return: StatusResponse
+        :param list[str] sites:
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['id', 'request_body']  # noqa: E501
+        all_params = ['id', 'sites']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1891,10 +1950,12 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'sites' in local_var_params:
+            body_params = local_var_params['sites']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1908,7 +1969,7 @@ class ExperimentApi(object):
 
         # multiple potential response types
         response_types = {
-            200: 'StatusResponse',
+            200: 'object',
             401: 'Error',
             403: 'Error',
             500: 'Error'
@@ -1923,7 +1984,8 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
-            response_type='StatusResponse',  # noqa: E501
+            post_content_types=post_content_types,
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2000,6 +2062,8 @@ class ExperimentApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -2026,6 +2090,7 @@ class ExperimentApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='StopResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

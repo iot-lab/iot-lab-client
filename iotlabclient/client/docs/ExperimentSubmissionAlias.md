@@ -1,4 +1,4 @@
-# ExperimentSubmission
+# ExperimentSubmissionAlias
 
 ## Properties
 Name | Type | Description | Notes

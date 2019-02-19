@@ -4,13 +4,13 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**experiments_id_get**](ExperimentApi.md#experiments_id_get) | **GET** /experiments/{id} | Returns experiment.
-[**experiments_id_nodes_flash_name_post**](ExperimentApi.md#experiments_id_nodes_flash_name_post) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
-[**experiments_id_token_get**](ExperimentApi.md#experiments_id_token_get) | **GET** /experiments/{id}/token | Returns experiment websocket token.
+[**flash_experiment_nodes**](ExperimentApi.md#flash_experiment_nodes) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
+[**get_experiment**](ExperimentApi.md#get_experiment) | **GET** /experiments/{id} | Returns experiment.
 [**get_experiment_archive**](ExperimentApi.md#get_experiment_archive) | **GET** /experiments/{id}/data | Returns experiment archive.
 [**get_experiment_deployment**](ExperimentApi.md#get_experiment_deployment) | **GET** /experiments/{id}/deployment | Returns experiment deployment result.
 [**get_experiment_nodes**](ExperimentApi.md#get_experiment_nodes) | **GET** /experiments/{id}/nodes | Returns experiment nodes list.
 [**get_experiment_nodes_id**](ExperimentApi.md#get_experiment_nodes_id) | **GET** /experiments/{id}/nodes_ids | Returns experiment nodes id list (eg. 1-5+8).
+[**get_experiment_token**](ExperimentApi.md#get_experiment_token) | **GET** /experiments/{id}/token | Returns experiment websocket token.
 [**kill_experiment_scripts**](ExperimentApi.md#kill_experiment_scripts) | **POST** /experiments/{id}/scripts/kill | Send frontend SSH kill script command.
 [**reload_experiment**](ExperimentApi.md#reload_experiment) | **POST** /experiments/{id}/reload | Reload experiment.
 [**run_experiment_scripts**](ExperimentApi.md#run_experiment_scripts) | **POST** /experiments/{id}/scripts/run | Send frontend SSH run script command
@@ -24,8 +24,64 @@ Method | HTTP request | Description
 [**stop_experiment**](ExperimentApi.md#stop_experiment) | **DELETE** /experiments/{id} | Stop experiment
 
 
-# **experiments_id_get**
-> ExperimentSubmission experiments_id_get(id)
+# **flash_experiment_nodes**
+> Deployment flash_experiment_nodes(id, name, nodes=nodes)
+
+Send experiment nodes flash firmware store command.
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
+id = 56 # int | 
+name = 'name_example' # str | 
+nodes = NULL # list[str] |  (optional)
+
+try:
+    # Send experiment nodes flash firmware store command.
+    api_response = api_instance.flash_experiment_nodes(id, name, nodes=nodes)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ExperimentApi->flash_experiment_nodes: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **name** | **str**|  | 
+ **nodes** | [**list[str]**](list.md)|  | [optional] 
+
+### Return type
+
+[**Deployment**](Deployment.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_experiment**
+> ExperimentSubmission get_experiment(id)
 
 Returns experiment.
 
@@ -49,10 +105,10 @@ id = 56 # int |
 
 try:
     # Returns experiment.
-    api_response = api_instance.experiments_id_get(id)
+    api_response = api_instance.get_experiment(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ExperimentApi->experiments_id_get: %s\n" % e)
+    print("Exception when calling ExperimentApi->get_experiment: %s\n" % e)
 ```
 
 ### Parameters
@@ -64,114 +120,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ExperimentSubmission**](ExperimentSubmission.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **experiments_id_nodes_flash_name_post**
-> Deployment experiments_id_nodes_flash_name_post(id, name, request_body=request_body)
-
-Send experiment nodes flash firmware store command.
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
-id = 56 # int | 
-name = 'name_example' # str | 
-request_body = NULL # list[str] |  (optional)
-
-try:
-    # Send experiment nodes flash firmware store command.
-    api_response = api_instance.experiments_id_nodes_flash_name_post(id, name, request_body=request_body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExperimentApi->experiments_id_nodes_flash_name_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **name** | **str**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
-
-### Return type
-
-[**Deployment**](Deployment.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **experiments_id_token_get**
-> InlineResponse2001 experiments_id_token_get(id)
-
-Returns experiment websocket token.
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
-id = 56 # int | 
-
-try:
-    # Returns experiment websocket token.
-    api_response = api_instance.experiments_id_token_get(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExperimentApi->experiments_id_token_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -392,8 +340,60 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_experiment_token**
+> InlineResponse2001 get_experiment_token(id)
+
+Returns experiment websocket token.
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
+id = 56 # int | 
+
+try:
+    # Returns experiment websocket token.
+    api_response = api_instance.get_experiment_token(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ExperimentApi->get_experiment_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**InlineResponse2001**](InlineResponse2001.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **kill_experiment_scripts**
-> Deployment kill_experiment_scripts(id, request_body=request_body)
+> Deployment kill_experiment_scripts(id, sites=sites)
 
 Send frontend SSH kill script command.
 
@@ -414,11 +414,11 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
-request_body = NULL # list[str] |  (optional)
+sites = NULL # list[str] |  (optional)
 
 try:
     # Send frontend SSH kill script command.
-    api_response = api_instance.kill_experiment_scripts(id, request_body=request_body)
+    api_response = api_instance.kill_experiment_scripts(id, sites=sites)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExperimentApi->kill_experiment_scripts: %s\n" % e)
@@ -429,7 +429,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **sites** | [**list[str]**](list.md)|  | [optional] 
 
 ### Return type
 
@@ -615,7 +615,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_cmd_nodes**
-> Deployment send_cmd_nodes(id, cmd, request_body=request_body)
+> Deployment send_cmd_nodes(id, cmd, nodes=nodes)
 
 Send experiment nodes command.
 
@@ -637,11 +637,11 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 cmd = 'cmd_example' # str | 
-request_body = NULL # list[str] |  (optional)
+nodes = NULL # list[str] |  (optional)
 
 try:
     # Send experiment nodes command.
-    api_response = api_instance.send_cmd_nodes(id, cmd, request_body=request_body)
+    api_response = api_instance.send_cmd_nodes(id, cmd, nodes=nodes)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExperimentApi->send_cmd_nodes: %s\n" % e)
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **cmd** | **str**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](list.md)|  | [optional] 
 
 ### Return type
 
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_cmd_profile_nodes**
-> Deployment send_cmd_profile_nodes(id, name, request_body=request_body)
+> Deployment send_cmd_profile_nodes(id, name, nodes=nodes)
 
 Send experiment nodes update monitoring profile store command.
 
@@ -693,11 +693,11 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
-request_body = NULL # list[str] |  (optional)
+nodes = NULL # list[str] |  (optional)
 
 try:
     # Send experiment nodes update monitoring profile store command.
-    api_response = api_instance.send_cmd_profile_nodes(id, name, request_body=request_body)
+    api_response = api_instance.send_cmd_profile_nodes(id, name, nodes=nodes)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExperimentApi->send_cmd_profile_nodes: %s\n" % e)
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **name** | **str**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](list.md)|  | [optional] 
 
 ### Return type
 
@@ -805,7 +805,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 firmware = '/path/to/file' # file | firmware binary file (optional)
-nodes = 'nodes_example' # list[str] | nodes list (optional)
+nodes = 'nodes_example' # list[str] |  (optional)
 
 try:
     # Send experiment nodes flash firmware command.
@@ -821,7 +821,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **firmware** | **file**| firmware binary file | [optional] 
- **nodes** | [**list[str]**](str.md)| nodes list | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -860,8 +860,8 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
-profile = '/path/to/file' # file | monitoring profile file (optional)
-nodes = 'nodes_example' # list[str] | nodes list (optional)
+profile = iotlabclient.client.Profile() # Profile |  (optional)
+nodes = 'nodes_example' # list[str] |  (optional)
 
 try:
     # Send experiment nodes load monitoring profile command.
@@ -876,8 +876,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **profile** | **file**| monitoring profile file | [optional] 
- **nodes** | [**list[str]**](str.md)| nodes list | [optional] 
+ **profile** | [**Profile**](Profile.md)|  | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -895,7 +895,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **status_experiment_scripts**
-> StatusResponse status_experiment_scripts(id, request_body=request_body)
+> object status_experiment_scripts(id, sites=sites)
 
 Returns frontend SSH status script.
 
@@ -916,11 +916,11 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
-request_body = NULL # list[str] |  (optional)
+sites = NULL # list[str] |  (optional)
 
 try:
     # Returns frontend SSH status script.
-    api_response = api_instance.status_experiment_scripts(id, request_body=request_body)
+    api_response = api_instance.status_experiment_scripts(id, sites=sites)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExperimentApi->status_experiment_scripts: %s\n" % e)
@@ -931,11 +931,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **sites** | [**list[str]**](list.md)|  | [optional] 
 
 ### Return type
 
-[**StatusResponse**](StatusResponse.md)
+**object**
 
 ### Authorization
 

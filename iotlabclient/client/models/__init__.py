@@ -25,6 +25,7 @@ from iotlabclient.client.models.circuits_list_response import CircuitsListRespon
 from iotlabclient.client.models.common_experiment_request import CommonExperimentRequest
 from iotlabclient.client.models.common_experiment_request_mobilities import CommonExperimentRequestMobilities
 from iotlabclient.client.models.common_experiment_request_profiles import CommonExperimentRequestProfiles
+from iotlabclient.client.models.common_experiment_submission import CommonExperimentSubmission
 from iotlabclient.client.models.coordinates_reachable import CoordinatesReachable
 from iotlabclient.client.models.coordinates_reachable_items import CoordinatesReachableItems
 from iotlabclient.client.models.deployment import Deployment
@@ -35,6 +36,8 @@ from iotlabclient.client.models.experiment_physical import ExperimentPhysical
 from iotlabclient.client.models.experiment_request import ExperimentRequest
 from iotlabclient.client.models.experiment_response import ExperimentResponse
 from iotlabclient.client.models.experiment_submission import ExperimentSubmission
+from iotlabclient.client.models.experiment_submission_alias import ExperimentSubmissionAlias
+from iotlabclient.client.models.experiment_submission_physical import ExperimentSubmissionPhysical
 from iotlabclient.client.models.experiments_response import ExperimentsResponse
 from iotlabclient.client.models.firmware import Firmware
 from iotlabclient.client.models.firmware_alias_association import FirmwareAliasAssociation

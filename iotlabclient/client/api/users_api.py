@@ -95,6 +95,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'activate_user_request' in local_var_params:
@@ -125,6 +127,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -194,6 +197,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -220,6 +225,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -297,6 +303,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -323,6 +331,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -392,6 +401,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -418,6 +429,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='UserResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -487,6 +499,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         # HTTP header `Accept`
@@ -513,6 +527,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='UserSshKeys',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -584,6 +599,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'user_request' in local_var_params:
@@ -616,6 +633,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -687,6 +705,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'reset_password_request' in local_var_params:
@@ -717,6 +737,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -788,6 +809,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'user_ssh_keys' in local_var_params:
@@ -820,6 +843,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -891,6 +915,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'update_password_request' in local_var_params:
@@ -923,6 +949,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
@@ -994,6 +1021,8 @@ class UsersApi(object):
 
         form_params = []
         local_var_files = {}
+        post_content_types = {}
+        multipart_header_params = {}
 
         body_params = None
         if 'user_request' in local_var_params:
@@ -1026,6 +1055,7 @@ class UsersApi(object):
             post_params=form_params,
             files=local_var_files,
             response_types=response_types,
+            post_content_types=post_content_types,
             response_type='UserResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),

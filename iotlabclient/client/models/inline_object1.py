@@ -79,7 +79,6 @@ class InlineObject1(object):
     def nodes(self):
         """Gets the nodes of this InlineObject1.  # noqa: E501
 
-        nodes list  # noqa: E501
 
         :return: The nodes of this InlineObject1.  # noqa: E501
         :rtype: list[str]
@@ -90,7 +89,6 @@ class InlineObject1(object):
     def nodes(self, nodes):
         """Sets the nodes of this InlineObject1.
 
-        nodes list  # noqa: E501
 
         :param nodes: The nodes of this InlineObject1.  # noqa: E501
         :type: list[str]

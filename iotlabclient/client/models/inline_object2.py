@@ -31,7 +31,7 @@ class InlineObject2(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'profile': 'file',
+        'profile': 'Profile',
         'nodes': 'list[str]'
     }
 
@@ -56,10 +56,9 @@ class InlineObject2(object):
     def profile(self):
         """Gets the profile of this InlineObject2.  # noqa: E501
 
-        monitoring profile file  # noqa: E501
 
         :return: The profile of this InlineObject2.  # noqa: E501
-        :rtype: file
+        :rtype: Profile
         """
         return self._profile
 
@@ -67,10 +66,9 @@ class InlineObject2(object):
     def profile(self, profile):
         """Sets the profile of this InlineObject2.
 
-        monitoring profile file  # noqa: E501
 
         :param profile: The profile of this InlineObject2.  # noqa: E501
-        :type: file
+        :type: Profile
         """
 
         self._profile = profile
@@ -79,7 +77,6 @@ class InlineObject2(object):
     def nodes(self):
         """Gets the nodes of this InlineObject2.  # noqa: E501
 
-        nodes list  # noqa: E501
 
         :return: The nodes of this InlineObject2.  # noqa: E501
         :rtype: list[str]
@@ -90,7 +87,6 @@ class InlineObject2(object):
     def nodes(self, nodes):
         """Sets the nodes of this InlineObject2.
 
-        nodes list  # noqa: E501
 
         :param nodes: The nodes of this InlineObject2.  # noqa: E501
         :type: list[str]
