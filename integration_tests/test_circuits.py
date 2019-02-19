@@ -18,6 +18,8 @@
 # knowledge of the CeCILL license and that you accept its terms.
 import uuid
 
+import pytest
+
 from iotlabclient.api import Api
 from iotlabclient.client import Circuit, ResourceType
 from iotlabclient.client.rest import ApiException
@@ -97,82 +99,97 @@ def test_square1():
     }
 
 
-circuit = Circuit(
-    coordinates={
-        "A": {
-            "theta": 1.57,
-            "x": 22,
-            "y": 7
+@pytest.fixture
+def saved_circuit():
+    circuit = Circuit(
+        coordinates={
+            "A": {
+                "theta": 1.57,
+                "x": 22,
+                "y": 7
+            },
+            "B": {
+                "theta": 0,
+                "x": 24,
+                "y": 7
+            },
+            "C": {
+                "theta": -1.57,
+                "x": 24,
+                "y": 4
+            },
+            "D": {
+                "theta": 3.14,
+                "x": 22,
+                "y": 4
+            }
         },
-        "B": {
-            "theta": 0,
-            "x": 24,
-            "y": 7
-        },
-        "C": {
-            "theta": -1.57,
-            "x": 24,
-            "y": 4
-        },
-        "D": {
-            "theta": 3.14,
-            "x": 22,
-            "y": 4
-        }
-    },
-    points=["A", "B", "C", "D"],
-    loop=True,
-    site=site
-)
+        points=["A", "B", "C", "D"],
+        loop=True,
+        site=site,
+        name='%032x' % uuid.uuid4().int  # unique circuit name
+    )
 
-
-def test_save_modify():
-    # unique circuit name
-    circuit.name = '%032x' % uuid.uuid4().int
-
-    saved_circuit = api.save_user_mobility(circuit=circuit)
+    saved = api.save_user_mobility(circuit=circuit)
 
     circuit.type = 'userdefined'
 
-    assert circuit.to_dict() == saved_circuit.to_dict()
+    assert circuit.to_dict() == saved.to_dict()
 
-    # POST with the same circuit should fail
+    yield saved
+
+    api.delete_user_mobility(name=saved.name)
+
     try:
-        result = api.save_user_mobility(circuit=circuit)
+        api.get_mobility(name=saved)
     except ApiException as e:
         assert e.status == 500
 
-    assert circuit.to_dict() == api.get_mobility(name=circuit.name).to_dict()
 
-    del circuit.coordinates['B']
-    circuit.points.remove('B')
+@pytest.mark.dependency()
+def test_save(saved_circuit):
+    # GET on the circuit should get us the same
+
+    get = api.get_mobility(name=saved_circuit.name)
+    assert saved_circuit.to_dict() == get.to_dict()
+
+    # POST with the same circuit should fail
+    try:
+        result = api.save_user_mobility(circuit=saved_circuit)
+    except ApiException as e:
+        assert e.status == 500
+
+
+@pytest.mark.dependency(depends=["test_save"])
+def test_modify(saved_circuit):
+    del saved_circuit.coordinates['B']
+    saved_circuit.points.remove('B')
 
     # modify my_circuit
-    api.modify_user_mobility(circuit.name, circuit=circuit)
+    api.modify_user_mobility(saved_circuit.name, circuit=saved_circuit)
 
-    assert circuit.to_dict() == api.get_mobility(name=circuit.name).to_dict()
+    get = api.get_mobility(name=saved_circuit.name)
+    assert saved_circuit.to_dict() == get.to_dict()
+
+
+@pytest.mark.dependency(depends=["test_save"])
+def test_rename(saved_circuit):
 
     # rename my_circuit
-    old_circuit_name = circuit.name
-    circuit.name = circuit.name + '_modified'
+    old_circuit_name = saved_circuit.name
+    saved_circuit.name = saved_circuit.name + '_modified'
 
-    api.modify_user_mobility(name=old_circuit_name, circuit=circuit)
+    api.modify_user_mobility(name=old_circuit_name, circuit=saved_circuit)
 
     try:
         api.get_mobility(name=old_circuit_name)
     except ApiException as e:
         assert e.status == 500
 
-    assert circuit.to_dict() == api.get_mobility(name=circuit.name).to_dict()
+    get = api.get_mobility(name=saved_circuit.name)
+    assert saved_circuit.to_dict() == get.to_dict()
 
     predefined = api.get_mobilities(type=ResourceType.USERDEFINED).items
     circuits = [c.to_dict() for c in predefined]
 
-    assert circuit.to_dict() in circuits
-
-    api.delete_user_mobility(name=circuit.name)
-
-    try:
-        api.get_mobility(name=circuit)
-    except ApiException as e:
-        assert e.status == 500
+    assert saved_circuit.to_dict() in circuits
