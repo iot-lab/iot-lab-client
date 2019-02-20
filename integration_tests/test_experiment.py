@@ -30,14 +30,16 @@ from iotlabclient.api import Api
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
                                  ScriptAssociations, ScriptAssociationsScript,
-                                 ScriptAssociationsScriptconfig, Profile, ProfileConsumption, ProfileRadio, rest)
+                                 ScriptAssociationsScriptconfig,
+                                 Profile, ProfileConsumption,
+                                 ProfileRadio, rest)
 
 api = Api(host=HOST).experiment
 experiments = Api(host=HOST).experiments
 
 cur_dir = os.path.dirname(__file__)
 
-SITE = 'devsaclay'  # should have some m3 nodes
+SITE = 'devgrenoble'  # should have a few m3 nodes
 SITE_TLD = SITE + '.iot-lab.info'
 
 """
@@ -55,12 +57,11 @@ endpoints:
 [**kill_experiment_scripts**](ExperimentApi.md#kill_experiment_scripts)
 [**status_experiment_scripts**](ExperimentApi.md#status_experiment_scripts)
 [**send_cmd_update_nodes**](ExperimentApi.md#send_cmd_update_nodes)
+[**send_cmd_profile_nodes**](ExperimentApi.md#send_cmd_profile_nodes)
+[**send_load_profile_nodes**](ExperimentApi.md#send_load_profile_nodes)
 
 
 [**reload_experiment**](ExperimentApi.md#reload_experiment)
-
-[**send_cmd_profile_nodes**](ExperimentApi.md#send_cmd_profile_nodes)
-[**send_load_profile_nodes**](ExperimentApi.md#send_load_profile_nodes)
 
 [**send_cmd_robots**](ExperimentApi.md#send_cmd_robots)
 [**send_cmd_mobility_robots**](ExperimentApi.md#send_cmd_mobility_robots)
@@ -100,45 +101,60 @@ def test_get():
     }
 
 
-@pytest.fixture
-def running_experiment():
-    running_experiments = experiments.get_running_experiments().items
+EXPERIMENT = ExperimentAlias(
+    duration=10,
+    name="test_client",
+    nodes=[
+        Alias(
+            alias='1',
+            nbnodes=1,
+            properties=AliasProperties(
+                archi="m3:at86rf231",
+                site=SITE,
+                mobile=False)
+        )
+    ],
+    firmwareassociations=[
+        FirmwareAliasAssociation(
+            firmwarename='iotlab_m3_tutorial',
+            nodes=['1']
+        ),
+    ])
 
-    if len(running_experiments) > 0:
-        for running in running_experiments:
-            if running.name == 'test_client':
-                return api.get_experiment(running.id)
 
-    experiment = ExperimentAlias(
-        duration=10,
-        name="test_client",
-        nodes=[
-            Alias(
-                alias='1',
-                nbnodes=1,
-                properties=AliasProperties(
-                    archi="m3:at86rf231",
-                    site=SITE,
-                    mobile=False)
-            )
-        ],
-        firmwareassociations=[
-            FirmwareAliasAssociation(
-                firmwarename='iotlab_m3_tutorial',
-                nodes=['1']
-            ),
-        ])
+def stop_experiment(exp):
+    result = api.stop_experiment(exp.id)
+    print('stop exp')
+    assert result.to_dict() == {'id': exp.id, 'status': 'Delete request registered'}
 
-    data = experiments.submit_experiment(experiment=experiment)
+
+def start_experiment(exp):
+    data = experiments.submit_experiment(experiment=exp)
 
     while True:
         exp = api.get_experiment(data.id)
         print(exp.state)
         if exp.state == 'Running':
-            break
+            return exp
         time.sleep(1)
 
-    return exp
+
+@pytest.fixture(scope='module')
+def running_experiment():
+    running_experiments = experiments.get_running_experiments().items
+
+    exp = None
+    if len(running_experiments) > 0:
+        for running in running_experiments:
+            if running.name == 'test_client':
+                exp = api.get_experiment(running.id)
+                break
+
+    if exp is None:
+        exp = start_experiment(EXPERIMENT)
+
+    yield exp
+    stop_experiment(exp)
 
 
 @pytest.fixture
@@ -247,13 +263,7 @@ def test_get_deployment(experiment_id, experiment_nodes):
 def test_get_experiment_nodes(experiment_id, experiment_nodes):
     response = api.get_experiment_nodes(experiment_id).items
 
-    assert response == experiment_nodes
-
-
-def test_get_experiment_nodes_id(experiment_id, experiment_nodes):
-    response = api.get_experiment_nodes_id(experiment_id).items
-
-    assert response == experiment_nodes
+    assert [node.network_address for node in response] == experiment_nodes
 
 
 def test_run_experiment_script(experiment_id):
@@ -326,9 +336,27 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
 
     try:
         result = api.send_cmd_profile_nodes(
-        experiment_id,
-        name='this profile doesn\'t exist in the store',
-        nodes=experiment_nodes
-    )
+            experiment_id,
+            name='this profile doesn\'t exist in the store',
+            nodes=experiment_nodes
+        )
     except rest.ApiException as e:
         assert e.status == 400
+
+
+def wait_until(condition, interval=0.1, timeout=1, *args):
+    start = time.time()
+    while not condition(*args) and time.time() - start < timeout:
+        time.sleep(interval)
+
+
+def test_stop_experiment():
+    exp = start_experiment(EXPERIMENT)
+
+    result = api.stop_experiment(exp.id)
+
+    expected = dict(id=exp.id, status= 'Delete request registered')
+    assert result.to_dict() == expected
+
+    wait_until(lambda expid: api.get_experiment(expid).state == 'Stopped',
+               interval=0.5, timeout=20)
