@@ -17,17 +17,16 @@
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
 import random
-from pprint import pprint
 
 import pytest
 from PIL import Image
 
-from integration_tests import ROBOT_SITE
+from integration_tests import ROBOT_SITE, HOST
 from iotlabclient.api import Api
 from iotlabclient.client import Point
 
 
-API = Api()
+API = Api(host=HOST)
 api = API.robots
 
 

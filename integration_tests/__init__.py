@@ -6,7 +6,8 @@ print('HOST: ' + HOST)
 
 # should have a few m3 nodes
 SITE = os.environ.get('IOTLAB-SITE', 'devgrenoble')
-SITE_TLD = SITE + '.iot-lab.info'
+TLD = '.iot-lab.info'
+SITE_TLD = SITE + TLD
 
 # site with some robots
 ROBOT_SITE = os.environ.get('IOTLAB-ROBOT-SITE', 'devlille')

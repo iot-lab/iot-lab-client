@@ -26,9 +26,9 @@ from iotlabclient.client.rest import ApiException
 
 from integration_tests import HOST
 
-api = Api(host=HOST).mobilities
-
-sites = Api(host=HOST).sites.get_sites()
+API = Api(host=HOST)
+api = API.mobilities
+sites = API.sites.get_sites()
 
 site = next(item.site for item in sites.items if 'lille' in item.site)
 

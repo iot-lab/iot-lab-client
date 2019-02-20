@@ -34,8 +34,9 @@ from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  Profile, ProfileConsumption,
                                  ProfileRadio, rest)
 
-api = Api(host=HOST).experiment
-experiments = Api(host=HOST).experiments
+API = Api(host=HOST)
+api = API.experiment
+experiments = API.experiments
 
 cur_dir = os.path.dirname(__file__)
 
