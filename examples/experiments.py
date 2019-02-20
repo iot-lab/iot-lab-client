@@ -1,8 +1,8 @@
-import json
 from pprint import pprint
 
-from iotlabclient.client import ExperimentAlias, Alias, AliasProperties, ExperimentPhysical, \
-    ArchiString, FirmwareAssociation
+from iotlabclient.client import (ExperimentAlias, Alias,
+                                 AliasProperties, ExperimentPhysical,
+                                 ArchiString, FirmwareAssociation)
 
 from iotlabclient.api import Api
 from iotlabclient.client.models import FirmwareAliasAssociation
@@ -24,7 +24,10 @@ experiment = ExperimentAlias(
         Alias(
             alias='1',
             nbnodes=2,
-            properties=AliasProperties(archi="m3:at86rf231", site='devgrenoble', mobile=False)
+            properties=AliasProperties(
+                archi="m3:at86rf231",
+                site='devgrenoble',
+                mobile=False)
         )
     ],
     firmwareassociations=[
@@ -35,7 +38,9 @@ experiment = ExperimentAlias(
     ])
 
 print('alias exp:')
-print(api.experiments.submit_experiment(experiment=experiment))
+print(api.experiments.submit_experiment(
+    experiment=experiment)
+)
 
 print('alias exp with firmware:')
 
@@ -45,7 +50,10 @@ experiment.firmwareassociations = [
             nodes=['1']
         ),
     ]
-print(api.experiments.submit_experiment(experiment=experiment, files=['tutorial_m3.elf']))
+print(api.experiments.submit_experiment(
+    experiment=experiment,
+    files=['tutorial_m3.elf']
+))
 
 exp_nodes = [node.network_address for node in all_nodes.items[:2]]
 
@@ -62,4 +70,6 @@ experiment = ExperimentPhysical(
 )
 
 print('physical exp:')
-pprint(api.experiments.submit_experiment(experiment=experiment))
+pprint(api.experiments.submit_experiment(
+    experiment=experiment
+))

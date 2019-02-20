@@ -20,13 +20,10 @@ import uuid
 
 import pytest
 
-from iotlabclient.api import Api
+from integration_tests import API
 from iotlabclient.client import Circuit, ResourceType
 from iotlabclient.client.rest import ApiException
 
-from integration_tests import HOST
-
-API = Api(host=HOST)
 api = API.mobilities
 sites = API.sites.get_sites()
 

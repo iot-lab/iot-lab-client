@@ -15,19 +15,27 @@ for running_experiment in running_experiments.items:
     all_nodes_addresses = json.dumps([node.network_address for node in all_nodes])
 
     print('flash all the nodes (explicit list) with tutorial_m3.elf (local file)')
-    pprint(experiment_api.send_cmd_update_nodes(firmware='tutorial_m3.elf', nodes=all_nodes_addresses))
+    pprint(experiment_api.send_cmd_update_nodes(
+        firmware='tutorial_m3.elf',
+        nodes=all_nodes_addresses))
 
     print('flash one of the nodes with tutorial_m3.elf (local file)')
-    pprint(experiment_api.send_cmd_update_nodes(firmware='tutorial_m3.elf', nodes=one_node_address))
+    pprint(experiment_api.send_cmd_update_nodes(
+        firmware='tutorial_m3.elf',
+        nodes=one_node_address))
 
     print('flash all nodes (no list sent) with tutorial_m3.elf (local file)')
-    pprint(experiment_api.send_cmd_update_nodes(firmware='tutorial_m3.elf'))
-
+    pprint(experiment_api.send_cmd_update_nodes(
+        firmware='tutorial_m3.elf'
+    ))
 
     pprint(experiment_api.get_experiment())
 
     print('flash all nodes with default_m3 (firmware store)')
-    pprint(experiment_api.flash_nodes('default_m3', request_body=[]))
+    pprint(experiment_api.flash_nodes(
+        'default_m3',
+        request_body=[]
+    ))
 
     pprint(experiment_api.get_experiment_token())
 

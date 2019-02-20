@@ -21,12 +21,9 @@ import random
 import pytest
 from PIL import Image
 
-from integration_tests import ROBOT_SITE, HOST
-from iotlabclient.api import Api
+from integration_tests import ROBOT_SITE, API
 from iotlabclient.client import Point
 
-
-API = Api(host=HOST)
 api = API.robots
 
 

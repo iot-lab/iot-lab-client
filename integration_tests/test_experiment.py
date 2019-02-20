@@ -25,8 +25,7 @@ from uuid import UUID
 import pytest
 from pytest import fail
 
-from integration_tests import HOST, SITE, SITE_TLD
-from iotlabclient.api import Api
+from integration_tests import SITE, SITE_TLD, API
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
                                  ScriptAssociations, ScriptAssociationsScript,
@@ -34,7 +33,6 @@ from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  Profile, ProfileConsumption,
                                  ProfileRadio, rest)
 
-API = Api(host=HOST)
 api = API.experiment
 experiments = API.experiments
 
@@ -360,4 +358,4 @@ def test_stop_experiment():
     assert result.to_dict() == expected
 
     wait_until(lambda: api.get_experiment(exp.id).state == 'Stopped',
-               interval=0.5, timeout=20, )
+               interval=0.5, timeout=20)

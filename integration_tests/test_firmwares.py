@@ -22,12 +22,11 @@ import uuid
 
 import pytest
 
-from integration_tests import HOST
-from iotlabclient.api import Api
+from integration_tests import API
 from iotlabclient.client import ResourceType, Firmware
 from iotlabclient.client.rest import ApiException
 
-api = Api(host=HOST).firmwares
+api = API.firmwares
 cur_dir = os.path.dirname(__file__)
 
 
@@ -117,7 +116,7 @@ def test_save(saved_firmware):
 
     # POST with the same firmware should fail
     try:
-        result = api.save_firmware(
+        api.save_firmware(
             metadata=saved_firmware,
             firmware=os.path.join(cur_dir, 'tutorial_m3.elf')
         )
@@ -135,7 +134,7 @@ def test_save_wrong_file():
     )
 
     try:
-        result = api.save_firmware(
+        api.save_firmware(
             metadata=firmware
         )
     except ApiException as e:
@@ -146,7 +145,7 @@ def test_save_no_metadata():
     # POST with no firmware metadata should fail
 
     try:
-        result = api.save_firmware(
+        api.save_firmware(
             firmware=os.path.join(cur_dir, 'tutorial_m3.elf')
         )
     except ApiException as e:

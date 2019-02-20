@@ -16,11 +16,9 @@
 #
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
-from integration_tests import HOST, SITE_TLD, TLD
-from iotlabclient.api import Api
+from integration_tests import TLD, API
 from iotlabclient.utils import expand_short_nodes_list
 
-API = Api(host=HOST)
 api = API.nodes
 
 sites = [item.site for item in API.sites.get_sites().items]
