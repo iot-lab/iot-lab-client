@@ -243,7 +243,7 @@ class Node(object):
         :param state: The state of this Node.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Alive", "Busy", "Suspected", "Dead"]  # noqa: E501
+        allowed_values = ["Alive", "Busy", "Suspected", "Dead", "Absent"]  # noqa: E501
         if state not in allowed_values:
             raise ValueError(
                 "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
