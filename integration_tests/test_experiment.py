@@ -25,7 +25,7 @@ from uuid import UUID
 import pytest
 from pytest import fail
 
-from integration_tests import HOST
+from integration_tests import HOST, SITE, SITE_TLD
 from iotlabclient.api import Api
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
@@ -39,8 +39,6 @@ experiments = Api(host=HOST).experiments
 
 cur_dir = os.path.dirname(__file__)
 
-SITE = 'devgrenoble'  # should have a few m3 nodes
-SITE_TLD = SITE + '.iot-lab.info'
 
 """
 endpoints:
@@ -125,7 +123,9 @@ EXPERIMENT = ExperimentAlias(
 def stop_experiment(exp):
     result = api.stop_experiment(exp.id)
     print('stop exp')
-    assert result.to_dict() == {'id': exp.id, 'status': 'Delete request registered'}
+    expected = dict(id=exp.id,
+                    status='Delete request registered')
+    assert expected == result.to_dict()
 
 
 def start_experiment(exp):
@@ -344,9 +344,9 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
         assert e.status == 400
 
 
-def wait_until(condition, interval=0.1, timeout=1, *args):
+def wait_until(callable, interval=0.1, timeout=1):
     start = time.time()
-    while not condition(*args) and time.time() - start < timeout:
+    while not callable() and time.time() - start < timeout:
         time.sleep(interval)
 
 
@@ -355,8 +355,8 @@ def test_stop_experiment():
 
     result = api.stop_experiment(exp.id)
 
-    expected = dict(id=exp.id, status= 'Delete request registered')
+    expected = dict(id=exp.id, status='Delete request registered')
     assert result.to_dict() == expected
 
-    wait_until(lambda expid: api.get_experiment(expid).state == 'Stopped',
-               interval=0.5, timeout=20)
+    wait_until(lambda: api.get_experiment(exp.id).state == 'Stopped',
+               interval=0.5, timeout=20, )

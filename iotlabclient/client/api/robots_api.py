@@ -42,7 +42,7 @@ class RobotsApi(object):
 
         :param async_req bool
         :param str site: (required)
-        :param dict(str, Point) request_body:
+        :param dict(str, Point) points:
         :return: CoordinatesReachable
                  If the method is called asynchronously,
                  returns the request thread.
@@ -64,7 +64,7 @@ class RobotsApi(object):
 
         :param async_req bool
         :param str site: (required)
-        :param dict(str, Point) request_body:
+        :param dict(str, Point) points:
         :return: CoordinatesReachable
                  If the method is called asynchronously,
                  returns the request thread.
@@ -72,7 +72,7 @@ class RobotsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['site', 'request_body']  # noqa: E501
+        all_params = ['site', 'points']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -109,8 +109,8 @@ class RobotsApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'points' in local_var_params:
+            body_params = local_var_params['points']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

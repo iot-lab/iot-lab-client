@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **are_coordinates_reachable**
-> CoordinatesReachable are_coordinates_reachable(site, request_body=request_body)
+> CoordinatesReachable are_coordinates_reachable(site, points=points)
 
 Returns if robots coordinates (eg. ROS points) are reachable
 
@@ -34,11 +34,11 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.RobotsApi(iotlabclient.client.ApiClient(configuration))
 site = 'site_example' # str | 
-request_body = {'key': iotlabclient.client.Point()} # dict(str, Point) |  (optional)
+points = {'key': iotlabclient.client.Point()} # dict(str, Point) |  (optional)
 
 try:
     # Returns if robots coordinates (eg. ROS points) are reachable
-    api_response = api_instance.are_coordinates_reachable(site, request_body=request_body)
+    api_response = api_instance.are_coordinates_reachable(site, points=points)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RobotsApi->are_coordinates_reachable: %s\n" % e)
@@ -49,7 +49,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **site** | **str**|  | 
- **request_body** | [**dict(str, Point)**](Point.md)|  | [optional] 
+ **points** | [**dict(str, Point)**](Point.md)|  | [optional] 
 
 ### Return type
 
