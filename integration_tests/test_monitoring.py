@@ -79,7 +79,7 @@ def test_save(saved_profile):
 
     # POST with the same should fail
     try:
-        result = api.save_profile(profile=saved_profile)
+        api.save_profile(profile=saved_profile)
     except ApiException as e:
         assert e.status == 500
 

@@ -12,9 +12,9 @@ for running_experiment in running_experiments.items:
     experiment_api = ExperimentApi(running_experiment.id)
     all_nodes = experiment_api.get_experiment_nodes().items
     one_node_address = json.dumps([all_nodes[0].network_address])
-    all_nodes_addresses = json.dumps([node.network_address for node in all_nodes])
+    all_nodes_addresses = json.dumps([node.network_address for node in all_nodes])  # noqa: E501
 
-    print('flash all the nodes (explicit list) with tutorial_m3.elf (local file)')
+    print('flash all the nodes (explicit list) with tutorial_m3.elf (local file)')  # noqa: E501
     pprint(experiment_api.send_cmd_update_nodes(
         firmware='tutorial_m3.elf',
         nodes=all_nodes_addresses))

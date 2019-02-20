@@ -24,7 +24,7 @@ import re
 from iotlabclient.client.rest import ApiException
 
 from iotlabclient.api import Api
-from iotlabclient.client import Circuit, Point, ResourceType
+from iotlabclient.client import Circuit, ResourceType
 
 api = Api().mobilities
 

@@ -84,7 +84,6 @@ def test_get_dock_config(map_config):
 
 
 def test_reachable(map_image):
-    datas = map_image.getdata()
     w, h = map_image.size
 
     white_pixels = []

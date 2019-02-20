@@ -269,7 +269,7 @@ def test_run_experiment_script(experiment_id):
     scriptname = 'aggregator_script'
     scriptconfigname = 'aggregator_script_config'
 
-    status = api.status_experiment_scripts(experiment_id, sites=[SITE])
+    api.status_experiment_scripts(experiment_id, sites=[SITE])
 
     result = api.run_experiment_scripts(
         experiment_id,
@@ -293,7 +293,7 @@ def test_run_experiment_script(experiment_id):
 
     status = api.status_experiment_scripts(experiment_id, sites=[SITE])
 
-    # assert status.to_dict() == {'_0': {SITE_TLD: 'Running'}}
+    assert status
 
 
 def test_load_profile_nodes(experiment_id, experiment_nodes):
@@ -334,7 +334,7 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
     assert_ok(result, experiment_nodes)
 
     try:
-        result = api.send_cmd_profile_nodes(
+        api.send_cmd_profile_nodes(
             experiment_id,
             name='this profile doesn\'t exist in the store',
             nodes=experiment_nodes

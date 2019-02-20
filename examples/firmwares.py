@@ -18,13 +18,12 @@
 # knowledge of the CeCILL license and that you accept its terms.
 
 """
-*FirmwaresApi* | [**firmwares_name_file_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_file_get) | **GET** /firmwares/{name}/file | get a stored firmaware file
-*FirmwaresApi* | [**firmwares_name_get**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_get) | **GET** /firmwares/{name} | get a stored firmware metadata
-*FirmwaresApi* | [**firmwares_name_put**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_name_put) | **PUT** /firmwares/{name} | modify a stored user firmware
-*FirmwaresApi* | [**firmwares_post**](iotlabclient/client/docs/FirmwaresApi.md#firmwares_post) | **POST** /firmwares | save a user firmware
-*FirmwaresApi* | [**get_firmware_format**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare f
+*FirmwaresApi* | [**firmwares_name_file_get**]
+*FirmwaresApi* | [**firmwares_name_get**]
+*FirmwaresApi* | [**firmwares_name_put**]
+*FirmwaresApi* | [**firmwares_post**]
+*FirmwaresApi* | [**get_firmware_format**]
 """
-import json
 from pprint import pprint
 
 from iotlabclient.client.rest import ApiException
@@ -48,19 +47,34 @@ print('all firmwares')
 pprint(api.get_firmwares())
 
 print('all M3 firmwares')
-pprint(api.get_firmwares(archi=ArchiString.M3))
+pprint(api.get_firmwares(
+    archi=ArchiString.M3
+))
 
 print('explicit ALL M3 firmwares')
-pprint(api.get_firmwares(archi=ArchiString.M3, type=ResourceType.ALL))
+pprint(api.get_firmwares(
+    archi=ArchiString.M3,
+    type=ResourceType.ALL
+))
 
 print('PREDEFINED M3 firmwares')
-pprint(api.get_firmwares(archi=ArchiString.M3, type=ResourceType.PREDEFINED))
+pprint(api.get_firmwares(
+    archi=ArchiString.M3,
+    type=ResourceType.PREDEFINED
+))
 
 print('USERDEFINED firefly firmwares')
-pprint(api.get_firmwares(archi=ArchiString.FIREFLY, type=ResourceType.USERDEFINED))
+pprint(api.get_firmwares(
+    archi=ArchiString.FIREFLY,
+    type=ResourceType.USERDEFINED
+))
 
 delete_if_exists('my_firmware')
-firmware = Firmware(name='my_firmware', description='test firmware', archi=ArchiString.M3, filename='tutorial_m3.elf')
+firmware = Firmware(
+    name='my_firmware',
+    description='test firmware',
+    archi=ArchiString.M3,
+    filename='tutorial_m3.elf')
 
 print('create my_firmware firmware')
 api.save_firmware(firmware='tutorial_m3.elf', metadata=firmware)
@@ -79,5 +93,3 @@ try:
     pprint(api.get_firmware(name='my_firmware'))
 except ApiException as e:
     assert e.status == 500
-
-

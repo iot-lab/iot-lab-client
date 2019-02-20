@@ -152,7 +152,7 @@ def test_save(saved_circuit):
 
     # POST with the same circuit should fail
     try:
-        result = api.save_user_mobility(circuit=saved_circuit)
+        api.save_user_mobility(circuit=saved_circuit)
     except ApiException as e:
         assert e.status == 500
 

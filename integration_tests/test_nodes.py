@@ -24,7 +24,7 @@ api = API.nodes
 sites = [item.site for item in API.sites.get_sites().items]
 
 
-def test_get_nodes():
+def test_nodes():
     nodes = api.get_nodes()
 
     assert nodes.items
