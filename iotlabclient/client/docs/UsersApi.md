@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**modify_user**](UsersApi.md#modify_user) | **PUT** /user | Modify user
 [**reset_password**](UsersApi.md#reset_password) | **POST** /users/reset_password | Reset user password by email
 [**set_user_ssh_keys**](UsersApi.md#set_user_ssh_keys) | **POST** /user/keys | Add user ssh keys.
+[**signup_user**](UsersApi.md#signup_user) | **POST** /users | Signup user.
 [**update_password**](UsersApi.md#update_password) | **PUT** /user/password | Modify user password.
-[**users_post**](UsersApi.md#users_post) | **POST** /users | Signup user.
 
 
 # **activate_user**
@@ -404,6 +404,58 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **signup_user**
+> UserResponse signup_user(user_request=user_request)
+
+Signup user.
+
+### Example
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import iotlabclient.client
+from iotlabclient.client.rest import ApiException
+from pprint import pprint
+configuration = iotlabclient.client.Configuration()
+# Configure HTTP basic authorization: BasicAuth
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = iotlabclient.client.UsersApi(iotlabclient.client.ApiClient(configuration))
+user_request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
+
+try:
+    # Signup user.
+    api_response = api_instance.signup_user(user_request=user_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->signup_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_request** | [**UserRequest**](UserRequest.md)|  | [optional] 
+
+### Return type
+
+[**UserResponse**](UserResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_password**
 > update_password(update_password_request=update_password_request)
 
@@ -443,58 +495,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **users_post**
-> UserResponse users_post(user_request=user_request)
-
-Signup user.
-
-### Example
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import iotlabclient.client
-from iotlabclient.client.rest import ApiException
-from pprint import pprint
-configuration = iotlabclient.client.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = iotlabclient.client.UsersApi(iotlabclient.client.ApiClient(configuration))
-user_request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
-
-try:
-    # Signup user.
-    api_response = api_instance.users_post(user_request=user_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->users_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_request** | [**UserRequest**](UserRequest.md)|  | [optional] 
-
-### Return type
-
-[**UserResponse**](UserResponse.md)
 
 ### Authorization
 

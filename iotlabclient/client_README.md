@@ -117,8 +117,8 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**modify_user**](iotlabclient/client/docs/UsersApi.md#modify_user) | **PUT** /user | Modify user
 *UsersApi* | [**reset_password**](iotlabclient/client/docs/UsersApi.md#reset_password) | **POST** /users/reset_password | Reset user password by email
 *UsersApi* | [**set_user_ssh_keys**](iotlabclient/client/docs/UsersApi.md#set_user_ssh_keys) | **POST** /user/keys | Add user ssh keys.
+*UsersApi* | [**signup_user**](iotlabclient/client/docs/UsersApi.md#signup_user) | **POST** /users | Signup user.
 *UsersApi* | [**update_password**](iotlabclient/client/docs/UsersApi.md#update_password) | **PUT** /user/password | Modify user password.
-*UsersApi* | [**users_post**](iotlabclient/client/docs/UsersApi.md#users_post) | **POST** /users | Signup user.
 
 
 ## Documentation For Models
