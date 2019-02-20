@@ -330,7 +330,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **save_firmware**
-> save_firmware(firmware=firmware, metadata=metadata)
+> Firmware save_firmware(firmware=firmware, metadata=metadata)
 
 save a user firmware
 
@@ -355,7 +355,8 @@ metadata = iotlabclient.client.Firmware() # Firmware |  (optional)
 
 try:
     # save a user firmware
-    api_instance.save_firmware(firmware=firmware, metadata=metadata)
+    api_response = api_instance.save_firmware(firmware=firmware, metadata=metadata)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FirmwaresApi->save_firmware: %s\n" % e)
 ```
@@ -369,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Firmware**](Firmware.md)
 
 ### Authorization
 

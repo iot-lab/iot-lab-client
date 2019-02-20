@@ -652,6 +652,7 @@ class FirmwaresApi(object):
             local_var_files['firmware'] = local_var_params['firmware']
         if 'metadata' in local_var_params:
             form_params.append(('metadata', local_var_params['metadata']))
+            post_content_types['metadata'] = 'application/json'
 
         body_params = None
 
@@ -705,7 +706,7 @@ class FirmwaresApi(object):
         :param async_req bool
         :param file firmware: firmware binary file
         :param Firmware metadata:
-        :return: None
+        :return: Firmware
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -727,7 +728,7 @@ class FirmwaresApi(object):
         :param async_req bool
         :param file firmware: firmware binary file
         :param Firmware metadata:
-        :return: None
+        :return: Firmware
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -783,7 +784,7 @@ class FirmwaresApi(object):
 
         # multiple potential response types
         response_types = {
-            200: '',
+            200: 'Firmware',
             401: 'Error',
             403: 'Error',
             500: 'Error'
@@ -800,7 +801,7 @@ class FirmwaresApi(object):
             response_types=response_types,
             multipart_header_params=multipart_header_params,
             post_content_types=post_content_types,
-            response_type=None,  # noqa: E501
+            response_type='Firmware',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
