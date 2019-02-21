@@ -17,6 +17,8 @@ files_list=$(echo "${files_list}" | grep -v \
     -e '.hex' \
     -e '.json'\
     -e 'AUTHORS' \
+    -e 'aggregator_script' \
+    -e 'aggregator_script_config' \
     -e 'COPYING' \
     -e 'Makefile' \
     -e 'MANIFEST.in' \
