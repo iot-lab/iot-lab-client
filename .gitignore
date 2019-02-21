@@ -13,3 +13,4 @@ build/
 dist/
 coverage.xml
 swagger-admin.yaml
+.env

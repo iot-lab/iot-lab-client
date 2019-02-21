@@ -4,3 +4,4 @@ pytest-pep8
 codecov
 flake8
 Pillow
+python-dotenv
