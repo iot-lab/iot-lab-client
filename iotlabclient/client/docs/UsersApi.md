@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **activate_user**
-> activate_user(activate_user_request=activate_user_request)
+> activate_user(request=request)
 
 Activate user.
 
@@ -32,11 +32,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = iotlabclient.client.UsersApi()
-activate_user_request = iotlabclient.client.ActivateUserRequest() # ActivateUserRequest |  (optional)
+request = iotlabclient.client.ActivateUserRequest() # ActivateUserRequest |  (optional)
 
 try:
     # Activate user.
-    api_instance.activate_user(activate_user_request=activate_user_request)
+    api_instance.activate_user(request=request)
 except ApiException as e:
     print("Exception when calling UsersApi->activate_user: %s\n" % e)
 ```
@@ -45,7 +45,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activate_user_request** | [**ActivateUserRequest**](ActivateUserRequest.md)|  | [optional] 
+ **request** | [**ActivateUserRequest**](ActivateUserRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -257,7 +257,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modify_user**
-> modify_user(user_request=user_request)
+> modify_user(request=request)
 
 Modify user
 
@@ -277,11 +277,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = iotlabclient.client.UsersApi(iotlabclient.client.ApiClient(configuration))
-user_request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
+request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
 
 try:
     # Modify user
-    api_instance.modify_user(user_request=user_request)
+    api_instance.modify_user(request=request)
 except ApiException as e:
     print("Exception when calling UsersApi->modify_user: %s\n" % e)
 ```
@@ -290,7 +290,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_request** | [**UserRequest**](UserRequest.md)|  | [optional] 
+ **request** | [**UserRequest**](UserRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -308,7 +308,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_password**
-> reset_password(reset_password_request=reset_password_request)
+> reset_password(request=request)
 
 Reset user password by email
 
@@ -323,11 +323,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = iotlabclient.client.UsersApi()
-reset_password_request = iotlabclient.client.ResetPasswordRequest() # ResetPasswordRequest |  (optional)
+request = iotlabclient.client.ResetPasswordRequest() # ResetPasswordRequest |  (optional)
 
 try:
     # Reset user password by email
-    api_instance.reset_password(reset_password_request=reset_password_request)
+    api_instance.reset_password(request=request)
 except ApiException as e:
     print("Exception when calling UsersApi->reset_password: %s\n" % e)
 ```
@@ -336,7 +336,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reset_password_request** | [**ResetPasswordRequest**](ResetPasswordRequest.md)|  | [optional] 
+ **request** | [**ResetPasswordRequest**](ResetPasswordRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -405,7 +405,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **signup_user**
-> UserResponse signup_user(user_request=user_request)
+> UserResponse signup_user(request=request)
 
 Signup user.
 
@@ -425,11 +425,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = iotlabclient.client.UsersApi(iotlabclient.client.ApiClient(configuration))
-user_request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
+request = iotlabclient.client.UserRequest() # UserRequest |  (optional)
 
 try:
     # Signup user.
-    api_response = api_instance.signup_user(user_request=user_request)
+    api_response = api_instance.signup_user(request=request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->signup_user: %s\n" % e)
@@ -439,7 +439,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_request** | [**UserRequest**](UserRequest.md)|  | [optional] 
+ **request** | [**UserRequest**](UserRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_password**
-> update_password(update_password_request=update_password_request)
+> update_password(request=request)
 
 Modify user password.
 
@@ -477,11 +477,11 @@ configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = iotlabclient.client.UsersApi(iotlabclient.client.ApiClient(configuration))
-update_password_request = iotlabclient.client.UpdatePasswordRequest() # UpdatePasswordRequest |  (optional)
+request = iotlabclient.client.UpdatePasswordRequest() # UpdatePasswordRequest |  (optional)
 
 try:
     # Modify user password.
-    api_instance.update_password(update_password_request=update_password_request)
+    api_instance.update_password(request=request)
 except ApiException as e:
     print("Exception when calling UsersApi->update_password: %s\n" % e)
 ```
@@ -490,7 +490,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_password_request** | [**UpdatePasswordRequest**](UpdatePasswordRequest.md)|  | [optional] 
+ **request** | [**UpdatePasswordRequest**](UpdatePasswordRequest.md)|  | [optional] 
 
 ### Return type
 

@@ -41,7 +41,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ActivateUserRequest activate_user_request:
+        :param ActivateUserRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -62,7 +62,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ActivateUserRequest activate_user_request:
+        :param ActivateUserRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,7 +70,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['activate_user_request']  # noqa: E501
+        all_params = ['request']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -99,8 +99,8 @@ class UsersApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'activate_user_request' in local_var_params:
-            body_params = local_var_params['activate_user_request']
+        if 'request' in local_var_params:
+            body_params = local_var_params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -545,7 +545,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UserRequest user_request:
+        :param UserRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -566,7 +566,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UserRequest user_request:
+        :param UserRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -574,7 +574,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['user_request']  # noqa: E501
+        all_params = ['request']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -603,8 +603,8 @@ class UsersApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'user_request' in local_var_params:
-            body_params = local_var_params['user_request']
+        if 'request' in local_var_params:
+            body_params = local_var_params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -651,7 +651,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ResetPasswordRequest reset_password_request:
+        :param ResetPasswordRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -672,7 +672,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param ResetPasswordRequest reset_password_request:
+        :param ResetPasswordRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -680,7 +680,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['reset_password_request']  # noqa: E501
+        all_params = ['request']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -709,8 +709,8 @@ class UsersApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'reset_password_request' in local_var_params:
-            body_params = local_var_params['reset_password_request']
+        if 'request' in local_var_params:
+            body_params = local_var_params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -861,7 +861,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UserRequest user_request:
+        :param UserRequest request:
         :return: UserResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -882,7 +882,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UserRequest user_request:
+        :param UserRequest request:
         :return: UserResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -890,7 +890,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['user_request']  # noqa: E501
+        all_params = ['request']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -919,8 +919,8 @@ class UsersApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'user_request' in local_var_params:
-            body_params = local_var_params['user_request']
+        if 'request' in local_var_params:
+            body_params = local_var_params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -967,7 +967,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UpdatePasswordRequest update_password_request:
+        :param UpdatePasswordRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -988,7 +988,7 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UpdatePasswordRequest update_password_request:
+        :param UpdatePasswordRequest request:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -996,7 +996,7 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ['update_password_request']  # noqa: E501
+        all_params = ['request']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1025,8 +1025,8 @@ class UsersApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'update_password_request' in local_var_params:
-            body_params = local_var_params['update_password_request']
+        if 'request' in local_var_params:
+            body_params = local_var_params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
