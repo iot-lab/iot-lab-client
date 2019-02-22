@@ -17,10 +17,11 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from iotlabclient.client.api.circuit_mobilities_api import CircuitMobilitiesApi
 from iotlabclient.client.api.experiment_api import ExperimentApi
 from iotlabclient.client.api.experiments_api import ExperimentsApi
 from iotlabclient.client.api.firmwares_api import FirmwaresApi
-from iotlabclient.client.api.mobilities_api import MobilitiesApi
+from iotlabclient.client.api.model_mobilities_api import ModelMobilitiesApi
 from iotlabclient.client.api.monitoring_api import MonitoringApi
 from iotlabclient.client.api.nodes_api import NodesApi
 from iotlabclient.client.api.robots_api import RobotsApi
@@ -68,6 +69,8 @@ from iotlabclient.client.models.inline_object3 import InlineObject3
 from iotlabclient.client.models.inline_object4 import InlineObject4
 from iotlabclient.client.models.inline_object5 import InlineObject5
 from iotlabclient.client.models.inline_object6 import InlineObject6
+from iotlabclient.client.models.inline_object7 import InlineObject7
+from iotlabclient.client.models.inline_object8 import InlineObject8
 from iotlabclient.client.models.inline_response200 import InlineResponse200
 from iotlabclient.client.models.inline_response2001 import InlineResponse2001
 from iotlabclient.client.models.inline_response2002 import InlineResponse2002
@@ -75,6 +78,8 @@ from iotlabclient.client.models.mobility_alias_association import MobilityAliasA
 from iotlabclient.client.models.mobility_alias_associations import MobilityAliasAssociations
 from iotlabclient.client.models.mobility_association import MobilityAssociation
 from iotlabclient.client.models.mobility_associations import MobilityAssociations
+from iotlabclient.client.models.model import Model
+from iotlabclient.client.models.models_list_response import ModelsListResponse
 from iotlabclient.client.models.node import Node
 from iotlabclient.client.models.nodes_ids_response import NodesIdsResponse
 from iotlabclient.client.models.nodes_ids_response_archis import NodesIdsResponseArchis

@@ -31,44 +31,68 @@ class InlineObject4(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'firmware': 'file'
+        'profile': 'Profile',
+        'nodes': 'list[str]'
     }
 
     attribute_map = {
-        'firmware': 'firmware'
+        'profile': 'profile',
+        'nodes': 'nodes'
     }
 
-    def __init__(self, firmware=None):  # noqa: E501
+    def __init__(self, profile=None, nodes=None):  # noqa: E501
         """InlineObject4 - a model defined in OpenAPI"""  # noqa: E501
 
-        self._firmware = None
+        self._profile = None
+        self._nodes = None
         self.discriminator = None
 
-        if firmware is not None:
-            self.firmware = firmware
+        if profile is not None:
+            self.profile = profile
+        if nodes is not None:
+            self.nodes = nodes
 
     @property
-    def firmware(self):
-        """Gets the firmware of this InlineObject4.  # noqa: E501
+    def profile(self):
+        """Gets the profile of this InlineObject4.  # noqa: E501
 
-        firmware binary file  # noqa: E501
 
-        :return: The firmware of this InlineObject4.  # noqa: E501
-        :rtype: file
+        :return: The profile of this InlineObject4.  # noqa: E501
+        :rtype: Profile
         """
-        return self._firmware
+        return self._profile
 
-    @firmware.setter
-    def firmware(self, firmware):
-        """Sets the firmware of this InlineObject4.
+    @profile.setter
+    def profile(self, profile):
+        """Sets the profile of this InlineObject4.
 
-        firmware binary file  # noqa: E501
 
-        :param firmware: The firmware of this InlineObject4.  # noqa: E501
-        :type: file
+        :param profile: The profile of this InlineObject4.  # noqa: E501
+        :type: Profile
         """
 
-        self._firmware = firmware
+        self._profile = profile
+
+    @property
+    def nodes(self):
+        """Gets the nodes of this InlineObject4.  # noqa: E501
+
+
+        :return: The nodes of this InlineObject4.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._nodes
+
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this InlineObject4.
+
+
+        :param nodes: The nodes of this InlineObject4.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._nodes = nodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

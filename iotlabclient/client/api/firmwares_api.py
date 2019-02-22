@@ -425,8 +425,6 @@ class FirmwaresApi(object):
             local_var_files['firmware'] = local_var_params['firmware']
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -655,8 +653,6 @@ class FirmwaresApi(object):
             post_content_types['metadata'] = 'application/json'
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -769,8 +765,6 @@ class FirmwaresApi(object):
             post_content_types['metadata'] = 'application/json'
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

@@ -31,98 +31,70 @@ class InlineObject3(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'script': 'file',
-        'scriptconfig': 'file',
-        'scriptassociation': 'ScriptAssociations'
+        'firmware': 'file',
+        'nodes': 'list[str]'
     }
 
     attribute_map = {
-        'script': 'script',
-        'scriptconfig': 'scriptconfig',
-        'scriptassociation': 'scriptassociation'
+        'firmware': 'firmware',
+        'nodes': 'nodes'
     }
 
-    def __init__(self, script=None, scriptconfig=None, scriptassociation=None):  # noqa: E501
+    def __init__(self, firmware=None, nodes=None):  # noqa: E501
         """InlineObject3 - a model defined in OpenAPI"""  # noqa: E501
 
-        self._script = None
-        self._scriptconfig = None
-        self._scriptassociation = None
+        self._firmware = None
+        self._nodes = None
         self.discriminator = None
 
-        if script is not None:
-            self.script = script
-        if scriptconfig is not None:
-            self.scriptconfig = scriptconfig
-        if scriptassociation is not None:
-            self.scriptassociation = scriptassociation
+        if firmware is not None:
+            self.firmware = firmware
+        if nodes is not None:
+            self.nodes = nodes
 
     @property
-    def script(self):
-        """Gets the script of this InlineObject3.  # noqa: E501
+    def firmware(self):
+        """Gets the firmware of this InlineObject3.  # noqa: E501
 
-        script binary file  # noqa: E501
+        firmware binary file  # noqa: E501
 
-        :return: The script of this InlineObject3.  # noqa: E501
+        :return: The firmware of this InlineObject3.  # noqa: E501
         :rtype: file
         """
-        return self._script
+        return self._firmware
 
-    @script.setter
-    def script(self, script):
-        """Sets the script of this InlineObject3.
+    @firmware.setter
+    def firmware(self, firmware):
+        """Sets the firmware of this InlineObject3.
 
-        script binary file  # noqa: E501
+        firmware binary file  # noqa: E501
 
-        :param script: The script of this InlineObject3.  # noqa: E501
+        :param firmware: The firmware of this InlineObject3.  # noqa: E501
         :type: file
         """
 
-        self._script = script
+        self._firmware = firmware
 
     @property
-    def scriptconfig(self):
-        """Gets the scriptconfig of this InlineObject3.  # noqa: E501
+    def nodes(self):
+        """Gets the nodes of this InlineObject3.  # noqa: E501
 
-        script config file  # noqa: E501
 
-        :return: The scriptconfig of this InlineObject3.  # noqa: E501
-        :rtype: file
+        :return: The nodes of this InlineObject3.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._scriptconfig
+        return self._nodes
 
-    @scriptconfig.setter
-    def scriptconfig(self, scriptconfig):
-        """Sets the scriptconfig of this InlineObject3.
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this InlineObject3.
 
-        script config file  # noqa: E501
 
-        :param scriptconfig: The scriptconfig of this InlineObject3.  # noqa: E501
-        :type: file
+        :param nodes: The nodes of this InlineObject3.  # noqa: E501
+        :type: list[str]
         """
 
-        self._scriptconfig = scriptconfig
-
-    @property
-    def scriptassociation(self):
-        """Gets the scriptassociation of this InlineObject3.  # noqa: E501
-
-
-        :return: The scriptassociation of this InlineObject3.  # noqa: E501
-        :rtype: ScriptAssociations
-        """
-        return self._scriptassociation
-
-    @scriptassociation.setter
-    def scriptassociation(self, scriptassociation):
-        """Sets the scriptassociation of this InlineObject3.
-
-
-        :param scriptassociation: The scriptassociation of this InlineObject3.  # noqa: E501
-        :type: ScriptAssociations
-        """
-
-        self._scriptassociation = scriptassociation
+        self._nodes = nodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

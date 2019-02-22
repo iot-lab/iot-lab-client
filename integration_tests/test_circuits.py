@@ -24,7 +24,7 @@ from integration_tests import API
 from iotlabclient.client import Circuit, ResourceType
 from iotlabclient.client.rest import ApiException
 
-api = API.mobilities
+api = API.circuit_mobilities
 sites = API.sites.get_sites()
 
 site = next(item.site for item in sites.items if 'lille' in item.site)
@@ -129,7 +129,7 @@ def saved_circuit():
 
     saved = api.save_user_mobility(circuit=circuit)
 
-    circuit.type = 'userdefined'
+    circuit.type = ResourceType.USERDEFINED
 
     assert circuit.to_dict() == saved.to_dict()
 

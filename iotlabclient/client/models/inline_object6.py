@@ -31,26 +31,21 @@ class InlineObject6(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'firmware': 'file',
-        'metadata': 'Firmware'
+        'firmware': 'file'
     }
 
     attribute_map = {
-        'firmware': 'firmware',
-        'metadata': 'metadata'
+        'firmware': 'firmware'
     }
 
-    def __init__(self, firmware=None, metadata=None):  # noqa: E501
+    def __init__(self, firmware=None):  # noqa: E501
         """InlineObject6 - a model defined in OpenAPI"""  # noqa: E501
 
         self._firmware = None
-        self._metadata = None
         self.discriminator = None
 
         if firmware is not None:
             self.firmware = firmware
-        if metadata is not None:
-            self.metadata = metadata
 
     @property
     def firmware(self):
@@ -74,27 +69,6 @@ class InlineObject6(object):
         """
 
         self._firmware = firmware
-
-    @property
-    def metadata(self):
-        """Gets the metadata of this InlineObject6.  # noqa: E501
-
-
-        :return: The metadata of this InlineObject6.  # noqa: E501
-        :rtype: Firmware
-        """
-        return self._metadata
-
-    @metadata.setter
-    def metadata(self, metadata):
-        """Sets the metadata of this InlineObject6.
-
-
-        :param metadata: The metadata of this InlineObject6.  # noqa: E501
-        :type: Firmware
-        """
-
-        self._metadata = metadata
 
     def to_dict(self):
         """Returns the model properties as a dict"""

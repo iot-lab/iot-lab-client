@@ -1106,8 +1106,6 @@ class ExperimentApi(object):
             post_content_types['scriptassociation'] = 'application/json'
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1716,8 +1714,6 @@ class ExperimentApi(object):
             post_content_types['nodes'] = 'application/json'
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1839,8 +1835,6 @@ class ExperimentApi(object):
             post_content_types['nodes'] = 'application/json'
 
         body_params = None
-
-
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

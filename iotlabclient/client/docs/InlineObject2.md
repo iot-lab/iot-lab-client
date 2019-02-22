@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile** | [**Profile**](Profile.md) |  | [optional] 
-**nodes** | **list[str]** |  | [optional] 
+**experiment** | [**ExperimentRequest**](ExperimentRequest.md) |  | [optional] 
+**files** | **list[file]** | firmware/script/scriptconfig files | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

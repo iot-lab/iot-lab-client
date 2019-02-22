@@ -31,70 +31,70 @@ class InlineObject1(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'firmware': 'file',
-        'nodes': 'list[str]'
+        'model': 'Model',
+        'script': 'file'
     }
 
     attribute_map = {
-        'firmware': 'firmware',
-        'nodes': 'nodes'
+        'model': 'model',
+        'script': 'script'
     }
 
-    def __init__(self, firmware=None, nodes=None):  # noqa: E501
+    def __init__(self, model=None, script=None):  # noqa: E501
         """InlineObject1 - a model defined in OpenAPI"""  # noqa: E501
 
-        self._firmware = None
-        self._nodes = None
+        self._model = None
+        self._script = None
         self.discriminator = None
 
-        if firmware is not None:
-            self.firmware = firmware
-        if nodes is not None:
-            self.nodes = nodes
+        if model is not None:
+            self.model = model
+        if script is not None:
+            self.script = script
 
     @property
-    def firmware(self):
-        """Gets the firmware of this InlineObject1.  # noqa: E501
+    def model(self):
+        """Gets the model of this InlineObject1.  # noqa: E501
 
-        firmware binary file  # noqa: E501
 
-        :return: The firmware of this InlineObject1.  # noqa: E501
+        :return: The model of this InlineObject1.  # noqa: E501
+        :rtype: Model
+        """
+        return self._model
+
+    @model.setter
+    def model(self, model):
+        """Sets the model of this InlineObject1.
+
+
+        :param model: The model of this InlineObject1.  # noqa: E501
+        :type: Model
+        """
+
+        self._model = model
+
+    @property
+    def script(self):
+        """Gets the script of this InlineObject1.  # noqa: E501
+
+        the script that will be started on the robot  # noqa: E501
+
+        :return: The script of this InlineObject1.  # noqa: E501
         :rtype: file
         """
-        return self._firmware
+        return self._script
 
-    @firmware.setter
-    def firmware(self, firmware):
-        """Sets the firmware of this InlineObject1.
+    @script.setter
+    def script(self, script):
+        """Sets the script of this InlineObject1.
 
-        firmware binary file  # noqa: E501
+        the script that will be started on the robot  # noqa: E501
 
-        :param firmware: The firmware of this InlineObject1.  # noqa: E501
+        :param script: The script of this InlineObject1.  # noqa: E501
         :type: file
         """
 
-        self._firmware = firmware
-
-    @property
-    def nodes(self):
-        """Gets the nodes of this InlineObject1.  # noqa: E501
-
-
-        :return: The nodes of this InlineObject1.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._nodes
-
-    @nodes.setter
-    def nodes(self, nodes):
-        """Sets the nodes of this InlineObject1.
-
-
-        :param nodes: The nodes of this InlineObject1.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._nodes = nodes
+        self._script = script
 
     def to_dict(self):
         """Returns the model properties as a dict"""

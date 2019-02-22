@@ -31,70 +31,70 @@ class InlineObject(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'experiment': 'ExperimentRequest',
-        'files': 'list[file]'
+        'model': 'Model',
+        'script': 'file'
     }
 
     attribute_map = {
-        'experiment': 'experiment',
-        'files': 'files'
+        'model': 'model',
+        'script': 'script'
     }
 
-    def __init__(self, experiment=None, files=None):  # noqa: E501
+    def __init__(self, model=None, script=None):  # noqa: E501
         """InlineObject - a model defined in OpenAPI"""  # noqa: E501
 
-        self._experiment = None
-        self._files = None
+        self._model = None
+        self._script = None
         self.discriminator = None
 
-        if experiment is not None:
-            self.experiment = experiment
-        if files is not None:
-            self.files = files
+        if model is not None:
+            self.model = model
+        if script is not None:
+            self.script = script
 
     @property
-    def experiment(self):
-        """Gets the experiment of this InlineObject.  # noqa: E501
+    def model(self):
+        """Gets the model of this InlineObject.  # noqa: E501
 
 
-        :return: The experiment of this InlineObject.  # noqa: E501
-        :rtype: ExperimentRequest
+        :return: The model of this InlineObject.  # noqa: E501
+        :rtype: Model
         """
-        return self._experiment
+        return self._model
 
-    @experiment.setter
-    def experiment(self, experiment):
-        """Sets the experiment of this InlineObject.
+    @model.setter
+    def model(self, model):
+        """Sets the model of this InlineObject.
 
 
-        :param experiment: The experiment of this InlineObject.  # noqa: E501
-        :type: ExperimentRequest
+        :param model: The model of this InlineObject.  # noqa: E501
+        :type: Model
         """
 
-        self._experiment = experiment
+        self._model = model
 
     @property
-    def files(self):
-        """Gets the files of this InlineObject.  # noqa: E501
+    def script(self):
+        """Gets the script of this InlineObject.  # noqa: E501
 
-        firmware/script/scriptconfig files  # noqa: E501
+        the script that will be started on the robot  # noqa: E501
 
-        :return: The files of this InlineObject.  # noqa: E501
-        :rtype: list[file]
+        :return: The script of this InlineObject.  # noqa: E501
+        :rtype: file
         """
-        return self._files
+        return self._script
 
-    @files.setter
-    def files(self, files):
-        """Sets the files of this InlineObject.
+    @script.setter
+    def script(self, script):
+        """Sets the script of this InlineObject.
 
-        firmware/script/scriptconfig files  # noqa: E501
+        the script that will be started on the robot  # noqa: E501
 
-        :param files: The files of this InlineObject.  # noqa: E501
-        :type: list[file]
+        :param script: The script of this InlineObject.  # noqa: E501
+        :type: file
         """
 
-        self._files = files
+        self._script = script
 
     def to_dict(self):
         """Returns the model properties as a dict"""

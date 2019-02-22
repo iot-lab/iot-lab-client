@@ -16,13 +16,13 @@
 #
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
-import hashlib
 import os
 import uuid
 
 import pytest
 
 from integration_tests import API
+from integration_tests.utils import files_match
 from iotlabclient.client import ResourceType, Firmware
 from iotlabclient.client.rest import ApiException
 
@@ -63,14 +63,6 @@ def test_get_firmware_():
         name='iotlab_m3_tutorial',
         description='Basic tutorial which provides read sensors, send radio packet and so on',  # noqa: E501
         filename='tutorial_m3.elf', archi='m3', type=None)
-
-
-def files_match(f1, f2):
-    with open(f1, 'rb') as file1, \
-            open(f2, 'rb') as file2:
-        hash1 = hashlib.md5(file1.read()).hexdigest()
-        hash2 = hashlib.md5(file2.read()).hexdigest()
-        assert hash1 == hash2
 
 
 def test_get_firmware_file():

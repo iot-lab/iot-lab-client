@@ -40,17 +40,14 @@ configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
-id = 56 # int | 
+api_instance = iotlabclient.client.CircuitMobilitiesApi(iotlabclient.client.ApiClient(configuration))
 name = 'name_example' # str | 
-nodes = NULL # list[str] |  (optional)
 
 try:
-    # Send experiment nodes flash firmware store command.
-    api_response = api_instance.flash_experiment_nodes(id, name, nodes=nodes)
-    pprint(api_response)
+    # Delete circuit mobility
+    api_instance.delete_user_mobility(name)
 except ApiException as e:
-    print("Exception when calling ExperimentApi->flash_experiment_nodes: %s\n" % e)
+    print("Exception when calling CircuitMobilitiesApi->delete_user_mobility: %s\n" % e)
 
 ```
 
@@ -60,6 +57,11 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CircuitMobilitiesApi* | [**delete_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
+*CircuitMobilitiesApi* | [**get_mobilities**](iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
+*CircuitMobilitiesApi* | [**get_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit
+*CircuitMobilitiesApi* | [**modify_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#modify_user_mobility) | **PUT** /mobilities/circuits/{name} | Modify circuit mobility
+*CircuitMobilitiesApi* | [**save_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#save_user_mobility) | **POST** /mobilities/circuits | Create circuit
 *ExperimentApi* | [**flash_experiment_nodes**](iotlabclient/client/docs/ExperimentApi.md#flash_experiment_nodes) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
 *ExperimentApi* | [**get_experiment**](iotlabclient/client/docs/ExperimentApi.md#get_experiment) | **GET** /experiments/{id} | Returns experiment.
 *ExperimentApi* | [**get_experiment_archive**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_archive) | **GET** /experiments/{id}/data | Returns experiment archive.
@@ -89,11 +91,12 @@ Class | Method | HTTP request | Description
 *FirmwaresApi* | [**get_firmwares**](iotlabclient/client/docs/FirmwaresApi.md#get_firmwares) | **GET** /firmwares | get a list of stored firmware metadatas
 *FirmwaresApi* | [**modify_firmware**](iotlabclient/client/docs/FirmwaresApi.md#modify_firmware) | **PUT** /firmwares/{name} | modify a stored user firmware
 *FirmwaresApi* | [**save_firmware**](iotlabclient/client/docs/FirmwaresApi.md#save_firmware) | **POST** /firmwares | save a user firmware
-*MobilitiesApi* | [**delete_user_mobility**](iotlabclient/client/docs/MobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
-*MobilitiesApi* | [**get_mobilities**](iotlabclient/client/docs/MobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
-*MobilitiesApi* | [**get_mobility**](iotlabclient/client/docs/MobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit
-*MobilitiesApi* | [**modify_user_mobility**](iotlabclient/client/docs/MobilitiesApi.md#modify_user_mobility) | **PUT** /mobilities/circuits/{name} | Modify circuit mobility
-*MobilitiesApi* | [**save_user_mobility**](iotlabclient/client/docs/MobilitiesApi.md#save_user_mobility) | **POST** /mobilities/circuits | Create circuit
+*ModelMobilitiesApi* | [**delete_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#delete_user_model_mobility) | **DELETE** /mobilities/models/{name} | Delete model mobility
+*ModelMobilitiesApi* | [**get_model_mobilities**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobilities) | **GET** /mobilities/models | Returns models list
+*ModelMobilitiesApi* | [**get_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility) | **GET** /mobilities/models/{name} | Returns model
+*ModelMobilitiesApi* | [**get_model_mobility_script**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility_script) | **GET** /mobilities/models/{name}/file | Returns model script file
+*ModelMobilitiesApi* | [**modify_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#modify_user_model_mobility) | **PUT** /mobilities/models/{name} | Modify model mobility
+*ModelMobilitiesApi* | [**save_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#save_user_model_mobility) | **POST** /mobilities/models | Create model mobility
 *MonitoringApi* | [**delete_profile**](iotlabclient/client/docs/MonitoringApi.md#delete_profile) | **DELETE** /monitoring/{name} | Delete monitoring profile.
 *MonitoringApi* | [**get_profile**](iotlabclient/client/docs/MonitoringApi.md#get_profile) | **GET** /monitoring/{name} | Returns monitoring profile.
 *MonitoringApi* | [**get_profiles**](iotlabclient/client/docs/MonitoringApi.md#get_profiles) | **GET** /monitoring | Returns monitoring profiles list.
@@ -160,6 +163,8 @@ Class | Method | HTTP request | Description
  - [InlineObject4](iotlabclient/client/docs/InlineObject4.md)
  - [InlineObject5](iotlabclient/client/docs/InlineObject5.md)
  - [InlineObject6](iotlabclient/client/docs/InlineObject6.md)
+ - [InlineObject7](iotlabclient/client/docs/InlineObject7.md)
+ - [InlineObject8](iotlabclient/client/docs/InlineObject8.md)
  - [InlineResponse200](iotlabclient/client/docs/InlineResponse200.md)
  - [InlineResponse2001](iotlabclient/client/docs/InlineResponse2001.md)
  - [InlineResponse2002](iotlabclient/client/docs/InlineResponse2002.md)
@@ -167,6 +172,8 @@ Class | Method | HTTP request | Description
  - [MobilityAliasAssociations](iotlabclient/client/docs/MobilityAliasAssociations.md)
  - [MobilityAssociation](iotlabclient/client/docs/MobilityAssociation.md)
  - [MobilityAssociations](iotlabclient/client/docs/MobilityAssociations.md)
+ - [Model](iotlabclient/client/docs/Model.md)
+ - [ModelsListResponse](iotlabclient/client/docs/ModelsListResponse.md)
  - [Node](iotlabclient/client/docs/Node.md)
  - [NodesIdsResponse](iotlabclient/client/docs/NodesIdsResponse.md)
  - [NodesIdsResponseArchis](iotlabclient/client/docs/NodesIdsResponseArchis.md)
