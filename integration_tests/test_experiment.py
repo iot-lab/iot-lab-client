@@ -202,6 +202,7 @@ def test_flash_experiment_nodes_local(experiment_id, experiment_nodes):
     'profile-reset',
 ])
 def test_commands(command, experiment_id, experiment_nodes):
+    time.sleep(1)
     result = api.send_cmd_nodes(
         experiment_id,
         command,
