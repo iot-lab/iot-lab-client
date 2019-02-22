@@ -23,7 +23,6 @@ import os
 import time
 
 
-
 EMAIL = os.environ.get('IOTLAB-EMAIL')
 EMAIL_PASSWORD = os.environ.get('IOTLAB-EMAIL-PASSWORD')
 IMAP = os.environ.get('IOTLAB-IMAP')
