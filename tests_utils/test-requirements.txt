@@ -5,3 +5,4 @@ codecov
 flake8
 Pillow
 python-dotenv
+paramiko

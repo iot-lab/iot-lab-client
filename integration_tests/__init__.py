@@ -20,7 +20,12 @@
 """ integration tests """
 import os
 
+from dotenv import load_dotenv, find_dotenv
+
 from iotlabclient.api import Api
+
+
+load_dotenv(find_dotenv())
 
 HOST = os.environ.get('IOTLAB-HOST', 'https://devwww.iot-lab.info/api')
 print('HOST: ' + HOST)
@@ -32,5 +37,7 @@ SITE_TLD = SITE + TLD
 
 # site with some robots
 ROBOT_SITE = os.environ.get('IOTLAB-ROBOT-SITE', 'devlille')
+
+WSN430_SITE = os.environ.get('IOTLAB-WSN430-SITE', 'devstrasbourg')
 
 API = Api(host=HOST)

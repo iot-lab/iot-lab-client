@@ -22,9 +22,7 @@ import imaplib
 import os
 import time
 
-from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
 
 EMAIL = os.environ.get('IOTLAB-EMAIL')
 EMAIL_PASSWORD = os.environ.get('IOTLAB-EMAIL-PASSWORD')
