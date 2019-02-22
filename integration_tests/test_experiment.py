@@ -26,6 +26,7 @@ import pytest
 from pytest import fail
 
 from integration_tests import SITE, SITE_TLD, API
+from integration_tests.utils import wait_until
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
                                  ScriptAssociations, ScriptAssociationsScript,
@@ -344,14 +345,10 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
         assert e.status == 400
 
 
-def wait_until(callable, interval=0.1, timeout=1):
-    start = time.time()
-    while not callable() and time.time() - start < timeout:
-        time.sleep(interval)
-
-
 def test_stop_experiment():
     exp = start_experiment(EXPERIMENT)
+
+    time.sleep(1)
 
     result = api.stop_experiment(exp.id)
 

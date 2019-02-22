@@ -22,6 +22,7 @@ import time
 from paramiko import SSHClient
 
 from integration_tests import API, WSN430_SITE
+from integration_tests.utils import wait_until
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  Alias, ArchiRadioString)
 from iotlabclient.client import FirmwareAliasAssociation
@@ -60,12 +61,7 @@ def test_wsn430():
 
     exp_id = submitted.id
 
-    while True:
-        exp = API.experiment.get_experiment(exp_id)
-        if exp.state == 'Running':
-            break
-        print('waiting experiment Running')
-        time.sleep(1)
+    wait_until(lambda: API.experiment.get_experiment(exp_id).state == 'Running', interval=1, timeout=30)
 
     deployment = API.experiment.get_experiment_deployment(exp_id)
 
