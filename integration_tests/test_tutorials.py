@@ -60,7 +60,11 @@ def test_wsn430():
 
     exp_id = submitted.id
 
-    wait_until(lambda: API.experiment.get_experiment(exp_id).state == 'Running', interval=1, timeout=30)
+    wait_until(
+        lambda: API.experiment.get_experiment(exp_id).state == 'Running',
+        interval=1,
+        timeout=30
+    )
 
     deployment = API.experiment.get_experiment_deployment(exp_id)
 
