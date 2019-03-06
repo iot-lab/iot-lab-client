@@ -1,5 +1,6 @@
 import hashlib
 import time
+from concurrent.futures import TimeoutError
 
 
 def wait_until(callable, interval=0.1, timeout=1):
