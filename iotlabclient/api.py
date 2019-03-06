@@ -18,6 +18,8 @@
 #
 # The fact that you are presently reading this means that you have had
 # knowledge of the CeCILL license and that you accept its terms.
+from warnings import warn
+
 from iotlabclient.auth import get_user_credentials
 from iotlabclient.client import ExperimentApi as clientExperimentApi, \
     ExperimentsApi, ApiClient, \
@@ -38,7 +40,7 @@ class Api(object):
             configuration.password = password
             configuration.host = url
         if configuration.username is None or configuration.password is None:
-            raise ValueError('Missing username/password for IoT-LAB client')
+            warn('no username/password for IoT-LAB client, only some endpoints will be accessible')
 
         self.client = ApiClient(configuration, pool_threads=None)
 
