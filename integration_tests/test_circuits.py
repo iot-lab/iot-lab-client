@@ -129,7 +129,7 @@ def saved_circuit():
 
     saved = api.save_user_mobility(circuit=circuit)
 
-    circuit.type = ResourceType.USERDEFINED
+    circuit.type = 'userdefined'
 
     assert circuit.to_dict() == saved.to_dict()
 
