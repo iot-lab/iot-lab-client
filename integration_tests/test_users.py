@@ -163,6 +163,8 @@ def test_create_activate_user():
     assert created_user.status == 'active'
 
 
+@pytest.mark.skipif(not pytest.config.option.signup,
+                    reason="needs --signup option to run")
 def test_get_user():
     user = api.get_user()
 
@@ -170,7 +172,7 @@ def test_get_user():
         category='Startup', city="King's Landing",
         country='Westeros',
         created='2019-02-21T10:53:15Z',
-        email='matthieu.berthome@gmail.com',
+        email=EMAIL,
         first_name='Test',
         groups=[],
         last_name='User',
@@ -182,12 +184,16 @@ def test_get_user():
     )
 
 
+@pytest.mark.skipif(not pytest.config.option.signup,
+                    reason="needs --signup option to run")
 def test_get_user_ssh_keys():
     keys = api.get_user_ssh_keys()
 
     assert keys.sshkeys == get_ssh_keys()
 
 
+@pytest.mark.skipif(not pytest.config.option.signup,
+                    reason="needs --signup option to run")
 def test_roundtrip_modify_user():
     data = {k: v for k, v in six.iteritems(api.get_user().to_dict())
             if k not in ['created', 'login', 'status']}
@@ -206,6 +212,8 @@ def test_roundtrip_modify_user():
     assert modified_back.motivations == 'I ♥ FIT IoT-LAB'
 
 
+@pytest.mark.skipif(not pytest.config.option.signup,
+                    reason="needs --signup option to run")
 def test_ssh_keys():
     keys = api.get_user_ssh_keys()
 
@@ -222,6 +230,8 @@ def test_ssh_keys():
     assert modified_keys.sshkeys == get_ssh_keys()
 
 
+@pytest.mark.skipif(not pytest.config.option.signup,
+                    reason="needs --signup option to run")
 def test_update_password():
     new_password = 'thisIsaGreatPassw0rd!!!'
 
