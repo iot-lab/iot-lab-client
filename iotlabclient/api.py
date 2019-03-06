@@ -37,6 +37,8 @@ class Api(object):
             configuration.username = username
             configuration.password = password
             configuration.host = url
+        if configuration.username is None or configuration.password is None:
+            raise ValueError('Missing username/password for IoT-LAB client')
 
         self.client = ApiClient(configuration, pool_threads=None)
 
