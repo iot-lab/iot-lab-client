@@ -28,6 +28,7 @@ from iotlabclient.client.rest import ApiException
 
 api = API.model_mobilities
 cur_dir = os.path.dirname(__file__)
+models_dir = os.path.join(cur_dir, 'models')
 
 """
 endpoints:
@@ -91,7 +92,7 @@ def saved_model():
 
     saved = api.save_user_model_mobility(
         model=model,
-        script=os.path.join(cur_dir, 'script.py')
+        script=os.path.join(models_dir, 'script.py')
     )
 
     model.type = 'userdefined'
@@ -119,7 +120,7 @@ def test_save(saved_model):
     try:
         api.save_user_model_mobility(
             model=saved_model,
-            script=os.path.join(cur_dir, 'script.py')
+            script=os.path.join(models_dir, 'script.py')
         )
     except ApiException as e:
         assert e.status == 500
@@ -129,7 +130,7 @@ def test_save(saved_model):
 def test_modify(saved_model):
     saved_model.script = 'new_script.py'
 
-    new_script = os.path.join(cur_dir, 'new_script.py')
+    new_script = os.path.join(cur_dir, 'models', 'new_script.py')
 
     api.modify_user_model_mobility(
         name=saved_model.name,
@@ -155,7 +156,7 @@ def test_rename(saved_model):
     api.modify_user_model_mobility(
         name=old_name,
         model=saved_model,
-        script=os.path.join(cur_dir, 'script.py')
+        script=os.path.join(models_dir, 'script.py')
     )
 
     try:
