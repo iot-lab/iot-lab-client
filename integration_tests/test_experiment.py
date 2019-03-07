@@ -25,7 +25,7 @@ from uuid import UUID
 import pytest
 from pytest import fail
 
-from integration_tests import SITE, SITE_TLD, API
+from integration_tests import SITE, SITE_TLD, API, TESTUSER_LOGIN
 from integration_tests.utils import wait_until
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
@@ -38,7 +38,6 @@ api = API.experiment
 experiments = API.experiments
 
 cur_dir = os.path.dirname(__file__)
-
 
 """
 endpoints:
@@ -69,34 +68,46 @@ endpoints:
 
 
 def test_get():
-    experiment_id = 13921
+    experiment_id = 14187
     experiment = api.get_experiment(experiment_id)
 
-    assert experiment.to_dict() == {
-        'id': 13921,
-        'name': '',
-        'type': 'physical',
-        'user': 'berthome',
-        'nb_nodes': 2,
-        'state': 'Stopped',
-        'submitted_duration': 20,
-        'effective_duration': 5,
-        'scheduled_date': '1970-01-01T00:00:00Z',
-        'start_date': '2019-02-15T13:34:54Z',
-        'stop_date': '2019-02-15T13:40:30Z',
-        'submission_date': '2019-02-15T13:34:53Z', 'profiles': None,
-        'mobilities': {'mobilityname': None},
-        'nodes': [
-            'm3-202.devlille.iot-lab.info',
-            'm3-203.devlille.iot-lab.info'
+    assert experiment.to_dict() == dict(
+        id=14187,
+        name='test_client',
+        type='alias',
+        user=TESTUSER_LOGIN,
+        nb_nodes=1,
+        state='Stopped',
+        submitted_duration=10,
+        effective_duration=0,
+        scheduled_date='1970-01-01T00:00:00Z',
+        start_date='2019-03-06T12:45:22Z',
+        stop_date='2019-03-06T12:45:35Z',
+        submission_date='2019-03-06T12:45:20Z',
+        profiles=None,
+        mobilities=None,
+        nodes=[
+            dict(
+                alias='1',
+                nbnodes=1,
+                properties=dict(
+                    archi='m3:at86rf231',
+                    mobile=False,
+                    site='devgrenoble'
+                )
+            )
         ],
-        'duration': None,
-        'reservation': None,
-        'profileassociations': None,
-        'firmwareassociations': None,
-        'mobilityassociations': None,
-        'siteassociations': None
-    }
+        duration=None,
+        reservation=None,
+        profileassociations=None,
+        firmwareassociations=[
+            dict(
+                firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
+                nodes=['1']
+            )
+        ],
+        mobilityassociations=None,
+        siteassociations=None)
 
 
 EXPERIMENT = ExperimentAlias(
