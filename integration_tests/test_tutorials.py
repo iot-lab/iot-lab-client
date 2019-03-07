@@ -20,7 +20,7 @@ import os
 
 from paramiko import SSHClient
 
-from integration_tests import API, WSN430_SITE
+from integration_tests import API, WSN430_SITE, SITE
 from integration_tests.utils import wait_until
 from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  Alias, ArchiRadioString)
@@ -97,6 +97,83 @@ Type command
 \tl:	luminosity measure
 \ts:	send a radio packet
 
+ Type Enter to stop printing this help"""
+
+    assert expected in '\n'.join(lines)
+
+
+def test_m3():
+    """
+    runs
+    https://www.iot-lab.info/tutorials/submit-experiment-m3-web/
+    """
+    experiment = ExperimentAlias(
+        duration=10,
+        name="test_client_tutorial_m3",
+        nodes=[
+            Alias(
+                alias='1',
+                nbnodes=2,
+                properties=AliasProperties(
+                    archi=ArchiRadioString.M3_AT86RF231,
+                    site=SITE,
+                    mobile=False)
+            )
+        ],
+        firmwareassociations=[
+            FirmwareAliasAssociation(
+                firmwarename='tutorial_m3.elf',
+                nodes=['1']
+            ),
+        ])
+
+    submitted = API.experiments.submit_experiment(
+        experiment=experiment,
+        files=[os.path.join(cur_dir, 'tutorial_m3.elf')])
+
+    exp_id = submitted.id
+
+    wait_until(
+        lambda: API.experiment.get_experiment(exp_id).state == 'Running',
+        interval=1,
+        timeout=30
+    )
+
+    deployment = API.experiment.get_experiment_deployment(exp_id)
+
+    assert deployment._1 is None
+
+    assert submitted
+
+    user = API.users.get_user()
+
+    experiment = API.experiment.get_experiment(exp_id)
+
+    node0 = experiment.nodes[0]
+
+    client, stdin, stdout, stderr = node_connect(user, SITE, node0)
+
+    lines = []
+    while True:
+        line = stdout.readline().rstrip()
+        print('> ' + line)
+        lines.append(line)
+        if 'Type Enter to stop printing this help' in line:
+            break
+
+    client.close()
+
+    expected = """IoT-LAB Simple Demo program
+Type command
+\th:    print this help
+\tt:    temperature measure
+\tl:    luminosity measure
+\tp:    pressure measure
+\tu:    print node uid
+\td:    read current date using control_node
+\ts:    send a radio packet
+\tb:    send a big radio packet
+\te:    toggle leds blinking
  Type Enter to stop printing this help"""
 
     assert expected in '\n'.join(lines)
