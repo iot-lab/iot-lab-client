@@ -29,7 +29,7 @@ def test_get_experiments():
 
     assert experiments.items
 
-    exp_id = 13921
+    exp_id = 14187
     one_exp = API.experiment.get_experiment(exp_id)
     one_exp_dict = six.iteritems(one_exp.to_dict())
 
