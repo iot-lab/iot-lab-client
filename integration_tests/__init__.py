@@ -21,7 +21,6 @@
 import os
 
 from dotenv import load_dotenv, find_dotenv
-from iotlabclient.client.rest import ApiException
 
 from iotlabclient.api import Api
 from iotlabclient.client import Configuration
