@@ -27,20 +27,20 @@ from iotlabclient.client import Configuration
 
 load_dotenv(find_dotenv())
 
-HOST = os.environ.get('IOTLAB-HOST', 'https://devwww.iot-lab.info/api')
+HOST = os.environ.get('IOTLAB_HOST', 'https://devwww.iot-lab.info/api')
 print('HOST: ' + HOST)
 
 # should have a few m3 nodes
-SITE = os.environ.get('IOTLAB-M3-SITE', 'devgrenoble')
+SITE = os.environ.get('IOTLAB_M3_SITE', 'devgrenoble')
 TLD = '.iot-lab.info'
 SITE_TLD = SITE + TLD
 
 # site with some robots
-ROBOT_SITE = os.environ.get('IOTLAB-ROBOT-SITE', 'devlille')
+ROBOT_SITE = os.environ.get('IOTLAB_ROBOT_SITE', 'devlille')
 
-WSN430_SITE = os.environ.get('IOTLAB-WSN430-SITE', 'devstrasbourg')
-TESTUSER_LOGIN = os.environ.get('IOTLAB-TESTUSER-LOGIN')
-TESTUSER_PASSWORD = os.environ.get('IOTLAB-TESTUSER-PASSWORD')
+WSN430_SITE = os.environ.get('IOTLAB_WSN430_SITE', 'devstrasbourg')
+TESTUSER_LOGIN = os.environ.get('IOTLAB_TESTUSER_LOGIN')
+TESTUSER_PASSWORD = os.environ.get('IOTLAB_TESTUSER_PASSWORD')
 
 configuration = Configuration()
 configuration.username = TESTUSER_LOGIN

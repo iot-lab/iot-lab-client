@@ -23,10 +23,10 @@ import os
 import time
 
 
-EMAIL = os.environ.get('IOTLAB-EMAIL')
-EMAIL_PASSWORD = os.environ.get('IOTLAB-EMAIL-PASSWORD')
-IMAP = os.environ.get('IOTLAB-IMAP')
-IMAP_PORT = os.environ.get('IOTLAB-IMAP-PORT')
+EMAIL = os.environ.get('IOTLAB_EMAIL')
+EMAIL_PASSWORD = os.environ.get('IOTLAB_EMAIL_PASSWORD')
+IMAP = os.environ.get('IOTLAB_IMAP')
+IMAP_PORT = os.environ.get('IOTLAB_IMAP_PORT')
 
 
 def imap():
