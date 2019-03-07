@@ -30,7 +30,7 @@ from iotlabclient.client import FirmwareAliasAssociation
 cur_dir = os.path.dirname(__file__)
 
 
-@pytest.skip('WSN430 are going to be deprecated')
+@pytest.mark.skip('WSN430 are going to be deprecated')
 def test_wsn430():
     """
     runs
