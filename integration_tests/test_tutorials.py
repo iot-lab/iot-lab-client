@@ -18,6 +18,7 @@
 # knowledge of the CeCILL license and that you accept its terms.
 import os
 
+import pytest
 from paramiko import SSHClient
 
 from integration_tests import API, WSN430_SITE, SITE
@@ -29,6 +30,7 @@ from iotlabclient.client import FirmwareAliasAssociation
 cur_dir = os.path.dirname(__file__)
 
 
+@pytest.skip('WSN430 are going to be deprecated')
 def test_wsn430():
     """
     runs
