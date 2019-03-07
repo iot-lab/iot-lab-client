@@ -21,9 +21,10 @@
 import os
 
 from dotenv import load_dotenv, find_dotenv
+from iotlabclient.client.rest import ApiException
 
 from iotlabclient.api import Api
-
+from iotlabclient.client import Configuration
 
 load_dotenv(find_dotenv())
 
@@ -31,7 +32,7 @@ HOST = os.environ.get('IOTLAB-HOST', 'https://devwww.iot-lab.info/api')
 print('HOST: ' + HOST)
 
 # should have a few m3 nodes
-SITE = os.environ.get('IOTLAB-SITE', 'devgrenoble')
+SITE = os.environ.get('IOTLAB-M3-SITE', 'devgrenoble')
 TLD = '.iot-lab.info'
 SITE_TLD = SITE + TLD
 
@@ -39,5 +40,16 @@ SITE_TLD = SITE + TLD
 ROBOT_SITE = os.environ.get('IOTLAB-ROBOT-SITE', 'devlille')
 
 WSN430_SITE = os.environ.get('IOTLAB-WSN430-SITE', 'devstrasbourg')
+TESTUSER_LOGIN = os.environ.get('IOTLAB-TESTUSER-LOGIN')
+TESTUSER_PASSWORD = os.environ.get('IOTLAB-TESTUSER-PASSWORD')
 
-API = Api(host=HOST)
+configuration = Configuration()
+configuration.username = TESTUSER_LOGIN
+configuration.password = TESTUSER_PASSWORD
+configuration.host = HOST
+API = Api(configuration=configuration)
+unauth = Configuration()
+UNAUTH = Api(configuration=unauth)
+
+# try login
+API.users.get_user()

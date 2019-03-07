@@ -41,24 +41,14 @@ import pytest
 import six
 from pytest import fail
 
-from integration_tests import API, HOST
+from integration_tests import (API, HOST, UNAUTH,
+                               TESTUSER_LOGIN, TESTUSER_PASSWORD)
 from integration_tests.mail import wait_email, EMAIL
 from iotlabclient.api import Api
 from iotlabclient.client import (UserRequest, Configuration,
                                  ActivateUserRequest, UpdatePasswordRequest)
 
 api = API.users
-
-# configuration for "Test User" user
-
-TESTUSER_LOGIN = os.environ.get('TESTUSER-LOGIN')
-TESTUSER_PASSWORD = os.environ.get('TESTUSER-PASSWORD')
-
-configuration = Configuration()
-configuration.username = TESTUSER_LOGIN
-configuration.password = TESTUSER_PASSWORD
-configuration.host = HOST
-api = Api(configuration=configuration).users
 
 # force-set at beginning in case changed outside the test
 # api.set_user_ssh_keys(user_ssh_keys=UserSshKeys(sshkeys=get_ssh_keys()))
@@ -128,11 +118,11 @@ def test_create_activate_user():
     user.email = user.email.replace('@', '+%s@' % uid)
 
     # signup as unauthenticated
+    UNAUTH.signup_user(request=user)
+
+    # configuration for connections afterward
     configuration = Configuration()
     configuration.host = HOST
-    api = Api(configuration=configuration).users
-
-    api.signup_user(request=user)
 
     def do_activate_user(msg):
         if not match_email(msg, 'FIT IoT-LAB account email validation',
@@ -156,7 +146,7 @@ def test_create_activate_user():
     # get the generated login / password
     wait_email(do_get_password)
 
-    api = Api(configuration=configuration).users
+    api = Api(host=HOST, configuration=configuration).users
 
     created_user = api.get_user()
 
@@ -236,7 +226,7 @@ def test_update_password():
     new_password = 'thisIsaGreatPassw0rd!!!'
 
     api.update_password(request=UpdatePasswordRequest(
-        old_password=configuration.password,
+        old_password=TESTUSER_PASSWORD,
         new_password=new_password,
         confirm_new_password=new_password,
     ))
@@ -252,8 +242,8 @@ def test_update_password():
 
     changed_password_api.update_password(request=UpdatePasswordRequest(
         old_password=new_password,
-        new_password=configuration.password,
-        confirm_new_password=configuration.password,
+        new_password=TESTUSER_PASSWORD,
+        confirm_new_password=TESTUSER_PASSWORD,
     ))
 
     # try login
