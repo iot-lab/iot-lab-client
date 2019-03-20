@@ -23,6 +23,7 @@ import time
 from uuid import UUID
 
 import pytest
+import six
 from pytest import fail
 
 from integration_tests import SITE, SITE_TLD, API, TESTUSER_LOGIN
@@ -112,7 +113,7 @@ def test_get():
 
 
 ALIAS_EXPERIMENT = ExperimentAlias(
-    duration=10,
+    duration=60,
     name="test_client_alias",
     nodes=[
         Alias(
@@ -133,7 +134,7 @@ ALIAS_EXPERIMENT = ExperimentAlias(
 
 
 PHYSICAL_EXPERIMENT = ExperimentPhysical(
-    duration=10,
+    duration=60,
     name='test_client_physical',
     nodes=[
         'm3-14.devgrenoble.iot-lab.info'
@@ -289,10 +290,18 @@ def test_get_archive(experiment_id, experiment_nodes):
 
     extracted = files.extractfile(json_experiment)
     json_experiment_content = extracted.read().decode('utf-8')
-    experiment_json = json.loads(json_experiment_content)
-    experiment_data = api.get_experiment(experiment_id)
 
-    assert experiment_json == experiment_data
+    experiment_json = json.loads(json_experiment_content)
+    assert experiment_json == dict(
+        type='physical',
+        duration=60,
+        name='test_client_physical',
+        firmwareassociations=[
+            dict(
+                firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
+                nodes=['m3-14.devgrenoble.iot-lab.info'])],
+        nodes=['m3-14.devgrenoble.iot-lab.info']
+    )
 
 
 def test_get_deployment(experiment_id, experiment_nodes):
@@ -386,9 +395,19 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
 
 
 def test_stop_experiment():
+    # start then immediately stop an experiment
+
+    EXPERIMENT = ExperimentPhysical(
+        duration=60,
+        name='test_client_stop',
+        nodes=[
+            'm3-15.devgrenoble.iot-lab.info'
+        ]
+    )
+
     exp = start_experiment(EXPERIMENT)
 
-    time.sleep(1)
+    time.sleep(5)
 
     result = api.stop_experiment(exp.id)
 

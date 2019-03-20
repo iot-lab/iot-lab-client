@@ -167,15 +167,16 @@ def test_m3():
 
     expected = """IoT-LAB Simple Demo program
 Type command
-\th:    print this help
-\tt:    temperature measure
-\tl:    luminosity measure
-\tp:    pressure measure
-\tu:    print node uid
-\td:    read current date using control_node
-\ts:    send a radio packet
-\tb:    send a big radio packet
-\te:    toggle leds blinking
+\th:\tprint this help
+\tt:\ttemperature measure
+\tl:\tluminosity measure
+\tp:\tpressure measure
+\tu:\tprint node uid
+\td:\tread current date using control_node
+\ts:\tsend a radio packet
+\tb:\tsend a big radio packet
+\te:\ttoggle leds blinking
+
  Type Enter to stop printing this help"""
 
     assert expected in '\n'.join(lines)
