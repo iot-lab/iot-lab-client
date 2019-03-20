@@ -31,7 +31,7 @@ def test_get_experiments():
 
     exp_id = 14187
     one_exp = API.experiment.get_experiment(exp_id)
-    one_exp_dict = six.iteritems(one_exp.to_dict())
+    one_exp_dict = list(six.iteritems(one_exp.to_dict()))
 
     for exp in experiments.items:
         if exp.id == exp_id:
