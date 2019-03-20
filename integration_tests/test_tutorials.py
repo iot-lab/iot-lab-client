@@ -19,7 +19,7 @@
 import os
 
 import pytest
-from paramiko import SSHClient
+from paramiko import SSHClient, AutoAddPolicy
 
 from integration_tests import API, WSN430_SITE, SITE
 from integration_tests.utils import wait_until
@@ -186,6 +186,7 @@ def node_connect(user, site, node):
     site_tld = '%s.iot-lab.info' % site
     client = SSHClient()
     client.load_system_host_keys()
+    client.set_missing_host_key_policy(AutoAddPolicy())
     client.connect(site_tld, username=user.login)
 
     stdin, stdout, stderr = client.exec_command('nc %s 20000' % node)

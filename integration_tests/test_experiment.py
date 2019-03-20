@@ -23,7 +23,6 @@ import time
 from uuid import UUID
 
 import pytest
-import six
 from pytest import fail
 
 from integration_tests import SITE, SITE_TLD, API, TESTUSER_LOGIN
