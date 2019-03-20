@@ -63,11 +63,13 @@ from iotlabclient.client.models.mobility_associations import MobilityAssociation
 from iotlabclient.client.models.model import Model
 from iotlabclient.client.models.models_list_response import ModelsListResponse
 from iotlabclient.client.models.node import Node
+from iotlabclient.client.models.node_state import NodeState
 from iotlabclient.client.models.nodes_ids_response import NodesIdsResponse
 from iotlabclient.client.models.nodes_ids_response_archis import NodesIdsResponseArchis
 from iotlabclient.client.models.nodes_ids_response_items import NodesIdsResponseItems
 from iotlabclient.client.models.nodes_ids_response_states import NodesIdsResponseStates
 from iotlabclient.client.models.nodes_response import NodesResponse
+from iotlabclient.client.models.nodes_states_response import NodesStatesResponse
 from iotlabclient.client.models.point import Point
 from iotlabclient.client.models.profile import Profile
 from iotlabclient.client.models.profile_alias_association import ProfileAliasAssociation

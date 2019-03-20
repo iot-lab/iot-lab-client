@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **organization** | **str** |  | [optional] 
 **motivations** | **str** |  | [optional] 
 **city** | **str** |  | [optional] 
+**password** | **str** |  | [optional] 
 **category** | **str** |  | [optional] 
 **sshkeys** | **list[str]** |  | [optional] 
 **groups** | **list[str]** |  | [optional] 

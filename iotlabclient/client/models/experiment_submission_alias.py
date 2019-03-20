@@ -289,7 +289,7 @@ class ExperimentSubmissionAlias(object):
         :param state: The state of this ExperimentSubmissionAlias.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Running", "Launching", "Waiting", "Stopped", "Finishing", "Terminated", "toLaunch"]  # noqa: E501
+        allowed_values = ["Running", "Launching", "Waiting", "Stopped", "Finishing", "Terminated", "toLaunch", "Error"]  # noqa: E501
         if state not in allowed_values:
             raise ValueError(
                 "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501

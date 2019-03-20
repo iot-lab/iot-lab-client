@@ -110,6 +110,8 @@ Class | Method | HTTP request | Description
 *RobotsApi* | [**get_map_coordinates**](iotlabclient/client/docs/RobotsApi.md#get_map_coordinates) | **POST** /robots/{site}/coordinates/map | Returns robots map coordinates from ros coordinates.
 *RobotsApi* | [**get_map_image**](iotlabclient/client/docs/RobotsApi.md#get_map_image) | **GET** /robots/{site}/map/image | Returns robots site map image
 *RobotsApi* | [**get_ros_coordinates**](iotlabclient/client/docs/RobotsApi.md#get_ros_coordinates) | **POST** /robots/{site}/coordinates/ros | Returns robots ros coordinates from map coordinates.
+*SchedulerApi* | [**get_experiments_jobs**](iotlabclient/client/docs/SchedulerApi.md#get_experiments_jobs) | **GET** /experiments/jobs | Returns past &amp; future testbed experiments jobs lists
+*SchedulerApi* | [**get_nodes_states**](iotlabclient/client/docs/SchedulerApi.md#get_nodes_states) | **GET** /experiments/nodes_states | Returns nodes states, past &amp; current
 *SitesApi* | [**get_sites**](iotlabclient/client/docs/SitesApi.md#get_sites) | **GET** /sites | Returns testbed sites list.
 *SitesApi* | [**get_sites_details**](iotlabclient/client/docs/SitesApi.md#get_sites_details) | **GET** /sites/details | Returns tesbed sites details list.
 *UsersApi* | [**activate_user**](iotlabclient/client/docs/UsersApi.md#activate_user) | **POST** /users/activate | Activate user.
@@ -175,11 +177,13 @@ Class | Method | HTTP request | Description
  - [Model](iotlabclient/client/docs/Model.md)
  - [ModelsListResponse](iotlabclient/client/docs/ModelsListResponse.md)
  - [Node](iotlabclient/client/docs/Node.md)
+ - [NodeState](iotlabclient/client/docs/NodeState.md)
  - [NodesIdsResponse](iotlabclient/client/docs/NodesIdsResponse.md)
  - [NodesIdsResponseArchis](iotlabclient/client/docs/NodesIdsResponseArchis.md)
  - [NodesIdsResponseItems](iotlabclient/client/docs/NodesIdsResponseItems.md)
  - [NodesIdsResponseStates](iotlabclient/client/docs/NodesIdsResponseStates.md)
  - [NodesResponse](iotlabclient/client/docs/NodesResponse.md)
+ - [NodesStatesResponse](iotlabclient/client/docs/NodesStatesResponse.md)
  - [Point](iotlabclient/client/docs/Point.md)
  - [Profile](iotlabclient/client/docs/Profile.md)
  - [ProfileAliasAssociation](iotlabclient/client/docs/ProfileAliasAssociation.md)

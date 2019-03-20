@@ -25,7 +25,7 @@ from iotlabclient.client import ExperimentApi as clientExperimentApi, \
     ExperimentsApi, ApiClient, \
     Configuration, FirmwaresApi, \
     MonitoringApi, NodesApi, RobotsApi, \
-    SitesApi, UsersApi, CircuitMobilitiesApi, ModelMobilitiesApi
+    SitesApi, UsersApi, CircuitMobilitiesApi, ModelMobilitiesApi, SchedulerApi
 from iotlabclient.utils import read_custom_api_url
 
 
@@ -54,6 +54,7 @@ class Api(object):
         self.robots = RobotsApi(self.client)
         self.sites = SitesApi(self.client)
         self.users = UsersApi(self.client)
+        self.scheduler = SchedulerApi(self.client)
 
 
 class ExperimentApi(object):

@@ -38,6 +38,7 @@ class UserRequest(object):
         'organization': 'str',
         'motivations': 'str',
         'city': 'str',
+        'password': 'str',
         'category': 'str',
         'sshkeys': 'list[str]',
         'groups': 'list[str]'
@@ -51,12 +52,13 @@ class UserRequest(object):
         'organization': 'organization',
         'motivations': 'motivations',
         'city': 'city',
+        'password': 'password',
         'category': 'category',
         'sshkeys': 'sshkeys',
         'groups': 'groups'
     }
 
-    def __init__(self, first_name=None, last_name=None, email=None, country=None, organization=None, motivations=None, city=None, category=None, sshkeys=None, groups=None):  # noqa: E501
+    def __init__(self, first_name=None, last_name=None, email=None, country=None, organization=None, motivations=None, city=None, password=None, category=None, sshkeys=None, groups=None):  # noqa: E501
         """UserRequest - a model defined in OpenAPI"""  # noqa: E501
 
         self._first_name = None
@@ -66,6 +68,7 @@ class UserRequest(object):
         self._organization = None
         self._motivations = None
         self._city = None
+        self._password = None
         self._category = None
         self._sshkeys = None
         self._groups = None
@@ -85,6 +88,8 @@ class UserRequest(object):
             self.motivations = motivations
         if city is not None:
             self.city = city
+        if password is not None:
+            self.password = password
         if category is not None:
             self.category = category
         if sshkeys is not None:
@@ -238,6 +243,27 @@ class UserRequest(object):
         """
 
         self._city = city
+
+    @property
+    def password(self):
+        """Gets the password of this UserRequest.  # noqa: E501
+
+
+        :return: The password of this UserRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this UserRequest.
+
+
+        :param password: The password of this UserRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._password = password
 
     @property
     def category(self):
