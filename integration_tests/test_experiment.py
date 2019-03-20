@@ -31,6 +31,7 @@ from iotlabclient.client import (ExperimentAlias, AliasProperties,
                                  FirmwareAliasAssociation, Alias,
                                  ScriptAssociations, ScriptAssociationsScript,
                                  ScriptAssociationsScriptconfig,
+                                 ExperimentPhysical, FirmwareAssociation,
                                  Profile, ProfileConsumption,
                                  ProfileRadio, rest)
 
@@ -110,9 +111,9 @@ def test_get():
         siteassociations=None)
 
 
-EXPERIMENT = ExperimentAlias(
+ALIAS_EXPERIMENT = ExperimentAlias(
     duration=10,
-    name="test_client",
+    name="test_client_alias",
     nodes=[
         Alias(
             alias='1',
@@ -129,6 +130,21 @@ EXPERIMENT = ExperimentAlias(
             nodes=['1']
         ),
     ])
+
+
+PHYSICAL_EXPERIMENT = ExperimentPhysical(
+    duration=10,
+    name='test_client_physical',
+    nodes=[
+        'm3-14.devgrenoble.iot-lab.info'
+    ],
+    firmwareassociations=[
+        FirmwareAssociation(
+            firmwarename='iotlab_m3_tutorial',
+            nodes=['m3-14.devgrenoble.iot-lab.info']
+        )
+    ]
+)
 
 
 def stop_experiment(exp):
@@ -162,7 +178,7 @@ def running_experiment():
                 break
 
     if exp is None:
-        exp = start_experiment(EXPERIMENT)
+        exp = start_experiment(PHYSICAL_EXPERIMENT)
 
     yield exp
     stop_experiment(exp)
@@ -209,8 +225,8 @@ def test_flash_experiment_nodes_local(experiment_id, experiment_nodes):
 @pytest.mark.parametrize('command', [
     'start',
     'stop',
-    'reset',
-    'update-idle',
+    # 'reset',
+    # 'update-idle',
     'profile-reset',
 ])
 def test_commands(command, experiment_id, experiment_nodes):
@@ -249,12 +265,16 @@ def test_get_token(experiment_id):
 
 
 def test_get_archive(experiment_id, experiment_nodes):
+    log_file = '{0}/{0}.log'.format(experiment_id)
+    json_file = '{0}/{0}.json'.format(experiment_id)
+
     archive = api.get_experiment_archive(experiment_id)
 
     files = tarfile.open(archive)
+    files.list()
     members = {m.path: m for m in files.members}
 
-    log_file = '{0}/{0}.log'.format(experiment_id)
+    assert json_file in members
     assert log_file in members
 
     experiment_log = members[log_file]
@@ -264,6 +284,15 @@ def test_get_archive(experiment_id, experiment_nodes):
 
     json_data = json.loads(experiment_log_content)
     assert json_data == {'0': experiment_nodes}
+
+    json_experiment = members[json_file]
+
+    extracted = files.extractfile(json_experiment)
+    json_experiment_content = extracted.read().decode('utf-8')
+    experiment_json = json.loads(json_experiment_content)
+    experiment_data = api.get_experiment(experiment_id)
+
+    assert experiment_json == experiment_data
 
 
 def test_get_deployment(experiment_id, experiment_nodes):
