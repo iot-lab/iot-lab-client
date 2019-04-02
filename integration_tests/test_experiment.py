@@ -400,7 +400,7 @@ def test_stop_experiment():
         duration=60,
         name='test_client_stop',
         nodes=[
-            'm3-15.devgrenoble.iot-lab.info'
+            'm3-13.devgrenoble.iot-lab.info'
         ]
     )
 
