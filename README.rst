@@ -8,6 +8,9 @@ IoT-LAB client is a basic Python library to access the FIT IoT-LAB API
 It is mostly automatically generated from the OpenAPI spec (available `here <http://api.iot-lab.info/swagger.yaml>`_
 ) using OpenAPI-generator_
 
+The auto-generated documentation for the client library can be found in the client `README <iotlabclient/client_README.md>`_
+
+
 License
 -------
 
