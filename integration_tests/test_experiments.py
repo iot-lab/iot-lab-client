@@ -46,7 +46,7 @@ def test_get_experiments():
     fail('expected experiment not found')
 
 
-@pytest.mark.skip('race condition between get_experiments and get_experiments_total')
+@pytest.mark.skip
 def test_get_experiments_total():
     # wait for running to be 0, otherwise race issue between the two next steps
     wait_until(lambda: api.get_experiments_total().running == 0,
