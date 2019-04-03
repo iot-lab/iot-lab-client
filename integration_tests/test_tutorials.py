@@ -181,6 +181,8 @@ Type command
 
     assert expected in '\n'.join(lines)
 
+    API.experiment.stop_experiment(exp_id)
+
 
 def node_connect(user, site, node):
     site_tld = '%s.iot-lab.info' % site
