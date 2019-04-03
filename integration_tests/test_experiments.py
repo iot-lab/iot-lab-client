@@ -47,10 +47,6 @@ def test_get_experiments():
 
 def test_get_experiments_total():
     # wait for running to be 0, otherwise race issue between the two next steps
-    experiments = api.get_experiments()
-    experiments_total = api.get_experiments_total()
-
-    
     wait_until(lambda: api.get_experiments_total().running == 0,
                interval=0.5,
                timeout=30)
