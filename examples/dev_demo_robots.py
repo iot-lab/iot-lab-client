@@ -2,7 +2,7 @@ import time
 
 from iotlabclient.api import Api
 from iotlabclient.auth import get_user_credentials
-from iotlabclient.client import Configuration, ExperimentPhysical, FirmwareAssociation, MobilityAssociation
+from iotlabclient.client import Configuration, ExperimentPhysical, FirmwareAssociation
 
 devconfiguration = Configuration()
 devconfiguration.username, devconfiguration.password = get_user_credentials()
