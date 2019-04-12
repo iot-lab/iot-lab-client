@@ -181,7 +181,9 @@ def running_experiment():
         exp = start_experiment(PHYSICAL_EXPERIMENT)
 
     yield exp
-    stop_experiment(exp)
+    state = api.get_experiment(exp.id).state
+    if state in ["Running", "Waiting", "Launching"]:
+        stop_experiment(exp)
 
 
 @pytest.fixture
@@ -413,5 +415,9 @@ def test_stop_experiment():
     expected = dict(id=exp.id, status='Delete request registered')
     assert result.to_dict() == expected
 
-    wait_until(lambda: api.get_experiment(exp.id).state == 'Stopped',
-               interval=0.5, timeout=20)
+    def experiment_is_stopped():
+        state = api.get_experiment(exp.id).state
+        print(state)
+        return state == 'Stopped'
+
+    wait_until(experiment_is_stopped, interval=0.5, timeout=120)
