@@ -43,7 +43,7 @@ def read_custom_api_url():
 
     if api_url:
         sys.stderr.write("Using custom api_url: {}\n".format(api_url))
-    return api_url
+    return api_url.rstrip('/')
 
 
 def flatten_list_list(list_list):
