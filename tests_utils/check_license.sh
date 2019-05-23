@@ -23,6 +23,7 @@ files_list=$(echo "${files_list}" | grep -v \
     -e 'Makefile' \
     -e 'MANIFEST.in' \
     -e 'iotlabclient/client/*' \
+    -e 'examples/*' \
     -e 'integration_tests/models/*' \
     -e 'examples/' \
     -e '.travis.yml' \

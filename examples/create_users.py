@@ -1,4 +1,3 @@
-import os
 
 from iotlabclient.utils import read_custom_api_url
 
