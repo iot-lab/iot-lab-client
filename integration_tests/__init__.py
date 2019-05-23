@@ -31,14 +31,14 @@ HOST = os.environ.get('IOTLAB_HOST', 'https://devwww.iot-lab.info/api')
 print('HOST: ' + HOST)
 
 # should have a few m3 nodes
-SITE = os.environ.get('IOTLAB_M3_SITE', 'devgrenoble')
+SITE = os.environ.get('IOTLAB_M3_SITE')
 TLD = '.iot-lab.info'
 SITE_TLD = SITE + TLD
 
 # site with some robots
-ROBOT_SITE = os.environ.get('IOTLAB_ROBOT_SITE', 'devlille')
+ROBOT_SITE = os.environ.get('IOTLAB_ROBOT_SITE')
 
-WSN430_SITE = os.environ.get('IOTLAB_WSN430_SITE', 'devstrasbourg')
+WSN430_SITE = os.environ.get('IOTLAB_WSN430_SITE')
 TESTUSER_LOGIN = os.environ.get('IOTLAB_TESTUSER_LOGIN')
 TESTUSER_PASSWORD = os.environ.get('IOTLAB_TESTUSER_PASSWORD')
 

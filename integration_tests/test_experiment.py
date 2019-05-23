@@ -69,50 +69,80 @@ endpoints:
 
 
 def test_get():
-    experiment_id = 14187
-    experiment = api.get_experiment(experiment_id)
+    if SITE.startswith('dev'):
+        experiment_id = 14187
+        experiment = api.get_experiment(experiment_id)
 
-    assert experiment.to_dict() == dict(
-        id=14187,
-        name='test_client',
-        type='alias',
-        user=TESTUSER_LOGIN,
-        nb_nodes=1,
-        state='Stopped',
-        submitted_duration=10,
-        effective_duration=0,
-        scheduled_date='1970-01-01T00:00:00Z',
-        start_date='2019-03-06T12:45:22Z',
-        stop_date='2019-03-06T12:45:35Z',
-        submission_date='2019-03-06T12:45:20Z',
-        profiles=None,
-        mobilities=None,
-        nodes=[
-            dict(
-                alias='1',
-                nbnodes=1,
-                properties=dict(
-                    archi='m3:at86rf231',
-                    mobile=False,
-                    site='devgrenoble'
+        assert experiment.to_dict() == dict(
+            id=14187,
+            name='test_client',
+            type='alias',
+            user=TESTUSER_LOGIN,
+            nb_nodes=1,
+            state='Stopped',
+            submitted_duration=10,
+            effective_duration=0,
+            scheduled_date='1970-01-01T00:00:00Z',
+            start_date='2019-03-06T12:45:22Z',
+            stop_date='2019-03-06T12:45:35Z',
+            submission_date='2019-03-06T12:45:20Z',
+            profiles=None,
+            mobilities=None,
+            nodes=[
+                dict(
+                    alias='1',
+                    nbnodes=1,
+                    properties=dict(
+                        archi='m3:at86rf231',
+                        mobile=False,
+                        site='devgrenoble'
+                    )
                 )
-            )
-        ],
-        duration=None,
-        reservation=None,
-        profileassociations=None,
-        firmwareassociations=[
-            dict(
-                firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
-                nodes=['1']
-            )
-        ],
-        mobilityassociations=None,
-        siteassociations=None)
+            ],
+            duration=None,
+            reservation=None,
+            profileassociations=None,
+            firmwareassociations=[
+                dict(
+                    firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
+                    nodes=['1']
+                )
+            ],
+            mobilityassociations=None,
+            siteassociations=None)
+    else:
+        experiment_id = 164422
+        experiment = api.get_experiment(experiment_id)
+
+        assert experiment.to_dict() == dict(
+            id=164422,
+            name='test_client_alias',
+            type='physical',
+            user='iotlab',
+            nb_nodes=1,
+            state='Stopped',
+            submitted_duration=1,
+            effective_duration=0,
+            scheduled_date='1970-01-01T00:00:00Z',
+            start_date='2019-04-15T13:07:44Z',
+            stop_date='2019-04-15T13:08:11Z',
+            submission_date='2019-04-15T13:07:42Z',
+            profiles=None,
+            mobilities=None,
+            nodes=['m3-101.grenoble.iot-lab.info'],
+            duration=None,
+            reservation=None,
+            profileassociations=None,
+            firmwareassociations=[
+                dict(
+                    firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
+                    nodes=['m3-101.grenoble.iot-lab.info'])],
+            mobilityassociations=None,
+            siteassociations=None)
 
 
 ALIAS_EXPERIMENT = ExperimentAlias(
-    duration=60,
+    duration=1,
     name="test_client_alias",
     nodes=[
         Alias(
@@ -131,17 +161,16 @@ ALIAS_EXPERIMENT = ExperimentAlias(
         ),
     ])
 
-
 PHYSICAL_EXPERIMENT = ExperimentPhysical(
-    duration=60,
+    duration=1,
     name='test_client_physical',
     nodes=[
-        'm3-14.devgrenoble.iot-lab.info'
+        'm3-4.devgrenoble.iot-lab.info'
     ],
     firmwareassociations=[
         FirmwareAssociation(
             firmwarename='iotlab_m3_tutorial',
-            nodes=['m3-14.devgrenoble.iot-lab.info']
+            nodes=['m3-4.devgrenoble.iot-lab.info']
         )
     ]
 )
@@ -178,7 +207,7 @@ def running_experiment():
                 break
 
     if exp is None:
-        exp = start_experiment(PHYSICAL_EXPERIMENT)
+        exp = start_experiment(ALIAS_EXPERIMENT)
 
     yield exp
     state = api.get_experiment(exp.id).state
@@ -295,13 +324,13 @@ def test_get_archive(experiment_id, experiment_nodes):
     experiment_json = json.loads(json_experiment_content)
     assert experiment_json == dict(
         type='physical',
-        duration=60,
-        name='test_client_physical',
+        duration=1,
+        name='test_client_alias',
         firmwareassociations=[
             dict(
                 firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
-                nodes=['m3-14.devgrenoble.iot-lab.info'])],
-        nodes=['m3-14.devgrenoble.iot-lab.info']
+                nodes=experiment_nodes)],
+        nodes=experiment_nodes
     )
 
 
@@ -398,15 +427,7 @@ def test_send_cmd_profile_nodes(experiment_id, experiment_nodes):
 def test_stop_experiment():
     # start then immediately stop an experiment
 
-    EXPERIMENT = ExperimentPhysical(
-        duration=60,
-        name='test_client_stop',
-        nodes=[
-            'm3-13.devgrenoble.iot-lab.info'
-        ]
-    )
-
-    exp = start_experiment(EXPERIMENT)
+    exp = start_experiment(ALIAS_EXPERIMENT)
 
     time.sleep(5)
 

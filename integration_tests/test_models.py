@@ -20,11 +20,14 @@ import os
 import uuid
 
 import pytest
+import urllib3
 
 from integration_tests import API
 from integration_tests.utils import files_match
 from iotlabclient.client import ResourceType, Model
 from iotlabclient.client.rest import ApiException
+
+urllib3.add_stderr_logger()
 
 api = API.model_mobilities
 cur_dir = os.path.dirname(__file__)
@@ -127,10 +130,28 @@ def test_save(saved_model):
 
 
 @pytest.mark.dependency(depends=["test_save"])
-def test_modify(saved_model):
+def test_modify_script_different_name(saved_model):
     saved_model.script = 'new_script.py'
 
     new_script = os.path.join(cur_dir, 'models', 'new_script.py')
+
+    api.modify_user_model_mobility(
+        name=saved_model.name,
+        model=saved_model,
+        script=new_script
+    )
+
+    modified_model = api.get_model_mobility(name=saved_model.name)
+    assert modified_model.to_dict() == saved_model.to_dict()
+
+    modified_script = api.get_model_mobility_script(name=saved_model.name)
+
+    files_match(new_script, modified_script)
+
+
+@pytest.mark.dependency(depends=["test_save"])
+def test_modify_script_same_name(saved_model):
+    new_script = os.path.join(cur_dir, 'models', 'change', 'script.py')
 
     api.modify_user_model_mobility(
         name=saved_model.name,

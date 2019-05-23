@@ -27,7 +27,7 @@ from iotlabclient.client.rest import ApiException
 api = API.circuit_mobilities
 sites = API.sites.get_sites()
 
-site = next(item.site for item in sites.items if 'lille' in item.site)
+ROBOTS_SITE = next(item.site for item in sites.items if 'lille' in item.site)
 
 """
 endpoints:
@@ -51,22 +51,22 @@ def test_all_circuits():
 def test_all_circuits_filtered():
     data = dict(
         all=api.get_mobilities(),
-        all_site=api.get_mobilities(site=site),
+        all_site=api.get_mobilities(site=ROBOTS_SITE),
 
         all1=api.get_mobilities(
             type=ResourceType.ALL),
         all1_site=api.get_mobilities(
-            type=ResourceType.ALL, site=site),
+            type=ResourceType.ALL, site=ROBOTS_SITE),
 
         userdefined=api.get_mobilities(
             type=ResourceType.USERDEFINED),
         userdefined_site=api.get_mobilities(
-            type=ResourceType.USERDEFINED, site=site),
+            type=ResourceType.USERDEFINED, site=ROBOTS_SITE),
 
         predefined=api.get_mobilities(
             type=ResourceType.PREDEFINED),
         predefined_site=api.get_mobilities(
-            type=ResourceType.PREDEFINED, site=site),
+            type=ResourceType.PREDEFINED, site=ROBOTS_SITE),
     )
 
     for v in data.values():
@@ -90,7 +90,7 @@ def test_square1():
              'D': {'x': 22.0, 'y': 2.0, 'theta': 3.14}},
         'loop': True,
         'name': 'square1',
-        'site': site,
+        'site': ROBOTS_SITE,
         'type': 'predefined',
         'points': ['A', 'B', 'C', 'D']
     }
@@ -123,7 +123,7 @@ def saved_circuit():
         },
         points=["A", "B", "C", "D"],
         loop=True,
-        site=site,
+        site=ROBOTS_SITE,
         name='%032x' % uuid.uuid4().int  # unique circuit name
     )
 

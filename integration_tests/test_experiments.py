@@ -20,7 +20,7 @@ import pytest
 import six
 from pytest import fail
 
-from integration_tests import API
+from integration_tests import API, SITE
 from integration_tests.utils import wait_until
 
 api = API.experiments
@@ -31,7 +31,10 @@ def test_get_experiments():
 
     assert experiments.items
 
-    exp_id = 14187
+    if SITE.startswith('dev'):
+        exp_id = 14187
+    else:
+        exp_id = 164422
     one_exp = API.experiment.get_experiment(exp_id)
     one_exp_dict = list(six.iteritems(one_exp.to_dict()))
 

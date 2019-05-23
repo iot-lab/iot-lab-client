@@ -1,5 +1,6 @@
 import time
 
+from integration_tests.utils import wait_until
 from iotlabclient.api import Api
 from iotlabclient.auth import get_user_credentials
 from iotlabclient.client import Configuration, ExperimentPhysical, FirmwareAssociation
@@ -15,7 +16,7 @@ devapi.users.get_user()
 devrobots = [
     # 'm3-201.devlille.iot-lab.info',
     'm3-202.devlille.iot-lab.info',
-    # 'm3-203.devlille.iot-lab.info',
+    'm3-203.devlille.iot-lab.info',
     # 'm3-204.devlille.iot-lab.info',
     # 'm3-205.devlille.iot-lab.info',
 ]
@@ -38,8 +39,16 @@ dev_exp = devapi.experiments.submit_experiment(experiment=ExperimentPhysical(
     ]
 ))
 
+exp_id = dev_exp.id
+
+wait_until(
+        lambda: devapi.experiment.get_experiment(exp_id).state == 'Running',
+        interval=1,
+        timeout=30
+    )
+
 devapi.experiment.send_cmd_mobility_robots(dev_exp.id, 'triangle')
-time.sleep(30)
+time.sleep(10)
 devapi.experiment.send_cmd_mobility_robots(dev_exp.id, 'random')
 
 pass
