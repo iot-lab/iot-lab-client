@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **reservation** | **int** |  | [optional] 
 **profileassociations** | [**list[ProfileAliasAssociation]**](ProfileAliasAssociation.md) |  | [optional] 
 **firmwareassociations** | [**list[FirmwareAliasAssociation]**](FirmwareAliasAssociation.md) |  | [optional] 
-**mobilityassociations** | [**list[MobilityAliasAssociation]**](MobilityAliasAssociation.md) |  | [optional] 
+**associations** | [**MobilityAliasAssociations**](MobilityAliasAssociations.md) |  | [optional] 
 **siteassociations** | [**ScriptAssociations**](ScriptAssociations.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

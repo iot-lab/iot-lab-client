@@ -1155,7 +1155,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str name: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1178,7 +1178,7 @@ class ExperimentApi(object):
         :param async_req bool
         :param int id: (required)
         :param str name: (required)
-        :param list[str] request_body:
+        :param list[str] nodes:
         :return: Deployment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1186,7 +1186,7 @@ class ExperimentApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'name', 'request_body']  # noqa: E501
+        all_params = ['id', 'name', 'nodes']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1227,8 +1227,8 @@ class ExperimentApi(object):
         multipart_header_params = {}
 
         body_params = None
-        if 'request_body' in local_var_params:
-            body_params = local_var_params['request_body']
+        if 'nodes' in local_var_params:
+            body_params = local_var_params['nodes']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

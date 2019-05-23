@@ -559,7 +559,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_cmd_mobility_robots**
-> Deployment send_cmd_mobility_robots(id, name, request_body=request_body)
+> Deployment send_cmd_mobility_robots(id, name, nodes=nodes)
 
 Send update robots mobility.
 
@@ -581,11 +581,11 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
-request_body = NULL # list[str] |  (optional)
+nodes = NULL # list[str] |  (optional)
 
 try:
     # Send update robots mobility.
-    api_response = api_instance.send_cmd_mobility_robots(id, name, request_body=request_body)
+    api_response = api_instance.send_cmd_mobility_robots(id, name, nodes=nodes)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ExperimentApi->send_cmd_mobility_robots: %s\n" % e)
@@ -597,7 +597,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **name** | **str**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](list.md)|  | [optional] 
 
 ### Return type
 

@@ -31,42 +31,42 @@ class MobilityAssociations(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'mobilityassociations': 'list[MobilityAssociation]'
+        'mobility': 'list[MobilityAssociation]'
     }
 
     attribute_map = {
-        'mobilityassociations': 'mobilityassociations'
+        'mobility': 'mobility'
     }
 
-    def __init__(self, mobilityassociations=None):  # noqa: E501
+    def __init__(self, mobility=None):  # noqa: E501
         """MobilityAssociations - a model defined in OpenAPI"""  # noqa: E501
 
-        self._mobilityassociations = None
+        self._mobility = None
         self.discriminator = None
 
-        if mobilityassociations is not None:
-            self.mobilityassociations = mobilityassociations
+        if mobility is not None:
+            self.mobility = mobility
 
     @property
-    def mobilityassociations(self):
-        """Gets the mobilityassociations of this MobilityAssociations.  # noqa: E501
+    def mobility(self):
+        """Gets the mobility of this MobilityAssociations.  # noqa: E501
 
 
-        :return: The mobilityassociations of this MobilityAssociations.  # noqa: E501
+        :return: The mobility of this MobilityAssociations.  # noqa: E501
         :rtype: list[MobilityAssociation]
         """
-        return self._mobilityassociations
+        return self._mobility
 
-    @mobilityassociations.setter
-    def mobilityassociations(self, mobilityassociations):
-        """Sets the mobilityassociations of this MobilityAssociations.
+    @mobility.setter
+    def mobility(self, mobility):
+        """Sets the mobility of this MobilityAssociations.
 
 
-        :param mobilityassociations: The mobilityassociations of this MobilityAssociations.  # noqa: E501
+        :param mobility: The mobility of this MobilityAssociations.  # noqa: E501
         :type: list[MobilityAssociation]
         """
 
-        self._mobilityassociations = mobilityassociations
+        self._mobility = mobility
 
     def to_dict(self):
         """Returns the model properties as a dict"""

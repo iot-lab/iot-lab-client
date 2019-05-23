@@ -50,7 +50,7 @@ class ExperimentSubmission(object):
         'reservation': 'int',
         'profileassociations': 'list[ProfileAliasAssociation]',
         'firmwareassociations': 'list[FirmwareAliasAssociation]',
-        'mobilityassociations': 'list[MobilityAliasAssociation]',
+        'associations': 'MobilityAliasAssociations',
         'siteassociations': 'ScriptAssociations'
     }
 
@@ -74,7 +74,7 @@ class ExperimentSubmission(object):
         'reservation': 'reservation',
         'profileassociations': 'profileassociations',
         'firmwareassociations': 'firmwareassociations',
-        'mobilityassociations': 'mobilityassociations',
+        'associations': 'associations',
         'siteassociations': 'siteassociations'
     }
 
@@ -84,7 +84,7 @@ class ExperimentSubmission(object):
         'alias': 'ExperimentSubmissionAlias'
     }
 
-    def __init__(self, id=None, name=None, type=None, user=None, nb_nodes=None, state=None, submitted_duration=None, effective_duration=None, scheduled_date=None, start_date=None, stop_date=None, submission_date=None, profiles=None, mobilities=None, nodes=None, duration=None, reservation=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
+    def __init__(self, id=None, name=None, type=None, user=None, nb_nodes=None, state=None, submitted_duration=None, effective_duration=None, scheduled_date=None, start_date=None, stop_date=None, submission_date=None, profiles=None, mobilities=None, nodes=None, duration=None, reservation=None, profileassociations=None, firmwareassociations=None, associations=None, siteassociations=None):  # noqa: E501
         """ExperimentSubmission - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -106,7 +106,7 @@ class ExperimentSubmission(object):
         self._reservation = None
         self._profileassociations = None
         self._firmwareassociations = None
-        self._mobilityassociations = None
+        self._associations = None
         self._siteassociations = None
         self.discriminator = 'type'
 
@@ -147,8 +147,8 @@ class ExperimentSubmission(object):
             self.profileassociations = profileassociations
         if firmwareassociations is not None:
             self.firmwareassociations = firmwareassociations
-        if mobilityassociations is not None:
-            self.mobilityassociations = mobilityassociations
+        if associations is not None:
+            self.associations = associations
         if siteassociations is not None:
             self.siteassociations = siteassociations
 
@@ -289,7 +289,7 @@ class ExperimentSubmission(object):
         :param state: The state of this ExperimentSubmission.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Running", "Launching", "Waiting", "Stopped", "Finishing", "Terminated", "toLaunch", "Error"]  # noqa: E501
+        allowed_values = ["Running", "Launching", "Waiting", "Stopped", "Finishing", "Terminated", "toLaunch"]  # noqa: E501
         if state not in allowed_values:
             raise ValueError(
                 "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
@@ -572,25 +572,25 @@ class ExperimentSubmission(object):
         self._firmwareassociations = firmwareassociations
 
     @property
-    def mobilityassociations(self):
-        """Gets the mobilityassociations of this ExperimentSubmission.  # noqa: E501
+    def associations(self):
+        """Gets the associations of this ExperimentSubmission.  # noqa: E501
 
 
-        :return: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :rtype: list[MobilityAliasAssociation]
+        :return: The associations of this ExperimentSubmission.  # noqa: E501
+        :rtype: MobilityAliasAssociations
         """
-        return self._mobilityassociations
+        return self._associations
 
-    @mobilityassociations.setter
-    def mobilityassociations(self, mobilityassociations):
-        """Sets the mobilityassociations of this ExperimentSubmission.
+    @associations.setter
+    def associations(self, associations):
+        """Sets the associations of this ExperimentSubmission.
 
 
-        :param mobilityassociations: The mobilityassociations of this ExperimentSubmission.  # noqa: E501
-        :type: list[MobilityAliasAssociation]
+        :param associations: The associations of this ExperimentSubmission.  # noqa: E501
+        :type: MobilityAliasAssociations
         """
 
-        self._mobilityassociations = mobilityassociations
+        self._associations = associations
 
     @property
     def siteassociations(self):

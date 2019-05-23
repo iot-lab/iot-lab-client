@@ -39,7 +39,7 @@ class ExperimentPhysical(object):
         'mobilities': 'CommonExperimentRequestMobilities',
         'profileassociations': 'list[ProfileAssociation]',
         'firmwareassociations': 'list[FirmwareAssociation]',
-        'mobilityassociations': 'list[MobilityAssociation]',
+        'associations': 'MobilityAssociations',
         'siteassociations': 'ScriptAssociations',
         'nodes': 'list[str]'
     }
@@ -53,18 +53,18 @@ class ExperimentPhysical(object):
         'mobilities': 'mobilities',
         'profileassociations': 'profileassociations',
         'firmwareassociations': 'firmwareassociations',
-        'mobilityassociations': 'mobilityassociations',
+        'associations': 'associations',
         'siteassociations': 'siteassociations',
         'nodes': 'nodes'
     }
 
     composed_hierarchy = {
         'anyOf': [],
-        'allOf': ["CommonExperimentRequest", "FirmwareAssociations", "MobilityAssociations", "ProfileAssociations", "SiteAssociations"],
+        'allOf': ["Associations", "CommonExperimentRequest", "FirmwareAssociations", "ProfileAssociations", "SiteAssociations"],
         'oneOf': [],
     }
 
-    def __init__(self, name=None, duration=None, type='physical', reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None, nodes=None):  # noqa: E501
+    def __init__(self, name=None, duration=None, type='physical', reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, associations=None, siteassociations=None, nodes=None):  # noqa: E501
         """ExperimentPhysical - a model defined in OpenAPI"""  # noqa: E501
 
         self._name = None
@@ -75,7 +75,7 @@ class ExperimentPhysical(object):
         self._mobilities = None
         self._profileassociations = None
         self._firmwareassociations = None
-        self._mobilityassociations = None
+        self._associations = None
         self._siteassociations = None
         self._nodes = None
         self.discriminator = None
@@ -95,8 +95,8 @@ class ExperimentPhysical(object):
             self.profileassociations = profileassociations
         if firmwareassociations is not None:
             self.firmwareassociations = firmwareassociations
-        if mobilityassociations is not None:
-            self.mobilityassociations = mobilityassociations
+        if associations is not None:
+            self.associations = associations
         if siteassociations is not None:
             self.siteassociations = siteassociations
         if nodes is not None:
@@ -273,25 +273,25 @@ class ExperimentPhysical(object):
         self._firmwareassociations = firmwareassociations
 
     @property
-    def mobilityassociations(self):
-        """Gets the mobilityassociations of this ExperimentPhysical.  # noqa: E501
+    def associations(self):
+        """Gets the associations of this ExperimentPhysical.  # noqa: E501
 
 
-        :return: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :rtype: list[MobilityAssociation]
+        :return: The associations of this ExperimentPhysical.  # noqa: E501
+        :rtype: MobilityAssociations
         """
-        return self._mobilityassociations
+        return self._associations
 
-    @mobilityassociations.setter
-    def mobilityassociations(self, mobilityassociations):
-        """Sets the mobilityassociations of this ExperimentPhysical.
+    @associations.setter
+    def associations(self, associations):
+        """Sets the associations of this ExperimentPhysical.
 
 
-        :param mobilityassociations: The mobilityassociations of this ExperimentPhysical.  # noqa: E501
-        :type: list[MobilityAssociation]
+        :param associations: The associations of this ExperimentPhysical.  # noqa: E501
+        :type: MobilityAssociations
         """
 
-        self._mobilityassociations = mobilityassociations
+        self._associations = associations
 
     @property
     def siteassociations(self):

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **mobilities** | [**CommonExperimentRequestMobilities**](CommonExperimentRequestMobilities.md) |  | [optional] 
 **profileassociations** | [**list[ProfileAssociation]**](ProfileAssociation.md) |  | [optional] 
 **firmwareassociations** | [**list[FirmwareAssociation]**](FirmwareAssociation.md) |  | [optional] 
-**mobilityassociations** | [**list[MobilityAssociation]**](MobilityAssociation.md) |  | [optional] 
+**associations** | [**MobilityAssociations**](MobilityAssociations.md) |  | [optional] 
 **siteassociations** | [**ScriptAssociations**](ScriptAssociations.md) |  | [optional] 
 **nodes** | **list[str]** |  | [optional] 
 

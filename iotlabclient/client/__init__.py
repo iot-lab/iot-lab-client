@@ -35,10 +35,12 @@ from iotlabclient.client.configuration import Configuration
 # import models into sdk package
 from iotlabclient.client.models.activate_user_request import ActivateUserRequest
 from iotlabclient.client.models.alias import Alias
+from iotlabclient.client.models.alias_associations import AliasAssociations
 from iotlabclient.client.models.alias_properties import AliasProperties
 from iotlabclient.client.models.archi import Archi
 from iotlabclient.client.models.archi_radio_string import ArchiRadioString
 from iotlabclient.client.models.archi_string import ArchiString
+from iotlabclient.client.models.associations import Associations
 from iotlabclient.client.models.circuit import Circuit
 from iotlabclient.client.models.circuits_list_response import CircuitsListResponse
 from iotlabclient.client.models.common_experiment_request import CommonExperimentRequest

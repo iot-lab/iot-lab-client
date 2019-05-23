@@ -40,7 +40,7 @@ class ExperimentRequest(object):
         'mobilities': 'CommonExperimentRequestMobilities',
         'profileassociations': 'list[ProfileAliasAssociation]',
         'firmwareassociations': 'list[FirmwareAliasAssociation]',
-        'mobilityassociations': 'list[MobilityAliasAssociation]',
+        'associations': 'MobilityAliasAssociations',
         'siteassociations': 'ScriptAssociations'
     }
 
@@ -54,7 +54,7 @@ class ExperimentRequest(object):
         'mobilities': 'mobilities',
         'profileassociations': 'profileassociations',
         'firmwareassociations': 'firmwareassociations',
-        'mobilityassociations': 'mobilityassociations',
+        'associations': 'associations',
         'siteassociations': 'siteassociations'
     }
 
@@ -64,7 +64,7 @@ class ExperimentRequest(object):
         'oneOf': ["ExperimentAlias", "ExperimentPhysical"],
     }
 
-    def __init__(self, nodes=None, type=None, name=None, duration=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, mobilityassociations=None, siteassociations=None):  # noqa: E501
+    def __init__(self, nodes=None, type=None, name=None, duration=None, reservation=None, profiles=None, mobilities=None, profileassociations=None, firmwareassociations=None, associations=None, siteassociations=None):  # noqa: E501
         """ExperimentRequest - a model defined in OpenAPI"""  # noqa: E501
 
         self._nodes = None
@@ -76,7 +76,7 @@ class ExperimentRequest(object):
         self._mobilities = None
         self._profileassociations = None
         self._firmwareassociations = None
-        self._mobilityassociations = None
+        self._associations = None
         self._siteassociations = None
         self.discriminator = None
 
@@ -97,8 +97,8 @@ class ExperimentRequest(object):
             self.profileassociations = profileassociations
         if firmwareassociations is not None:
             self.firmwareassociations = firmwareassociations
-        if mobilityassociations is not None:
-            self.mobilityassociations = mobilityassociations
+        if associations is not None:
+            self.associations = associations
         if siteassociations is not None:
             self.siteassociations = siteassociations
 
@@ -300,25 +300,25 @@ class ExperimentRequest(object):
         self._firmwareassociations = firmwareassociations
 
     @property
-    def mobilityassociations(self):
-        """Gets the mobilityassociations of this ExperimentRequest.  # noqa: E501
+    def associations(self):
+        """Gets the associations of this ExperimentRequest.  # noqa: E501
 
 
-        :return: The mobilityassociations of this ExperimentRequest.  # noqa: E501
-        :rtype: list[MobilityAliasAssociation]
+        :return: The associations of this ExperimentRequest.  # noqa: E501
+        :rtype: MobilityAliasAssociations
         """
-        return self._mobilityassociations
+        return self._associations
 
-    @mobilityassociations.setter
-    def mobilityassociations(self, mobilityassociations):
-        """Sets the mobilityassociations of this ExperimentRequest.
+    @associations.setter
+    def associations(self, associations):
+        """Sets the associations of this ExperimentRequest.
 
 
-        :param mobilityassociations: The mobilityassociations of this ExperimentRequest.  # noqa: E501
-        :type: list[MobilityAliasAssociation]
+        :param associations: The associations of this ExperimentRequest.  # noqa: E501
+        :type: MobilityAliasAssociations
         """
 
-        self._mobilityassociations = mobilityassociations
+        self._associations = associations
 
     @property
     def siteassociations(self):

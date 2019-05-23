@@ -130,10 +130,12 @@ Class | Method | HTTP request | Description
 
  - [ActivateUserRequest](/iotlabclient/client/docs/ActivateUserRequest.md)
  - [Alias](/iotlabclient/client/docs/Alias.md)
+ - [AliasAssociations](/iotlabclient/client/docs/AliasAssociations.md)
  - [AliasProperties](/iotlabclient/client/docs/AliasProperties.md)
  - [Archi](/iotlabclient/client/docs/Archi.md)
  - [ArchiRadioString](/iotlabclient/client/docs/ArchiRadioString.md)
  - [ArchiString](/iotlabclient/client/docs/ArchiString.md)
+ - [Associations](/iotlabclient/client/docs/Associations.md)
  - [Circuit](/iotlabclient/client/docs/Circuit.md)
  - [CircuitsListResponse](/iotlabclient/client/docs/CircuitsListResponse.md)
  - [CommonExperimentRequest](/iotlabclient/client/docs/CommonExperimentRequest.md)
