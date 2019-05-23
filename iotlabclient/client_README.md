@@ -196,6 +196,8 @@ Class | Method | HTTP request | Description
  - [ProfileRadio](/iotlabclient/client/docs/ProfileRadio.md)
  - [Reload](/iotlabclient/client/docs/Reload.md)
  - [ResetPasswordRequest](/iotlabclient/client/docs/ResetPasswordRequest.md)
+ - [ResourceJob](/iotlabclient/client/docs/ResourceJob.md)
+ - [ResourceJobsResponse](/iotlabclient/client/docs/ResourceJobsResponse.md)
  - [ResourceType](/iotlabclient/client/docs/ResourceType.md)
  - [RobotDockConfig](/iotlabclient/client/docs/RobotDockConfig.md)
  - [RobotResponse](/iotlabclient/client/docs/RobotResponse.md)

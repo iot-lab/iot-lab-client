@@ -82,6 +82,8 @@ from iotlabclient.client.models.profile_consumption import ProfileConsumption
 from iotlabclient.client.models.profile_radio import ProfileRadio
 from iotlabclient.client.models.reload import Reload
 from iotlabclient.client.models.reset_password_request import ResetPasswordRequest
+from iotlabclient.client.models.resource_job import ResourceJob
+from iotlabclient.client.models.resource_jobs_response import ResourceJobsResponse
 from iotlabclient.client.models.resource_type import ResourceType
 from iotlabclient.client.models.robot_dock_config import RobotDockConfig
 from iotlabclient.client.models.robot_response import RobotResponse
