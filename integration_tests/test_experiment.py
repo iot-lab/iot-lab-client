@@ -108,7 +108,7 @@ def test_get():
                     nodes=['1']
                 )
             ],
-            mobilityassociations=None,
+            associations=None,
             siteassociations=None)
     else:
         experiment_id = 164422
@@ -137,7 +137,7 @@ def test_get():
                 dict(
                     firmwarename='372bc4b0b6d225c081f34986f74dfd20_tutorial_m3.elf',  # noqa: E501
                     nodes=['m3-101.grenoble.iot-lab.info'])],
-            mobilityassociations=None,
+            associations=None,
             siteassociations=None)
 
 
