@@ -26,5 +26,14 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
-    if not config.option.signup:
-        setattr(config.option, 'markexpr', 'not signup')
+    config.addinivalue_line("markers", "signup: mark test as requiring a signup flow (access to an email account)")
+
+
+def pytest_collection_modifyitems(config, items):
+    if config.getoption("--signup"):
+        # --signup given in cli: do not skip signup tests
+        return
+    skip_signup = pytest.mark.skip(reason="need --signup option to run")
+    for item in items:
+        if "signup" in item.keywords:
+            item.add_marker(skip_signup)

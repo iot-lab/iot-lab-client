@@ -108,8 +108,7 @@ user = UserRequest(
 )
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_create_activate_user():
     uid = uuid.uuid4().hex
 
@@ -153,8 +152,7 @@ def test_create_activate_user():
     assert created_user.status == 'active'
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_get_user():
     user = api.get_user()
 
@@ -174,16 +172,15 @@ def test_get_user():
     )
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_get_user_ssh_keys():
+
     keys = api.get_user_ssh_keys()
 
     assert keys.sshkeys == get_ssh_keys()
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_roundtrip_modify_user():
     data = {k: v for k, v in six.iteritems(api.get_user().to_dict())
             if k not in ['created', 'login', 'status']}
@@ -202,8 +199,7 @@ def test_roundtrip_modify_user():
     assert modified_back.motivations == 'I ♥ FIT IoT-LAB'
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_ssh_keys():
     keys = api.get_user_ssh_keys()
 
@@ -220,8 +216,7 @@ def test_ssh_keys():
     assert modified_keys.sshkeys == get_ssh_keys()
 
 
-@pytest.mark.skipif(not pytest.config.option.signup,
-                    reason="needs --signup option to run")
+@pytest.mark.signup
 def test_update_password():
     new_password = 'thisIsaGreatPassw0rd!!!'
 
