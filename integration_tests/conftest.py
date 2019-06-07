@@ -26,7 +26,9 @@ def pytest_addoption(parser):
 
 
 def pytest_configure(config):
-    config.addinivalue_line("markers", "signup: mark test as requiring a signup flow (access to an email account)")
+    config.addinivalue_line(
+        "markers", "signup: mark test as requiring a signup flow"
+                   "(access to an email account)")
 
 
 def pytest_collection_modifyitems(config, items):
