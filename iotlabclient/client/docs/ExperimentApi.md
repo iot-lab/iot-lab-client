@@ -47,7 +47,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
-nodes = NULL # list[str] |  (optional)
+nodes = ['nodes_example'] # list[str] |  (optional)
 
 try:
     # Send experiment nodes flash firmware store command.
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **name** | **str**|  | 
- **nodes** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -77,6 +77,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes flash firmware response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -130,6 +138,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment response |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment_archive**
@@ -181,6 +197,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/octet-stream, application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment archive response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -234,6 +258,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment deployment result response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment_nodes**
@@ -285,6 +317,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes list response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -338,6 +378,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes id list response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiment_token**
@@ -390,6 +438,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment description |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kill_experiment_scripts**
@@ -414,7 +470,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
-sites = NULL # list[str] |  (optional)
+sites = ['sites_example'] # list[str] |  (optional)
 
 try:
     # Send frontend SSH kill script command.
@@ -429,7 +485,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **sites** | [**list[str]**](list.md)|  | [optional] 
+ **sites** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -443,6 +499,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Frontend SSH kill script response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -497,6 +561,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment reload response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -556,6 +628,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Frontend SSH run script response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_cmd_mobility_robots**
@@ -581,7 +661,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
-nodes = NULL # list[str] |  (optional)
+nodes = ['nodes_example'] # list[str] |  (optional)
 
 try:
     # Send update robots mobility.
@@ -597,7 +677,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **name** | **str**|  | 
- **nodes** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -611,6 +691,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Robots update mobility response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -637,7 +725,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 cmd = 'cmd_example' # str | 
-nodes = NULL # list[str] |  (optional)
+nodes = ['nodes_example'] # list[str] |  (optional)
 
 try:
     # Send experiment nodes command.
@@ -653,7 +741,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **cmd** | **str**|  | 
- **nodes** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -667,6 +755,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes command response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -693,7 +789,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 name = 'name_example' # str | 
-nodes = NULL # list[str] |  (optional)
+nodes = ['nodes_example'] # list[str] |  (optional)
 
 try:
     # Send experiment nodes update monitoring profile store command.
@@ -709,7 +805,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **name** | **str**|  | 
- **nodes** | [**list[str]**](list.md)|  | [optional] 
+ **nodes** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -723,6 +819,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes update monitoring profile response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -749,7 +853,7 @@ configuration.password = 'YOUR_PASSWORD'
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
 cmd = 'cmd_example' # str | 
-request_body = NULL # list[str] |  (optional)
+request_body = ['request_body_example'] # list[str] |  (optional)
 
 try:
     # Returns robots status.
@@ -765,7 +869,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
  **cmd** | **str**|  | 
- **request_body** | [**list[str]**](list.md)|  | [optional] 
+ **request_body** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -779,6 +883,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Robots status response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -836,6 +948,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes flash firmware response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_load_profile_nodes**
@@ -892,6 +1012,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment nodes load monitoring profile response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **status_experiment_scripts**
@@ -916,7 +1044,7 @@ configuration.password = 'YOUR_PASSWORD'
 # create an instance of the API class
 api_instance = iotlabclient.client.ExperimentApi(iotlabclient.client.ApiClient(configuration))
 id = 56 # int | 
-sites = NULL # list[str] |  (optional)
+sites = ['sites_example'] # list[str] |  (optional)
 
 try:
     # Returns frontend SSH status script.
@@ -931,7 +1059,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **sites** | [**list[str]**](list.md)|  | [optional] 
+ **sites** | [**list[str]**](str.md)|  | [optional] 
 
 ### Return type
 
@@ -945,6 +1073,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Frontend SSH status script response. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -997,6 +1133,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Stop Experiment response |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

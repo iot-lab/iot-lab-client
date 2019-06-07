@@ -57,169 +57,172 @@ All URIs are relative to *https://www.iot-lab.info/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CircuitMobilitiesApi* | [**delete_user_mobility**](/iotlabclient/client/docs/CircuitMobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
-*CircuitMobilitiesApi* | [**get_mobilities**](/iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
-*CircuitMobilitiesApi* | [**get_mobility**](/iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit
-*CircuitMobilitiesApi* | [**modify_user_mobility**](/iotlabclient/client/docs/CircuitMobilitiesApi.md#modify_user_mobility) | **PUT** /mobilities/circuits/{name} | Modify circuit mobility
-*CircuitMobilitiesApi* | [**save_user_mobility**](/iotlabclient/client/docs/CircuitMobilitiesApi.md#save_user_mobility) | **POST** /mobilities/circuits | Create circuit
-*ExperimentApi* | [**flash_experiment_nodes**](/iotlabclient/client/docs/ExperimentApi.md#flash_experiment_nodes) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
-*ExperimentApi* | [**get_experiment**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment) | **GET** /experiments/{id} | Returns experiment.
-*ExperimentApi* | [**get_experiment_archive**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment_archive) | **GET** /experiments/{id}/data | Returns experiment archive.
-*ExperimentApi* | [**get_experiment_deployment**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment_deployment) | **GET** /experiments/{id}/deployment | Returns experiment deployment result.
-*ExperimentApi* | [**get_experiment_nodes**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes) | **GET** /experiments/{id}/nodes | Returns experiment nodes list.
-*ExperimentApi* | [**get_experiment_nodes_id**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes_id) | **GET** /experiments/{id}/nodes_ids | Returns experiment nodes id list (eg. 1-5+8).
-*ExperimentApi* | [**get_experiment_token**](/iotlabclient/client/docs/ExperimentApi.md#get_experiment_token) | **GET** /experiments/{id}/token | Returns experiment websocket token.
-*ExperimentApi* | [**kill_experiment_scripts**](/iotlabclient/client/docs/ExperimentApi.md#kill_experiment_scripts) | **POST** /experiments/{id}/scripts/kill | Send frontend SSH kill script command.
-*ExperimentApi* | [**reload_experiment**](/iotlabclient/client/docs/ExperimentApi.md#reload_experiment) | **POST** /experiments/{id}/reload | Reload experiment.
-*ExperimentApi* | [**run_experiment_scripts**](/iotlabclient/client/docs/ExperimentApi.md#run_experiment_scripts) | **POST** /experiments/{id}/scripts/run | Send frontend SSH run script command
-*ExperimentApi* | [**send_cmd_mobility_robots**](/iotlabclient/client/docs/ExperimentApi.md#send_cmd_mobility_robots) | **POST** /experiments/{id}/robots/mobility/{name} | Send update robots mobility.
-*ExperimentApi* | [**send_cmd_nodes**](/iotlabclient/client/docs/ExperimentApi.md#send_cmd_nodes) | **POST** /experiments/{id}/nodes/{cmd} | Send experiment nodes command.
-*ExperimentApi* | [**send_cmd_profile_nodes**](/iotlabclient/client/docs/ExperimentApi.md#send_cmd_profile_nodes) | **POST** /experiments/{id}/nodes/monitoring/{name} | Send experiment nodes update monitoring profile store command.
-*ExperimentApi* | [**send_cmd_robots**](/iotlabclient/client/docs/ExperimentApi.md#send_cmd_robots) | **POST** /experiments/{id}/robots/{cmd} | Returns robots status.
-*ExperimentApi* | [**send_cmd_update_nodes**](/iotlabclient/client/docs/ExperimentApi.md#send_cmd_update_nodes) | **POST** /experiments/{id}/nodes/flash | Send experiment nodes flash firmware command.
-*ExperimentApi* | [**send_load_profile_nodes**](/iotlabclient/client/docs/ExperimentApi.md#send_load_profile_nodes) | **POST** /experiments/{id}/nodes/monitoring | Send experiment nodes load monitoring profile command.
-*ExperimentApi* | [**status_experiment_scripts**](/iotlabclient/client/docs/ExperimentApi.md#status_experiment_scripts) | **POST** /experiments/{id}/scripts/status | Returns frontend SSH status script.
-*ExperimentApi* | [**stop_experiment**](/iotlabclient/client/docs/ExperimentApi.md#stop_experiment) | **DELETE** /experiments/{id} | Stop experiment
-*ExperimentsApi* | [**get_experiments**](/iotlabclient/client/docs/ExperimentsApi.md#get_experiments) | **GET** /experiments | Returns experiments list
-*ExperimentsApi* | [**get_experiments_total**](/iotlabclient/client/docs/ExperimentsApi.md#get_experiments_total) | **GET** /experiments/total | Returns total number of experiments
-*ExperimentsApi* | [**get_running_experiments**](/iotlabclient/client/docs/ExperimentsApi.md#get_running_experiments) | **GET** /experiments/running | Returns running testbed experiments list
-*ExperimentsApi* | [**submit_experiment**](/iotlabclient/client/docs/ExperimentsApi.md#submit_experiment) | **POST** /experiments | Submit an experiment
-*FirmwaresApi* | [**delete_firmware**](/iotlabclient/client/docs/FirmwaresApi.md#delete_firmware) | **DELETE** /firmwares/{name} | Delete a user firmware
-*FirmwaresApi* | [**get_firmware**](/iotlabclient/client/docs/FirmwaresApi.md#get_firmware) | **GET** /firmwares/{name} | get a stored firmware metadata
-*FirmwaresApi* | [**get_firmware_file**](/iotlabclient/client/docs/FirmwaresApi.md#get_firmware_file) | **GET** /firmwares/{name}/file | get a stored firmware file
-*FirmwaresApi* | [**get_firmware_format**](/iotlabclient/client/docs/FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
-*FirmwaresApi* | [**get_firmwares**](/iotlabclient/client/docs/FirmwaresApi.md#get_firmwares) | **GET** /firmwares | get a list of stored firmware metadatas
-*FirmwaresApi* | [**modify_firmware**](/iotlabclient/client/docs/FirmwaresApi.md#modify_firmware) | **PUT** /firmwares/{name} | modify a stored user firmware
-*FirmwaresApi* | [**save_firmware**](/iotlabclient/client/docs/FirmwaresApi.md#save_firmware) | **POST** /firmwares | save a user firmware
-*ModelMobilitiesApi* | [**delete_user_model_mobility**](/iotlabclient/client/docs/ModelMobilitiesApi.md#delete_user_model_mobility) | **DELETE** /mobilities/models/{name} | Delete model mobility
-*ModelMobilitiesApi* | [**get_model_mobilities**](/iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobilities) | **GET** /mobilities/models | Returns models list
-*ModelMobilitiesApi* | [**get_model_mobility**](/iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility) | **GET** /mobilities/models/{name} | Returns model
-*ModelMobilitiesApi* | [**get_model_mobility_script**](/iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility_script) | **GET** /mobilities/models/{name}/file | Returns model script file
-*ModelMobilitiesApi* | [**modify_user_model_mobility**](/iotlabclient/client/docs/ModelMobilitiesApi.md#modify_user_model_mobility) | **PUT** /mobilities/models/{name} | Modify model mobility
-*ModelMobilitiesApi* | [**save_user_model_mobility**](/iotlabclient/client/docs/ModelMobilitiesApi.md#save_user_model_mobility) | **POST** /mobilities/models | Create model mobility
-*MonitoringApi* | [**delete_profile**](/iotlabclient/client/docs/MonitoringApi.md#delete_profile) | **DELETE** /monitoring/{name} | Delete monitoring profile.
-*MonitoringApi* | [**get_profile**](/iotlabclient/client/docs/MonitoringApi.md#get_profile) | **GET** /monitoring/{name} | Returns monitoring profile.
-*MonitoringApi* | [**get_profiles**](/iotlabclient/client/docs/MonitoringApi.md#get_profiles) | **GET** /monitoring | Returns monitoring profiles list.
-*MonitoringApi* | [**modify_profile**](/iotlabclient/client/docs/MonitoringApi.md#modify_profile) | **PUT** /monitoring/{name} | Modify monitoring profile.
-*MonitoringApi* | [**save_profile**](/iotlabclient/client/docs/MonitoringApi.md#save_profile) | **POST** /monitoring | Create monitoring profile.
-*NodesApi* | [**get_nodes**](/iotlabclient/client/docs/NodesApi.md#get_nodes) | **GET** /nodes | Returns testbed nodes list.
-*NodesApi* | [**get_nodes_id**](/iotlabclient/client/docs/NodesApi.md#get_nodes_id) | **GET** /nodes/ids | Returns testbed nodes ids list (eg. 1-5+8).
-*RobotsApi* | [**are_coordinates_reachable**](/iotlabclient/client/docs/RobotsApi.md#are_coordinates_reachable) | **POST** /robots/{site}/coordinates/isreachable | Returns if robots coordinates (eg. ROS points) are reachable
-*RobotsApi* | [**get_dock_config**](/iotlabclient/client/docs/RobotsApi.md#get_dock_config) | **GET** /robots/{site}/dock/config | Returns robots site dock config
-*RobotsApi* | [**get_map_config**](/iotlabclient/client/docs/RobotsApi.md#get_map_config) | **GET** /robots/{site}/map/config | Returns robots site map config
-*RobotsApi* | [**get_map_coordinates**](/iotlabclient/client/docs/RobotsApi.md#get_map_coordinates) | **POST** /robots/{site}/coordinates/map | Returns robots map coordinates from ros coordinates.
-*RobotsApi* | [**get_map_image**](/iotlabclient/client/docs/RobotsApi.md#get_map_image) | **GET** /robots/{site}/map/image | Returns robots site map image
-*RobotsApi* | [**get_ros_coordinates**](/iotlabclient/client/docs/RobotsApi.md#get_ros_coordinates) | **POST** /robots/{site}/coordinates/ros | Returns robots ros coordinates from map coordinates.
-*SchedulerApi* | [**get_experiments_jobs**](/iotlabclient/client/docs/SchedulerApi.md#get_experiments_jobs) | **GET** /experiments/jobs | Returns past &amp; future testbed experiments jobs lists
-*SchedulerApi* | [**get_nodes_states**](/iotlabclient/client/docs/SchedulerApi.md#get_nodes_states) | **GET** /experiments/nodes_states | Returns nodes states, past &amp; current
-*SitesApi* | [**get_sites**](/iotlabclient/client/docs/SitesApi.md#get_sites) | **GET** /sites | Returns testbed sites list.
-*SitesApi* | [**get_sites_details**](/iotlabclient/client/docs/SitesApi.md#get_sites_details) | **GET** /sites/details | Returns tesbed sites details list.
-*UsersApi* | [**activate_user**](/iotlabclient/client/docs/UsersApi.md#activate_user) | **POST** /users/activate | Activate user.
-*UsersApi* | [**delete_user**](/iotlabclient/client/docs/UsersApi.md#delete_user) | **DELETE** /user | Delete user.
-*UsersApi* | [**delete_user_ssh_keys**](/iotlabclient/client/docs/UsersApi.md#delete_user_ssh_keys) | **DELETE** /user/keys/{id} | Delete user ssh key.
-*UsersApi* | [**get_user**](/iotlabclient/client/docs/UsersApi.md#get_user) | **GET** /user | Returns user
-*UsersApi* | [**get_user_ssh_keys**](/iotlabclient/client/docs/UsersApi.md#get_user_ssh_keys) | **GET** /user/keys | Returns user ssh keys list.
-*UsersApi* | [**modify_user**](/iotlabclient/client/docs/UsersApi.md#modify_user) | **PUT** /user | Modify user
-*UsersApi* | [**reset_password**](/iotlabclient/client/docs/UsersApi.md#reset_password) | **POST** /users/reset_password | Reset user password by email
-*UsersApi* | [**set_user_ssh_keys**](/iotlabclient/client/docs/UsersApi.md#set_user_ssh_keys) | **POST** /user/keys | Add user ssh keys.
-*UsersApi* | [**signup_user**](/iotlabclient/client/docs/UsersApi.md#signup_user) | **POST** /users | Signup user.
-*UsersApi* | [**update_password**](/iotlabclient/client/docs/UsersApi.md#update_password) | **PUT** /user/password | Modify user password.
+*CircuitMobilitiesApi* | [**delete_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#delete_user_mobility) | **DELETE** /mobilities/circuits/{name} | Delete circuit mobility
+*CircuitMobilitiesApi* | [**get_mobilities**](iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobilities) | **GET** /mobilities/circuits | Returns circuits list
+*CircuitMobilitiesApi* | [**get_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#get_mobility) | **GET** /mobilities/circuits/{name} | Returns circuit
+*CircuitMobilitiesApi* | [**modify_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#modify_user_mobility) | **PUT** /mobilities/circuits/{name} | Modify circuit mobility
+*CircuitMobilitiesApi* | [**save_user_mobility**](iotlabclient/client/docs/CircuitMobilitiesApi.md#save_user_mobility) | **POST** /mobilities/circuits | Create circuit
+*ExperimentApi* | [**flash_experiment_nodes**](iotlabclient/client/docs/ExperimentApi.md#flash_experiment_nodes) | **POST** /experiments/{id}/nodes/flash/{name} | Send experiment nodes flash firmware store command.
+*ExperimentApi* | [**get_experiment**](iotlabclient/client/docs/ExperimentApi.md#get_experiment) | **GET** /experiments/{id} | Returns experiment.
+*ExperimentApi* | [**get_experiment_archive**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_archive) | **GET** /experiments/{id}/data | Returns experiment archive.
+*ExperimentApi* | [**get_experiment_deployment**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_deployment) | **GET** /experiments/{id}/deployment | Returns experiment deployment result.
+*ExperimentApi* | [**get_experiment_nodes**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes) | **GET** /experiments/{id}/nodes | Returns experiment nodes list.
+*ExperimentApi* | [**get_experiment_nodes_id**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_nodes_id) | **GET** /experiments/{id}/nodes_ids | Returns experiment nodes id list (eg. 1-5+8).
+*ExperimentApi* | [**get_experiment_token**](iotlabclient/client/docs/ExperimentApi.md#get_experiment_token) | **GET** /experiments/{id}/token | Returns experiment websocket token.
+*ExperimentApi* | [**kill_experiment_scripts**](iotlabclient/client/docs/ExperimentApi.md#kill_experiment_scripts) | **POST** /experiments/{id}/scripts/kill | Send frontend SSH kill script command.
+*ExperimentApi* | [**reload_experiment**](iotlabclient/client/docs/ExperimentApi.md#reload_experiment) | **POST** /experiments/{id}/reload | Reload experiment.
+*ExperimentApi* | [**run_experiment_scripts**](iotlabclient/client/docs/ExperimentApi.md#run_experiment_scripts) | **POST** /experiments/{id}/scripts/run | Send frontend SSH run script command
+*ExperimentApi* | [**send_cmd_mobility_robots**](iotlabclient/client/docs/ExperimentApi.md#send_cmd_mobility_robots) | **POST** /experiments/{id}/robots/mobility/{name} | Send update robots mobility.
+*ExperimentApi* | [**send_cmd_nodes**](iotlabclient/client/docs/ExperimentApi.md#send_cmd_nodes) | **POST** /experiments/{id}/nodes/{cmd} | Send experiment nodes command.
+*ExperimentApi* | [**send_cmd_profile_nodes**](iotlabclient/client/docs/ExperimentApi.md#send_cmd_profile_nodes) | **POST** /experiments/{id}/nodes/monitoring/{name} | Send experiment nodes update monitoring profile store command.
+*ExperimentApi* | [**send_cmd_robots**](iotlabclient/client/docs/ExperimentApi.md#send_cmd_robots) | **POST** /experiments/{id}/robots/{cmd} | Returns robots status.
+*ExperimentApi* | [**send_cmd_update_nodes**](iotlabclient/client/docs/ExperimentApi.md#send_cmd_update_nodes) | **POST** /experiments/{id}/nodes/flash | Send experiment nodes flash firmware command.
+*ExperimentApi* | [**send_load_profile_nodes**](iotlabclient/client/docs/ExperimentApi.md#send_load_profile_nodes) | **POST** /experiments/{id}/nodes/monitoring | Send experiment nodes load monitoring profile command.
+*ExperimentApi* | [**status_experiment_scripts**](iotlabclient/client/docs/ExperimentApi.md#status_experiment_scripts) | **POST** /experiments/{id}/scripts/status | Returns frontend SSH status script.
+*ExperimentApi* | [**stop_experiment**](iotlabclient/client/docs/ExperimentApi.md#stop_experiment) | **DELETE** /experiments/{id} | Stop experiment
+*ExperimentsApi* | [**get_experiments**](iotlabclient/client/docs/ExperimentsApi.md#get_experiments) | **GET** /experiments | Returns experiments list
+*ExperimentsApi* | [**get_experiments_total**](iotlabclient/client/docs/ExperimentsApi.md#get_experiments_total) | **GET** /experiments/total | Returns total number of experiments
+*ExperimentsApi* | [**get_running_experiments**](iotlabclient/client/docs/ExperimentsApi.md#get_running_experiments) | **GET** /experiments/running | Returns running testbed experiments list
+*ExperimentsApi* | [**submit_experiment**](iotlabclient/client/docs/ExperimentsApi.md#submit_experiment) | **POST** /experiments | Submit an experiment
+*FirmwaresApi* | [**delete_firmware**](iotlabclient/client/docs/FirmwaresApi.md#delete_firmware) | **DELETE** /firmwares/{name} | Delete a user firmware
+*FirmwaresApi* | [**get_firmware**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware) | **GET** /firmwares/{name} | get a stored firmware metadata
+*FirmwaresApi* | [**get_firmware_file**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_file) | **GET** /firmwares/{name}/file | get a stored firmware file
+*FirmwaresApi* | [**get_firmware_format**](iotlabclient/client/docs/FirmwaresApi.md#get_firmware_format) | **POST** /firmwares/checker | Returns firwmare format.
+*FirmwaresApi* | [**get_firmwares**](iotlabclient/client/docs/FirmwaresApi.md#get_firmwares) | **GET** /firmwares | get a list of stored firmware metadatas
+*FirmwaresApi* | [**modify_firmware**](iotlabclient/client/docs/FirmwaresApi.md#modify_firmware) | **PUT** /firmwares/{name} | modify a stored user firmware
+*FirmwaresApi* | [**save_firmware**](iotlabclient/client/docs/FirmwaresApi.md#save_firmware) | **POST** /firmwares | save a user firmware
+*ModelMobilitiesApi* | [**delete_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#delete_user_model_mobility) | **DELETE** /mobilities/models/{name} | Delete model mobility
+*ModelMobilitiesApi* | [**get_model_mobilities**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobilities) | **GET** /mobilities/models | Returns models list
+*ModelMobilitiesApi* | [**get_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility) | **GET** /mobilities/models/{name} | Returns model
+*ModelMobilitiesApi* | [**get_model_mobility_script**](iotlabclient/client/docs/ModelMobilitiesApi.md#get_model_mobility_script) | **GET** /mobilities/models/{name}/file | Returns model script file
+*ModelMobilitiesApi* | [**modify_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#modify_user_model_mobility) | **PUT** /mobilities/models/{name} | Modify model mobility
+*ModelMobilitiesApi* | [**save_user_model_mobility**](iotlabclient/client/docs/ModelMobilitiesApi.md#save_user_model_mobility) | **POST** /mobilities/models | Create model mobility
+*MonitoringApi* | [**delete_profile**](iotlabclient/client/docs/MonitoringApi.md#delete_profile) | **DELETE** /monitoring/{name} | Delete monitoring profile.
+*MonitoringApi* | [**get_profile**](iotlabclient/client/docs/MonitoringApi.md#get_profile) | **GET** /monitoring/{name} | Returns monitoring profile.
+*MonitoringApi* | [**get_profiles**](iotlabclient/client/docs/MonitoringApi.md#get_profiles) | **GET** /monitoring | Returns monitoring profiles list.
+*MonitoringApi* | [**modify_profile**](iotlabclient/client/docs/MonitoringApi.md#modify_profile) | **PUT** /monitoring/{name} | Modify monitoring profile.
+*MonitoringApi* | [**save_profile**](iotlabclient/client/docs/MonitoringApi.md#save_profile) | **POST** /monitoring | Create monitoring profile.
+*NodesApi* | [**get_nodes**](iotlabclient/client/docs/NodesApi.md#get_nodes) | **GET** /nodes | Returns testbed nodes list.
+*NodesApi* | [**get_nodes_id**](iotlabclient/client/docs/NodesApi.md#get_nodes_id) | **GET** /nodes/ids | Returns testbed nodes ids list (eg. 1-5+8).
+*RobotsApi* | [**are_coordinates_reachable**](iotlabclient/client/docs/RobotsApi.md#are_coordinates_reachable) | **POST** /robots/{site}/coordinates/isreachable | Returns if robots coordinates (eg. ROS points) are reachable
+*RobotsApi* | [**get_dock_config**](iotlabclient/client/docs/RobotsApi.md#get_dock_config) | **GET** /robots/{site}/dock/config | Returns robots site dock config
+*RobotsApi* | [**get_map_config**](iotlabclient/client/docs/RobotsApi.md#get_map_config) | **GET** /robots/{site}/map/config | Returns robots site map config
+*RobotsApi* | [**get_map_coordinates**](iotlabclient/client/docs/RobotsApi.md#get_map_coordinates) | **POST** /robots/{site}/coordinates/map | Returns robots map coordinates from ros coordinates.
+*RobotsApi* | [**get_map_image**](iotlabclient/client/docs/RobotsApi.md#get_map_image) | **GET** /robots/{site}/map/image | Returns robots site map image
+*RobotsApi* | [**get_ros_coordinates**](iotlabclient/client/docs/RobotsApi.md#get_ros_coordinates) | **POST** /robots/{site}/coordinates/ros | Returns robots ros coordinates from map coordinates.
+*SchedulerApi* | [**get_experiments_jobs**](iotlabclient/client/docs/SchedulerApi.md#get_experiments_jobs) | **GET** /experiments/jobs | Returns past &amp; future testbed experiments jobs lists
+*SchedulerApi* | [**get_nodes_states**](iotlabclient/client/docs/SchedulerApi.md#get_nodes_states) | **GET** /experiments/nodes_states | Returns nodes states, past &amp; current
+*SitesApi* | [**get_sites**](iotlabclient/client/docs/SitesApi.md#get_sites) | **GET** /sites | Returns testbed sites list.
+*SitesApi* | [**get_sites_details**](iotlabclient/client/docs/SitesApi.md#get_sites_details) | **GET** /sites/details | Returns tesbed sites details list.
+*UsersApi* | [**activate_user**](iotlabclient/client/docs/UsersApi.md#activate_user) | **POST** /users/activate | Activate user.
+*UsersApi* | [**delete_user**](iotlabclient/client/docs/UsersApi.md#delete_user) | **DELETE** /user | Delete user.
+*UsersApi* | [**delete_user_ssh_keys**](iotlabclient/client/docs/UsersApi.md#delete_user_ssh_keys) | **DELETE** /user/keys/{id} | Delete user ssh key.
+*UsersApi* | [**get_user**](iotlabclient/client/docs/UsersApi.md#get_user) | **GET** /user | Returns user
+*UsersApi* | [**get_user_ssh_keys**](iotlabclient/client/docs/UsersApi.md#get_user_ssh_keys) | **GET** /user/keys | Returns user ssh keys list.
+*UsersApi* | [**modify_user**](iotlabclient/client/docs/UsersApi.md#modify_user) | **PUT** /user | Modify user
+*UsersApi* | [**reset_password**](iotlabclient/client/docs/UsersApi.md#reset_password) | **POST** /users/reset_password | Reset user password by email
+*UsersApi* | [**set_user_ssh_keys**](iotlabclient/client/docs/UsersApi.md#set_user_ssh_keys) | **POST** /user/keys | Add user ssh keys.
+*UsersApi* | [**signup_user**](iotlabclient/client/docs/UsersApi.md#signup_user) | **POST** /users | Signup user.
+*UsersApi* | [**update_password**](iotlabclient/client/docs/UsersApi.md#update_password) | **PUT** /user/password | Modify user password.
 
 
 ## Documentation For Models
 
- - [ActivateUserRequest](/iotlabclient/client/docs/ActivateUserRequest.md)
- - [Alias](/iotlabclient/client/docs/Alias.md)
- - [AliasAssociations](/iotlabclient/client/docs/AliasAssociations.md)
- - [AliasProperties](/iotlabclient/client/docs/AliasProperties.md)
- - [Archi](/iotlabclient/client/docs/Archi.md)
- - [ArchiRadioString](/iotlabclient/client/docs/ArchiRadioString.md)
- - [ArchiString](/iotlabclient/client/docs/ArchiString.md)
- - [Associations](/iotlabclient/client/docs/Associations.md)
- - [Circuit](/iotlabclient/client/docs/Circuit.md)
- - [CircuitsListResponse](/iotlabclient/client/docs/CircuitsListResponse.md)
- - [CommonExperimentRequest](/iotlabclient/client/docs/CommonExperimentRequest.md)
- - [CommonExperimentRequestMobilities](/iotlabclient/client/docs/CommonExperimentRequestMobilities.md)
- - [CommonExperimentRequestProfiles](/iotlabclient/client/docs/CommonExperimentRequestProfiles.md)
- - [CommonExperimentSubmission](/iotlabclient/client/docs/CommonExperimentSubmission.md)
- - [CoordinatesReachable](/iotlabclient/client/docs/CoordinatesReachable.md)
- - [CoordinatesReachableItems](/iotlabclient/client/docs/CoordinatesReachableItems.md)
- - [Deployment](/iotlabclient/client/docs/Deployment.md)
- - [DockConfig](/iotlabclient/client/docs/DockConfig.md)
- - [Error](/iotlabclient/client/docs/Error.md)
- - [ExperimentAlias](/iotlabclient/client/docs/ExperimentAlias.md)
- - [ExperimentPhysical](/iotlabclient/client/docs/ExperimentPhysical.md)
- - [ExperimentRequest](/iotlabclient/client/docs/ExperimentRequest.md)
- - [ExperimentResponse](/iotlabclient/client/docs/ExperimentResponse.md)
- - [ExperimentSubmission](/iotlabclient/client/docs/ExperimentSubmission.md)
- - [ExperimentSubmissionAlias](/iotlabclient/client/docs/ExperimentSubmissionAlias.md)
- - [ExperimentSubmissionPhysical](/iotlabclient/client/docs/ExperimentSubmissionPhysical.md)
- - [ExperimentsResponse](/iotlabclient/client/docs/ExperimentsResponse.md)
- - [Firmware](/iotlabclient/client/docs/Firmware.md)
- - [FirmwareAliasAssociation](/iotlabclient/client/docs/FirmwareAliasAssociation.md)
- - [FirmwareAliasAssociations](/iotlabclient/client/docs/FirmwareAliasAssociations.md)
- - [FirmwareAssociation](/iotlabclient/client/docs/FirmwareAssociation.md)
- - [FirmwareAssociations](/iotlabclient/client/docs/FirmwareAssociations.md)
- - [InlineObject](/iotlabclient/client/docs/InlineObject.md)
- - [InlineObject1](/iotlabclient/client/docs/InlineObject1.md)
- - [InlineObject2](/iotlabclient/client/docs/InlineObject2.md)
- - [InlineObject3](/iotlabclient/client/docs/InlineObject3.md)
- - [InlineObject4](/iotlabclient/client/docs/InlineObject4.md)
- - [InlineObject5](/iotlabclient/client/docs/InlineObject5.md)
- - [InlineObject6](/iotlabclient/client/docs/InlineObject6.md)
- - [InlineObject7](/iotlabclient/client/docs/InlineObject7.md)
- - [InlineObject8](/iotlabclient/client/docs/InlineObject8.md)
- - [InlineResponse200](/iotlabclient/client/docs/InlineResponse200.md)
- - [InlineResponse2001](/iotlabclient/client/docs/InlineResponse2001.md)
- - [InlineResponse2002](/iotlabclient/client/docs/InlineResponse2002.md)
- - [MobilityAliasAssociation](/iotlabclient/client/docs/MobilityAliasAssociation.md)
- - [MobilityAliasAssociations](/iotlabclient/client/docs/MobilityAliasAssociations.md)
- - [MobilityAssociation](/iotlabclient/client/docs/MobilityAssociation.md)
- - [MobilityAssociations](/iotlabclient/client/docs/MobilityAssociations.md)
- - [Model](/iotlabclient/client/docs/Model.md)
- - [ModelsListResponse](/iotlabclient/client/docs/ModelsListResponse.md)
- - [Node](/iotlabclient/client/docs/Node.md)
- - [NodeState](/iotlabclient/client/docs/NodeState.md)
- - [NodesIdsResponse](/iotlabclient/client/docs/NodesIdsResponse.md)
- - [NodesIdsResponseArchis](/iotlabclient/client/docs/NodesIdsResponseArchis.md)
- - [NodesIdsResponseItems](/iotlabclient/client/docs/NodesIdsResponseItems.md)
- - [NodesIdsResponseStates](/iotlabclient/client/docs/NodesIdsResponseStates.md)
- - [NodesResponse](/iotlabclient/client/docs/NodesResponse.md)
- - [NodesStatesResponse](/iotlabclient/client/docs/NodesStatesResponse.md)
- - [Point](/iotlabclient/client/docs/Point.md)
- - [Profile](/iotlabclient/client/docs/Profile.md)
- - [ProfileAliasAssociation](/iotlabclient/client/docs/ProfileAliasAssociation.md)
- - [ProfileAliasAssociations](/iotlabclient/client/docs/ProfileAliasAssociations.md)
- - [ProfileAssociation](/iotlabclient/client/docs/ProfileAssociation.md)
- - [ProfileAssociations](/iotlabclient/client/docs/ProfileAssociations.md)
- - [ProfileConsumption](/iotlabclient/client/docs/ProfileConsumption.md)
- - [ProfileRadio](/iotlabclient/client/docs/ProfileRadio.md)
- - [Reload](/iotlabclient/client/docs/Reload.md)
- - [ResetPasswordRequest](/iotlabclient/client/docs/ResetPasswordRequest.md)
- - [ResourceJob](/iotlabclient/client/docs/ResourceJob.md)
- - [ResourceJobsResponse](/iotlabclient/client/docs/ResourceJobsResponse.md)
- - [ResourceType](/iotlabclient/client/docs/ResourceType.md)
- - [RobotDockConfig](/iotlabclient/client/docs/RobotDockConfig.md)
- - [RobotResponse](/iotlabclient/client/docs/RobotResponse.md)
- - [RobotResponsePower](/iotlabclient/client/docs/RobotResponsePower.md)
- - [RobotsDockConfig](/iotlabclient/client/docs/RobotsDockConfig.md)
- - [RobotsMapConfig](/iotlabclient/client/docs/RobotsMapConfig.md)
- - [RobotsStatusResponse](/iotlabclient/client/docs/RobotsStatusResponse.md)
- - [ScriptAssociations](/iotlabclient/client/docs/ScriptAssociations.md)
- - [ScriptAssociationsScript](/iotlabclient/client/docs/ScriptAssociationsScript.md)
- - [ScriptAssociationsScriptconfig](/iotlabclient/client/docs/ScriptAssociationsScriptconfig.md)
- - [Site](/iotlabclient/client/docs/Site.md)
- - [SiteAssociations](/iotlabclient/client/docs/SiteAssociations.md)
- - [SitesDetailsResponse](/iotlabclient/client/docs/SitesDetailsResponse.md)
- - [SitesResponse](/iotlabclient/client/docs/SitesResponse.md)
- - [SitesResponseItems](/iotlabclient/client/docs/SitesResponseItems.md)
- - [StatusResponse](/iotlabclient/client/docs/StatusResponse.md)
- - [StopResponse](/iotlabclient/client/docs/StopResponse.md)
- - [TotalResponse](/iotlabclient/client/docs/TotalResponse.md)
- - [UpdatePasswordRequest](/iotlabclient/client/docs/UpdatePasswordRequest.md)
- - [UserRequest](/iotlabclient/client/docs/UserRequest.md)
- - [UserResponse](/iotlabclient/client/docs/UserResponse.md)
- - [UserSshKeys](/iotlabclient/client/docs/UserSshKeys.md)
+ - [ActivateUserRequest](iotlabclient/client/docs/ActivateUserRequest.md)
+ - [Alias](iotlabclient/client/docs/Alias.md)
+ - [AliasAssociations](iotlabclient/client/docs/AliasAssociations.md)
+ - [AliasProperties](iotlabclient/client/docs/AliasProperties.md)
+ - [Archi](iotlabclient/client/docs/Archi.md)
+ - [ArchiRadioString](iotlabclient/client/docs/ArchiRadioString.md)
+ - [ArchiString](iotlabclient/client/docs/ArchiString.md)
+ - [Associations](iotlabclient/client/docs/Associations.md)
+ - [Circuit](iotlabclient/client/docs/Circuit.md)
+ - [CircuitsListResponse](iotlabclient/client/docs/CircuitsListResponse.md)
+ - [CommonExperimentRequest](iotlabclient/client/docs/CommonExperimentRequest.md)
+ - [CommonExperimentRequestMobilities](iotlabclient/client/docs/CommonExperimentRequestMobilities.md)
+ - [CommonExperimentRequestProfiles](iotlabclient/client/docs/CommonExperimentRequestProfiles.md)
+ - [CommonExperimentSubmission](iotlabclient/client/docs/CommonExperimentSubmission.md)
+ - [CoordinatesReachable](iotlabclient/client/docs/CoordinatesReachable.md)
+ - [CoordinatesReachableItems](iotlabclient/client/docs/CoordinatesReachableItems.md)
+ - [Deployment](iotlabclient/client/docs/Deployment.md)
+ - [DockConfig](iotlabclient/client/docs/DockConfig.md)
+ - [Error](iotlabclient/client/docs/Error.md)
+ - [ExperimentAlias](iotlabclient/client/docs/ExperimentAlias.md)
+ - [ExperimentAliasAllOf](iotlabclient/client/docs/ExperimentAliasAllOf.md)
+ - [ExperimentPhysical](iotlabclient/client/docs/ExperimentPhysical.md)
+ - [ExperimentPhysicalAllOf](iotlabclient/client/docs/ExperimentPhysicalAllOf.md)
+ - [ExperimentRequest](iotlabclient/client/docs/ExperimentRequest.md)
+ - [ExperimentResponse](iotlabclient/client/docs/ExperimentResponse.md)
+ - [ExperimentSubmission](iotlabclient/client/docs/ExperimentSubmission.md)
+ - [ExperimentSubmissionAlias](iotlabclient/client/docs/ExperimentSubmissionAlias.md)
+ - [ExperimentSubmissionPhysical](iotlabclient/client/docs/ExperimentSubmissionPhysical.md)
+ - [ExperimentsResponse](iotlabclient/client/docs/ExperimentsResponse.md)
+ - [Firmware](iotlabclient/client/docs/Firmware.md)
+ - [FirmwareAliasAssociation](iotlabclient/client/docs/FirmwareAliasAssociation.md)
+ - [FirmwareAliasAssociations](iotlabclient/client/docs/FirmwareAliasAssociations.md)
+ - [FirmwareAssociation](iotlabclient/client/docs/FirmwareAssociation.md)
+ - [FirmwareAssociations](iotlabclient/client/docs/FirmwareAssociations.md)
+ - [InlineObject](iotlabclient/client/docs/InlineObject.md)
+ - [InlineObject1](iotlabclient/client/docs/InlineObject1.md)
+ - [InlineObject2](iotlabclient/client/docs/InlineObject2.md)
+ - [InlineObject3](iotlabclient/client/docs/InlineObject3.md)
+ - [InlineObject4](iotlabclient/client/docs/InlineObject4.md)
+ - [InlineObject5](iotlabclient/client/docs/InlineObject5.md)
+ - [InlineObject6](iotlabclient/client/docs/InlineObject6.md)
+ - [InlineObject7](iotlabclient/client/docs/InlineObject7.md)
+ - [InlineObject8](iotlabclient/client/docs/InlineObject8.md)
+ - [InlineResponse200](iotlabclient/client/docs/InlineResponse200.md)
+ - [InlineResponse2001](iotlabclient/client/docs/InlineResponse2001.md)
+ - [InlineResponse2002](iotlabclient/client/docs/InlineResponse2002.md)
+ - [MobilityAliasAssociation](iotlabclient/client/docs/MobilityAliasAssociation.md)
+ - [MobilityAliasAssociations](iotlabclient/client/docs/MobilityAliasAssociations.md)
+ - [MobilityAssociation](iotlabclient/client/docs/MobilityAssociation.md)
+ - [MobilityAssociations](iotlabclient/client/docs/MobilityAssociations.md)
+ - [Model](iotlabclient/client/docs/Model.md)
+ - [ModelsListResponse](iotlabclient/client/docs/ModelsListResponse.md)
+ - [Node](iotlabclient/client/docs/Node.md)
+ - [NodeState](iotlabclient/client/docs/NodeState.md)
+ - [NodesIdsResponse](iotlabclient/client/docs/NodesIdsResponse.md)
+ - [NodesIdsResponseArchis](iotlabclient/client/docs/NodesIdsResponseArchis.md)
+ - [NodesIdsResponseItems](iotlabclient/client/docs/NodesIdsResponseItems.md)
+ - [NodesIdsResponseStates](iotlabclient/client/docs/NodesIdsResponseStates.md)
+ - [NodesResponse](iotlabclient/client/docs/NodesResponse.md)
+ - [NodesStatesResponse](iotlabclient/client/docs/NodesStatesResponse.md)
+ - [Point](iotlabclient/client/docs/Point.md)
+ - [Profile](iotlabclient/client/docs/Profile.md)
+ - [ProfileAliasAssociation](iotlabclient/client/docs/ProfileAliasAssociation.md)
+ - [ProfileAliasAssociations](iotlabclient/client/docs/ProfileAliasAssociations.md)
+ - [ProfileAssociation](iotlabclient/client/docs/ProfileAssociation.md)
+ - [ProfileAssociations](iotlabclient/client/docs/ProfileAssociations.md)
+ - [ProfileConsumption](iotlabclient/client/docs/ProfileConsumption.md)
+ - [ProfileRadio](iotlabclient/client/docs/ProfileRadio.md)
+ - [Reload](iotlabclient/client/docs/Reload.md)
+ - [ResetPasswordRequest](iotlabclient/client/docs/ResetPasswordRequest.md)
+ - [ResourceJob](iotlabclient/client/docs/ResourceJob.md)
+ - [ResourceJobsResponse](iotlabclient/client/docs/ResourceJobsResponse.md)
+ - [ResourceType](iotlabclient/client/docs/ResourceType.md)
+ - [RobotDockConfig](iotlabclient/client/docs/RobotDockConfig.md)
+ - [RobotDockConfigAllOf](iotlabclient/client/docs/RobotDockConfigAllOf.md)
+ - [RobotResponse](iotlabclient/client/docs/RobotResponse.md)
+ - [RobotResponsePower](iotlabclient/client/docs/RobotResponsePower.md)
+ - [RobotsDockConfig](iotlabclient/client/docs/RobotsDockConfig.md)
+ - [RobotsMapConfig](iotlabclient/client/docs/RobotsMapConfig.md)
+ - [RobotsStatusResponse](iotlabclient/client/docs/RobotsStatusResponse.md)
+ - [ScriptAssociations](iotlabclient/client/docs/ScriptAssociations.md)
+ - [ScriptAssociationsScript](iotlabclient/client/docs/ScriptAssociationsScript.md)
+ - [ScriptAssociationsScriptconfig](iotlabclient/client/docs/ScriptAssociationsScriptconfig.md)
+ - [Site](iotlabclient/client/docs/Site.md)
+ - [SiteAssociations](iotlabclient/client/docs/SiteAssociations.md)
+ - [SitesDetailsResponse](iotlabclient/client/docs/SitesDetailsResponse.md)
+ - [SitesResponse](iotlabclient/client/docs/SitesResponse.md)
+ - [SitesResponseItems](iotlabclient/client/docs/SitesResponseItems.md)
+ - [StatusResponse](iotlabclient/client/docs/StatusResponse.md)
+ - [StopResponse](iotlabclient/client/docs/StopResponse.md)
+ - [TotalResponse](iotlabclient/client/docs/TotalResponse.md)
+ - [UpdatePasswordRequest](iotlabclient/client/docs/UpdatePasswordRequest.md)
+ - [UserRequest](iotlabclient/client/docs/UserRequest.md)
+ - [UserResponse](iotlabclient/client/docs/UserResponse.md)
+ - [UserSshKeys](iotlabclient/client/docs/UserSshKeys.md)
 
 
 ## Documentation For Authorization

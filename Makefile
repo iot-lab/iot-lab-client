@@ -9,7 +9,7 @@ GENERATOR ?= openapitools/openapi-generator-cli\:latest
 # it necessitates some merged PR before it works, might be
 # working with openapi-generator 4.0.0 once it releases
 # in the meantime, generated code is commited
-# PR code on openapitools/openapi-generator used: #2122 #2121 #2112
+# PR code on openapitools/openapi-generator used: #2170 #2167 #2134 #2121
 
 api: Makefile ${SWAGGER}
 	docker run --rm --user $$(id -u):$$(id -g) \
